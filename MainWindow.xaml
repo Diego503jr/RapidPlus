@@ -1,0 +1,53 @@
+﻿<Window x:Class="Rapid_Plus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Rapid_Plus"
+        mc:Ignorable="d"
+        Title="Login" Height="400" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Rectangle Height="400" VerticalAlignment="Center" Margin="0,0,300,0" Fill="#0B5563"/>
+        <Grid Height="240" Width="280" VerticalAlignment="Center" Margin="10,0,310,0">
+            <Label Content="Login" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-25,5,0" Foreground="White" FontSize="24" FontFamily="Bahnschrift"/>
+            <StackPanel VerticalAlignment="Top" Margin="35,39,31,0">
+                <Label Margin="5" Content="User" Foreground="White" FontSize="12" FontFamily="Bahnschrift"/>
+                <TextBox
+                 x:Name="txtCorreo"
+                 FontFamily="Bahnschrift" 
+                 FontSize="16"
+                 CaretBrush="{x:Null}" BorderBrush="{x:Null}" Background="White" SnapsToDevicePixels="True"
+                 Style="{StaticResource MaterialDesignTextBox}" SelectionBrush="{x:Null}" Width="176"/>
+                <Label Margin="5" Content="Password" Foreground="White" FontSize="12" FontFamily="Bahnschrift" Cursor=""/>
+                <Grid>
+                <PasswordBox
+                x:Name="txtPassword"
+                FontFamily="Bahnschrift"
+                FontSize="17"
+                Background="White" SnapsToDevicePixels="True"
+                Style="{StaticResource MaterialDesignPasswordBox}"  
+                SelectionBrush="{x:Null}" CaretBrush="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,17,0"/>
+                <!-- Campo de contraseña visible (inicialmente oculto) -->
+                <TextBox x:Name="txtPasswordVisible" 
+                         FontFamily="Bahnschrift" 
+                         FontSize="16" Margin="20,0,17,0"
+                         Background="White" 
+                         SnapsToDevicePixels="True" 
+                         Style="{StaticResource MaterialDesignTextBox}" 
+                         Visibility="Collapsed" />
+                    <Button x:Name="btnVisualizar" Height="20" Background="{x:Null}" BorderBrush="{x:Null}"  Foreground="{x:Null}" Margin="155,5,15,4" PreviewMouseDown="btnVisualizar_MouseDown" PreviewMouseUp="btnVisualizar_MouseUp">
+                        <Image Source="/Assets/ojo.png" />
+                    </Button>
+                </Grid>
+
+            </StackPanel>
+        </Grid>
+        <Image Height="204" Margin="326,0,22,0" VerticalAlignment="Center" Source="/Assets/logoN.png"/>
+        <Button x:Name="btnIngresar" Content="Ingresar" Width="90" Height="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="103,0,0,68" Background="#A2BCE0" BorderBrush="{x:Null}" Click="btnIngresar_Click" MouseEnter ="BotonIngresar_MouseEnter" MouseLeave="BotonIngresar_MouseLeave" IsDefault="True" />
+        <Button x:Name="btnCerrarLogin" VerticalAlignment="Top" HorizontalAlignment="Right" Height="45" Background="{x:Null}" BorderBrush="{x:Null}" Click="BtnCerrarLogin_Click" Foreground="{x:Null}" Margin="0,-1,-13,0">
+            <Image Source="/Assets/CerrarLogin.png" ></Image>
+        </Button>
+
+    </Grid>
+</Window>
