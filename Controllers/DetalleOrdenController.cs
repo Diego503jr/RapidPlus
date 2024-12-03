@@ -13,7 +13,7 @@ namespace Rapid_Plus.Controllers
     internal class DetalleOrdenController
     {
         private static string conexion = Properties.Settings.Default.DbRapidPlus;
-
+        
 
         //AGREGAR PLATILLOS A LA ORDEN
         public static int CrearDetalleOrden(DetalleOrdenModel detalle)
@@ -36,6 +36,7 @@ namespace Rapid_Plus.Controllers
                             command.Parameters.AddWithValue("@IDORDEN", detalle.IdOrden);
                             command.Parameters.AddWithValue("@CANTIDAD", detalle.Cantidad);
                             command.Parameters.AddWithValue("@IDESTADO", detalle.IdEstado);
+                            command.Parameters.AddWithValue("@IDESTADOORDEN", detalle.IdEstadoOrden);
                             command.Parameters.AddWithValue("@IDPLATILLO", detalle.IdPlatillo);
 
 

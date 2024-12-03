@@ -1,12 +1,8 @@
-﻿using Rapid_Plus.Models.Mesero;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace Rapid_Plus.Models
 {
@@ -18,6 +14,6 @@ namespace Rapid_Plus.Models
         public int IdEstado { get; set; }
         public int IdPlatillo { get; set; }
         public int IdPlatilloOrden { get; set; }
-        
+        public int IdEstadoOrden { get; set; }
     }
 }

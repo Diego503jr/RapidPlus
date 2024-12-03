@@ -30,10 +30,7 @@ namespace Rapid_Plus.Models.Mesero
         public string NombreUsuario { get; set; }
 
 
-        //ATRIBUTOS PARA CAJERO
-        public decimal Subtotal { get; set; }
-        public decimal PrecioPlatillo { get; set; }
-        public string NombreCliente { get; set; }
+        
 
     }
 }
