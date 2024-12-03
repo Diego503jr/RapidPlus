@@ -17,6 +17,7 @@
                     <DataGridTextColumn Header="Orden" CanUserResize="False" Width="300" Binding="{Binding Orden}"/>
                     <DataGridTextColumn Header="Cantidad" CanUserResize="False" Width="100" Binding="{Binding Cantidad}"/>
                     <DataGridTextColumn Header="Mesa" Width="100" Binding="{Binding Mesa}"/>
+                    <DataGridTextColumn Header="Estado" Width="150" Binding="{Binding EstadoOrden}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

@@ -126,6 +126,7 @@
     <Compile Include="Controllers\OrdenController.cs" />
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\DetalleOrdenModel.cs" />
+    <Compile Include="Models\CajeroModel.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
