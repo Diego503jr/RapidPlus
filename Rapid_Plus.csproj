@@ -123,6 +123,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\DetalleOrdenController.cs" />
     <Compile Include="Controllers\JefeCocinaController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrdenController.cs" />
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\DetalleOrdenModel.cs" />

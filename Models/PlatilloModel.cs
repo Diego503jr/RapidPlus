@@ -8,14 +8,61 @@ namespace Rapid_Plus.Models
 {
     internal class PlatilloModel
     {
-        public int PlatilloId { get; set; }
-        public string Platillo { get; set; }
-        public string Descripcion { get; set; }
-        public int CategoriaId { get; set; }
-        public string Categoria { get; set; }
-        public decimal Precio { get; set; }
-        public int EstadoId { get; set; }
-        public string Estado { get; set; }        
+        private int _PlatilloId;
+        private string _Platillo;
+        private string _Descripcion;
+        private int _CategoriaId;
+        private string _Categoria;
+        private decimal _Precio;
+        private int _EstadoId;
+        private string _Estado;        
 
+        public int PlatilloId
+        {
+            get => _PlatilloId;
+            set => _PlatilloId = value;
+        }
+
+        public string Platillo
+        {
+            get => _Platillo;
+            set => _Platillo = value;
+        }
+
+        public string Descripcion
+        {
+            get => _Descripcion;
+            set => _Descripcion = value;
+        }
+
+        public int CategoriaId
+        {
+            get => _CategoriaId;
+            set => _CategoriaId = value;
+        }
+
+        public string Categoria
+        {
+            get => _Categoria;
+            set => _Categoria = value;
+        }
+
+        public decimal Precio
+        {
+            get => _Precio;
+            set => _Precio = value;
+        }
+
+        public int EstadoId
+        {
+            get => _EstadoId;
+            set => _EstadoId = value;
+        }
+
+        public string Estado
+        {
+            get => _Estado;
+            set => _Estado = value;
+        }
     }
 }
