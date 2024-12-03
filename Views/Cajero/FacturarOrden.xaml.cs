@@ -185,7 +185,7 @@ namespace Rapid_Plus.Views.Cajero
             
 
             // Verifica que el DataGrid tenga al menos un elemento
-            if (dgOrdenes.Items.Count > 0 && dgOrdenes.Items[0] is OrdenesModel primeraOrden)
+            if (dgOrdenes.Items.Count > 0 && dgOrdenes.Items[0] is CajeroModel primeraOrden)
             {
                 // Muestra el mensaje de confirmación
                 MessageBoxResult resultado = MessageBox.Show(

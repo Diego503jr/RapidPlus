@@ -19,9 +19,9 @@ namespace Rapid_Plus.Controllers
         private static string conexion = Properties.Settings.Default.DbRapidPlus;
 
         //MOSTRAR ORDENES DE ACUERDO A LA MESA
-        internal static List<OrdenesModel> MostrarOrdenPorMesa(int numeroMesa)
+        internal static List<CajeroModel> MostrarOrdenPorMesa(int numeroMesa)
         {
-            List<OrdenesModel> lstOrdenes = new List<OrdenesModel>();
+            List<CajeroModel> lstOrdenes = new List<CajeroModel>();
 
             try
             {
@@ -40,7 +40,7 @@ namespace Rapid_Plus.Controllers
                             // Recorrer el dataReader
                             while (dr.Read())
                             {
-                                OrdenesModel ordenes = new OrdenesModel();
+                                CajeroModel ordenes= new CajeroModel();
                                 ordenes.IdOrden = int.Parse(dr["NumeroOrden"].ToString());
                                 ordenes.NombreCliente = dr["Cliente"].ToString();
                                 ordenes.NombreUsuario = dr["Usuario"].ToString();
