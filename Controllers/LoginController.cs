@@ -40,43 +40,46 @@ namespace Rapid_Plus.Controllers
                         // Obtiene los valores de salida
                         using (DbDataReader ddr = command.ExecuteReader())
                         {
-                            while(ddr.Read())
+                            if (ddr.HasRows)
                             {
-                                idusuario = int.Parse(ddr["IdUsuario"].ToString());
-                                idrol = int.Parse(ddr["IdRol"].ToString());
+                                while (ddr.Read())
+                                {
+                                    idusuario = int.Parse(ddr["IdUsuario"].ToString());
+                                    idrol = int.Parse(ddr["IdRol"].ToString());
 
-                                // Verifica si el usuario fue encontrado (si userID y tipoUsuario no son -1)
-                                if (idusuario >= 0)
-                                {
-                                    // Según el tipo de usuario, abre el dashboard correspondiente y pasa el ID de usuario
-                                    switch (idrol)
+                                    // Verifica si el usuario fue encontrado (si userID y tipoUsuario no son -1)
+                                    if (idusuario >= 0)
                                     {
-                                        case 1:
-                                            DashboardAdmin dashboardAdmin = new DashboardAdmin(idusuario);
-                                            dashboardAdmin.Show();
-                                            break;
-                                        case 2:
-                                            DashboardMesero dashboardMesero = new DashboardMesero(idusuario);
-                                            dashboardMesero.Show();
-                                            break;
-                                        case 3:
-                                            DashboardCajero dashboardCajero = new DashboardCajero(idusuario);
-                                            dashboardCajero.Show();
-                                            break;
-                                        case 4:
-                                            DashboardJefeCocina dashboardJefeCocina = new DashboardJefeCocina();
-                                            dashboardJefeCocina.Show();
-                                            break;
-                                        default:
-                                            MessageBox.Show("Error inesperado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                                            break;
+                                        // Según el tipo de usuario, abre el dashboard correspondiente y pasa el ID de usuario
+                                        switch (idrol)
+                                        {
+                                            case 1:
+                                                DashboardAdmin dashboardAdmin = new DashboardAdmin(idusuario);
+                                                dashboardAdmin.Show();
+                                                break;
+                                            case 2:
+                                                DashboardMesero dashboardMesero = new DashboardMesero(idusuario);
+                                                dashboardMesero.Show();
+                                                break;
+                                            case 3:
+                                                DashboardCajero dashboardCajero = new DashboardCajero(idusuario);
+                                                dashboardCajero.Show();
+                                                break;
+                                            case 4:
+                                                DashboardJefeCocina dashboardJefeCocina = new DashboardJefeCocina();
+                                                dashboardJefeCocina.Show();
+                                                break;
+                                            default:
+                                                MessageBox.Show("Error inesperado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                                break;
+                                        }
+                                        return idusuario;
                                     }
-                                    return idusuario;
                                 }
-                                else
-                                {
-                                    MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                                }
+                            }
+                            else
+                            {
+                                        MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
                     }
