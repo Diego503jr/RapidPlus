@@ -19,6 +19,7 @@ using Rapid_Plus.Views.Cajero;
 using Rapid_Plus.Views.JefeDeCocina;
 using System;
 using System.ComponentModel;
+using Rapid_Plus.Controllers;
 
 namespace Rapid_Plus
 {
@@ -32,16 +33,41 @@ namespace Rapid_Plus
             InitializeComponent();
         }
 
-        SqlConnection conDb = new SqlConnection(Properties.Settings.Default.DbRapidPlus);
-        string consultaSQL = null;
-
         #region VARIABLES LOCALES
         // Variable para almacenar el estado de visibilidad de la contraseña
         private bool isPasswordVisible = false;
+        private int idUsuario;
 
         #endregion
 
         #region METODOS
+
+        //Validar formulario
+        bool ValidarFormulario() 
+        {
+            bool estado = true;
+            string msj = null;
+
+            if (string.IsNullOrWhiteSpace(txtCorreo.Text))
+            {
+                estado = false;
+                msj += "Usuario vacio\n";
+            }
+            if (string.IsNullOrWhiteSpace(txtPassword.Password))
+            {
+                estado = false;
+                msj += "Clave vacio\n";
+            }
+
+            if (!estado) 
+            {
+                MessageBox.Show("Debe cumplir estos campos:\n" + msj,
+              "Validacion de formulario", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            return estado;
+        }
+
         // Métodos para alternar la visibilidad de la contraseña
         void VisualizarClave()
         {
@@ -58,93 +84,7 @@ namespace Rapid_Plus
             txtPasswordVisible.Visibility = Visibility.Collapsed; 
             txtPassword.Password = txtPasswordVisible.Text;
         }
-        void EncontrarUsuario()
-        {
-
-            if (string.IsNullOrWhiteSpace(txtCorreo.Text))
-            {
-                MessageBox.Show("Por favor ingrese su nombre de usuario.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtPassword.Password))
-            {
-                MessageBox.Show("Por favor ingrese su contraseña.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            if (conDb.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    conDb.Open();
-
-                    consultaSQL = "EXEC SPENCONTRARUSUARIO @User, @Password, @ID_USUARIO OUTPUT, @ID_ROL OUTPUT";
-                    SqlCommand sqlCmd = new SqlCommand(consultaSQL, conDb);
-                    sqlCmd.CommandType = CommandType.Text;
-
-                    sqlCmd.Parameters.AddWithValue("@User", txtCorreo.Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Password.Trim());
-
-                    SqlParameter paramIDUsuario = new SqlParameter("@ID_USUARIO", SqlDbType.Int) { Direction = ParameterDirection.Output };
-                    SqlParameter paramIDRol = new SqlParameter("@ID_ROL", SqlDbType.Int) { Direction = ParameterDirection.Output };
-                    sqlCmd.Parameters.Add(paramIDUsuario);
-                    sqlCmd.Parameters.Add(paramIDRol);
-                
-                    sqlCmd.ExecuteNonQuery();
-
-                    // Obtiene los valores de salida
-                    int usuarioID = (int)paramIDUsuario.Value;
-                    int tipoUsuario = (int)paramIDRol.Value;
-
-                    // Verifica si el usuario fue encontrado (si userID y tipoUsuario no son -1)
-                    if (usuarioID == -1)
-                    {
-                        MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    else
-                    {
-                        // Según el tipo de usuario, abre el dashboard correspondiente y pasa el ID de usuario
-                        switch (tipoUsuario)
-                        {
-                            case 1:
-                                DashboardAdmin dashboardAdmin = new DashboardAdmin(usuarioID);
-                                dashboardAdmin.Show();
-                                break;
-                            case 2:
-                                DashboardMesero dashboardMesero = new DashboardMesero(usuarioID);
-                                dashboardMesero.Show();
-                                break;
-                            case 3:
-                                DashboardCajero dashboardCajero = new DashboardCajero(usuarioID);
-                                dashboardCajero.Show();
-                                break;
-                            case 4:
-                                DashboardJefeCocina dashboardJefeCocina = new DashboardJefeCocina();
-                                dashboardJefeCocina.Show();
-                                break;
-                            default:
-                                MessageBox.Show("Error inesperado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                                break;
-                        }
-
-                        this.Close(); // Cierra la ventana actual de login
-                    }
-                }
-                catch (Exception ex) 
-                {
-                    MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                finally
-                {
-                    // Asegurarse de cerrar la conexión
-                    if (conDb.State == ConnectionState.Open)
-                    {
-                        conDb.Close();
-                    }
-                }
-            }
-            
-        }
+        
         #endregion
 
         #region EVENTOS BOTONES
@@ -174,8 +114,28 @@ namespace Rapid_Plus
 
         private void btnIngresar_Click(object sender, RoutedEventArgs e)
         {
-            EncontrarUsuario();
+            string msj = null;
+
+            if(ValidarFormulario())
+            {
+                //Recuperamos los datos
+                UsuarioModel user = new UsuarioModel();
+                user.Usuario = txtCorreo.Text;
+                user.Clave = txtPassword.Password;
+
+                idUsuario = LoginController.Login(user);
+                msj = "Inicio de sesion exitoso!";
+
+                if(idUsuario > -1)
+                {
+                    MessageBox.Show(msj, "Validacion del formulario",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                    this.Close();
+                }
+            }
         }
+
         private void btnVisualizar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             VisualizarClave();

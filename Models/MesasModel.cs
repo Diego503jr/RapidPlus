@@ -8,9 +8,33 @@ namespace Rapid_Plus.Models
 {
     class MesasModel
     {
-        public int MesaId { get; set; }
-        public int Mesa { get; set; }
-        public int EstadoId { get; set; }
-        public string Estado { get; set; }
+        private int _MesaId;
+        private int _Mesa;
+        private int _EstadoId;
+        private string _Estado;
+
+        public int MesaId
+        {
+            get => _MesaId;
+            set => _MesaId = value;
+        }
+
+        public int Mesa
+        {
+            get => _Mesa;
+            set => _Mesa = value;
+        }
+
+        public int EstadoId
+        {
+            get => _EstadoId;
+            set => _EstadoId = value;
+        }
+
+        public string Estado
+        {
+            get => _Estado;
+            set => _Estado = value;
+        }
     }
 }
