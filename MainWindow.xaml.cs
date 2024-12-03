@@ -74,22 +74,22 @@ namespace Rapid_Plus
 
             if (conDb.State == ConnectionState.Closed)
             {
-                conDb.Open();
-
-                consultaSQL = "EXEC SPENCONTRARUSUARIO @User, @Password, @ID_USUARIO OUTPUT, @ID_ROL OUTPUT";
-                SqlCommand sqlCmd = new SqlCommand(consultaSQL, conDb);
-                sqlCmd.CommandType = CommandType.Text;
-
-                sqlCmd.Parameters.AddWithValue("@User", txtCorreo.Text.Trim());
-                sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Password.Trim());
-
-                SqlParameter paramIDUsuario = new SqlParameter("@ID_USUARIO", SqlDbType.Int) { Direction = ParameterDirection.Output };
-                SqlParameter paramIDRol = new SqlParameter("@ID_ROL", SqlDbType.Int) { Direction = ParameterDirection.Output };
-                sqlCmd.Parameters.Add(paramIDUsuario);
-                sqlCmd.Parameters.Add(paramIDRol);
-
                 try
                 {
+                    conDb.Open();
+
+                    consultaSQL = "EXEC SPENCONTRARUSUARIO @User, @Password, @ID_USUARIO OUTPUT, @ID_ROL OUTPUT";
+                    SqlCommand sqlCmd = new SqlCommand(consultaSQL, conDb);
+                    sqlCmd.CommandType = CommandType.Text;
+
+                    sqlCmd.Parameters.AddWithValue("@User", txtCorreo.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Password.Trim());
+
+                    SqlParameter paramIDUsuario = new SqlParameter("@ID_USUARIO", SqlDbType.Int) { Direction = ParameterDirection.Output };
+                    SqlParameter paramIDRol = new SqlParameter("@ID_ROL", SqlDbType.Int) { Direction = ParameterDirection.Output };
+                    sqlCmd.Parameters.Add(paramIDUsuario);
+                    sqlCmd.Parameters.Add(paramIDRol);
+                
                     sqlCmd.ExecuteNonQuery();
 
                     // Obtiene los valores de salida
@@ -106,19 +106,19 @@ namespace Rapid_Plus
                         // Según el tipo de usuario, abre el dashboard correspondiente y pasa el ID de usuario
                         switch (tipoUsuario)
                         {
-                            case 0:
+                            case 1:
                                 DashboardAdmin dashboardAdmin = new DashboardAdmin(usuarioID);
                                 dashboardAdmin.Show();
                                 break;
-                            case 1:
+                            case 2:
                                 DashboardMesero dashboardMesero = new DashboardMesero(usuarioID);
                                 dashboardMesero.Show();
                                 break;
-                            case 2:
+                            case 3:
                                 DashboardCajero dashboardCajero = new DashboardCajero(usuarioID);
                                 dashboardCajero.Show();
                                 break;
-                            case 3:
+                            case 4:
                                 DashboardJefeCocina dashboardJefeCocina = new DashboardJefeCocina();
                                 dashboardJefeCocina.Show();
                                 break;
