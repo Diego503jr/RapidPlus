@@ -24,10 +24,10 @@
         </ScrollViewer>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" Margin="0,300,0,0">
             <GroupBox VerticalAlignment="Center" HorizontalAlignment="Center" Header = "Filtrar Estado de Ordenes"  materialDesign:ColorZoneAssist.Background="#A2BCE0"
-       materialDesign:ColorZoneAssist.Foreground="White" materialDesign:ColorZoneAssist.Mode="Custom" FontSize="20" Style="{StaticResource MaterialDesignGroupBox}" Width="275">
+       materialDesign:ColorZoneAssist.Foreground="White" materialDesign:ColorZoneAssist.Mode="Custom" FontSize="18" Style="{StaticResource MaterialDesignGroupBox}" Width="275">
                 <ComboBox Name="cmbFiltro" SelectionChanged="cmbFiltro_SelectionChanged"></ComboBox>
             </GroupBox>
-            <Button Content="Cancelar filtro" Name="btnCancelar" VerticalAlignment="bottom" Width="150" Height="50" BorderBrush="{x:Null}" Background="#A2BCE0" Margin="275,0,0,23" Cursor="Hand" Click="btnCancelar_Click"></Button>
+            <Button Content="Cancelar filtro" Name="btnCancelar" VerticalAlignment="bottom" BorderBrush="{x:Null}" Background="#A2BCE0" Margin="275,0,0,23" Cursor="Hand" Click="btnCancelar_Click"></Button>
         </StackPanel>
 
 
