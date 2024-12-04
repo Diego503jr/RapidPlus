@@ -79,10 +79,11 @@ namespace Rapid_Plus.Controllers
                             }
                             else
                             {
-                                        MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
                     }
+                    conDB.Close();
                 }
             }
             catch (Exception ex) 
