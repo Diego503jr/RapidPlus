@@ -107,7 +107,7 @@ namespace Rapid_Plus.Controllers
 
        
         //MOSTRAR LISTADO DE ORDENES FILTRANDO POR MESA
-        public static List<OrdenesModel> MostrarOrdenesPorMesa(int idMesa)
+        public static List<OrdenesModel> MostrarOrdenesPorMesa(int idMesa, int? IdEstadoOrden = null)
         {
             List<OrdenesModel> lstOrdenes = new List<OrdenesModel>();
 
@@ -116,11 +116,21 @@ namespace Rapid_Plus.Controllers
                 using (var con = new SqlConnection(conexion))
                 {
                     con.Open();
+                    
                     using (var command = con.CreateCommand())
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.CommandText = "SPMOSTRARORDENESPORMESA";
                         command.Parameters.AddWithValue("@IDMESA", idMesa);
+                        if (IdEstadoOrden.HasValue)
+                        {
+                            command.Parameters.AddWithValue("@IDESTADOORDEN", IdEstadoOrden.Value);
+                        }
+                        else
+                        {
+                            // Si no se pasa un valor, asegurarse de que el parámetro sea NULL
+                            command.Parameters.AddWithValue("@IDESTADOORDEN", DBNull.Value);
+                        }
                         using (DbDataReader dr = command.ExecuteReader())
                         {
                             //Recorrer el dataReader

@@ -108,6 +108,11 @@ namespace Rapid_Plus.Views.Cajero
             }
 
         }
+        
+        private void btnCerrarVentana_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
         private void btnCerrarVentana_Click(object sender, RoutedEventArgs e)
         {

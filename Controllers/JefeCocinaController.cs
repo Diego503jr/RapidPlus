@@ -33,7 +33,8 @@ namespace Rapid_Plus.Controllers
                         command.CommandText = "SPEDITARESTADO";
 
                         command.Parameters.AddWithValue("@IDORDEN", idOrden); 
-                        command.Parameters.AddWithValue("@IDESTADOORDEN", estado.IdEstadoOrden); 
+                        command.Parameters.AddWithValue("@IDESTADOORDEN", estado.IdEstadoOrden);
+                        command.Parameters.AddWithValue("@IDDETALLEORDEN", estado.IdDetalleOrden);
 
                         res = command.ExecuteNonQuery();
                     }

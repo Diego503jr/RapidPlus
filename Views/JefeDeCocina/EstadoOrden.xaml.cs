@@ -35,9 +35,11 @@ namespace Rapid_Plus.Views.JefeDeCocina
 
         #region DECLARACION DE VARIABLES LOCALES
         private DispatcherTimer timer;
-        int IdEstadoOrden = -1;
-        int idMesa = -1;
+        private int IdDetalleOrden= 0;
+        private int IdEstadoOrden = 0;
+        private int idMesa = 0;
         #endregion
+
         #region MÉTODOS PERSONALIZADOS
         private int Mesa()
         {
@@ -48,7 +50,7 @@ namespace Rapid_Plus.Views.JefeDeCocina
             }
             else
             {
-                idMesa = -1;
+                idMesa = 0;
             }
             return idMesa;
         }
@@ -77,6 +79,7 @@ namespace Rapid_Plus.Views.JefeDeCocina
         }
         private void EditarEstadoOrden()
         {
+            OrdenesModel estado = new OrdenesModel();
             if (!ValidarFomrulario())
             {
                 MessageBox.Show("Por favor completa todos los campos requeridos.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -90,14 +93,9 @@ namespace Rapid_Plus.Views.JefeDeCocina
                 {
                     return;
                 }
-
-                // Asignar el estado 
-                int nuevoEstado = 1;
-
-                OrdenesModel estado = new OrdenesModel
-                {
-                    IdEstadoOrden = nuevoEstado
-                };
+                estado.IdOrden = idOrden;
+                estado.IdEstadoOrden = 2;
+                estado.IdDetalleOrden = IdDetalleOrden;
 
                 // Llamar al método para editar el estado de la orden
                 int resultado = JefeCocinaController.EditarEstadoOrden(estado, idOrden);
@@ -200,12 +198,12 @@ namespace Rapid_Plus.Views.JefeDeCocina
         private void MostrarOrden() 
         {
             idMesa = Mesa();
+            IdEstadoOrden = 1;
             var detalle = DetalleOrdenController.ObtenerDetalleOrden(idMesa);
-            var ordenes = OrdenController.MostrarOrdenesPorMesa(idMesa);
+            var ordenes = OrdenController.MostrarOrdenesPorMesa(idMesa,IdEstadoOrden);
 
             if (detalle != null)
             {
-                OrdenController.MostrarOrdenesPorMesa(idMesa);
                 dgOrdenes.DataContext = ordenes;
 
                 txbOrden.Text = detalle.IdOrden.ToString();
@@ -232,6 +230,15 @@ namespace Rapid_Plus.Views.JefeDeCocina
         }
         #endregion
 
+        private void dgOrdenes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            OrdenesModel orden= (OrdenesModel)dgOrdenes.SelectedItem;
+            if (orden== null)
+            {
+                return;
+            }
+            IdDetalleOrden= orden.IdDetalleOrden;
+        }
     }
 
 }
