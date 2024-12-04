@@ -11,7 +11,7 @@
     <Grid >
         <Label Content="Ordenes Pendientes" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0" />
         <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30,350,0,0" Height="244" Width="766">
-            <DataGrid Name="dgOrdenes" AutoGenerateColumns="False" IsReadOnly="true" ItemsSource ="{Binding}"  Background="{x:Null}" FontSize="16" >
+            <DataGrid Name="dgOrdenes" AutoGenerateColumns="False" IsReadOnly="true" ItemsSource ="{Binding}"  Background="{x:Null}" FontSize="16" SelectionChanged="dgOrdenes_SelectionChanged" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Platillo" CanUserResize="False" Binding="{Binding NombrePlatillo}"/>
                     <DataGridTextColumn Header="Descripción" CanUserResize="False" Binding="{Binding DescripcionPlatillo}"/>
