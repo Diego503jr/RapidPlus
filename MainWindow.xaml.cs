@@ -9,14 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.Common;
 using Rapid_Plus.Models;
-using Rapid_Plus.Views.Administrador;
-using Rapid_Plus.Views.Mesero;
-using Rapid_Plus.Views.Cajero;
-using Rapid_Plus.Views.JefeDeCocina;
 using System;
 using System.ComponentModel;
 using Rapid_Plus.Controllers;
@@ -37,6 +30,7 @@ namespace Rapid_Plus
         // Variable para almacenar el estado de visibilidad de la contraseña
         private bool isPasswordVisible = false;
         private int idUsuario;
+        //private int xClick, yClick;
 
         #endregion
 
@@ -84,7 +78,22 @@ namespace Rapid_Plus
             txtPasswordVisible.Visibility = Visibility.Collapsed; 
             txtPassword.Password = txtPasswordVisible.Text;
         }
-        
+
+        //Metodo para mover formulario
+        //private void Window_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        //{
+        //    if (e.Button != System.Windows.Forms.MouseButtons.Left)
+        //    {
+        //        xClick = e.X;
+        //        yClick = e.Y;
+        //    }
+        //    else
+        //    {
+        //        this.Left = this.Left + (e.X);
+        //        this.Top = this.Top + (e.Y);
+        //    }
+        //}
+
         #endregion
 
         #region EVENTOS BOTONES
