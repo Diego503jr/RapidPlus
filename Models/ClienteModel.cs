@@ -8,8 +8,25 @@ namespace Rapid_Plus.Models
 {
     internal class ClienteModel
     {
-        public int IdCliente { get; set; }
-        public string NombreCliente { get; set; }
-        public string ApellidoCliente { get; set; }
+        private int _IdCliente;
+        private string _NombreCliente;
+        private string _ApellidoCliente;
+
+        public int IdCliente
+        {
+            get => _IdCliente;
+            set => _IdCliente = value;
+        }
+
+        public string NombreCliente
+        {
+            get => _NombreCliente;
+            set => _NombreCliente = value;
+        }
+        public string ApellidoCliente
+        {
+            get => _ApellidoCliente;
+            set => _ApellidoCliente = value;
+        }
     }
 }
