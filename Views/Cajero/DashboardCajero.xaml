@@ -58,7 +58,14 @@
 
                     <StackPanel Orientation="Horizontal" Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Rectangle Width="10" Height="60" Fill="#0B5563"/>
-                        <Button Name="btnCrearOrden" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="30" Width="340" Height="60" Click="btnCrearOrden_Click" MouseEnter="BotonCajero_MouseEnter" MouseLeave="BotonCajero_MouseLeave">
+                        <Button Name="btnCrearOrden" 
+                                Background="{x:Null}" 
+                                BorderBrush="{x:Null}" 
+                                FontSize="30" 
+                                Width="340" Height="60" 
+                                Click="btnCrearOrden_Click" 
+                                MouseEnter="BotonCajero_MouseEnter" 
+                                MouseLeave="BotonCajero_MouseLeave">
                             <StackPanel Orientation="Horizontal"  Width="325">
                                 <Image Width="60" Height="50" Margin="0" Source="/Assets/AgregarOrden.png" />
                                 <Label Content="Crear Orden" Foreground="White"/>
@@ -68,7 +75,14 @@
 
                     <StackPanel Orientation="Horizontal" Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Rectangle Width="10" Height="60" Fill="#0B5563"/>
-                        <Button Name="btnVerOrden" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="30" Width="340" Height="60" Click="btnVerOrden_Click" MouseEnter="BotonCajero_MouseEnter" MouseLeave="BotonCajero_MouseLeave">
+                        <Button Name="btnVerOrden" 
+                                Background="{x:Null}" 
+                                BorderBrush="{x:Null}" 
+                                FontSize="30" 
+                                Width="340" Height="60" 
+                                Click="btnVerOrden_Click" 
+                                MouseEnter="BotonCajero_MouseEnter" 
+                                MouseLeave="BotonCajero_MouseLeave">
                             <StackPanel Orientation="Horizontal"  Width="325">
                                 <Image Width="60" Height="50" Margin="0" Source="/Assets/VerOrden.png" />
                                 <Label Content="Ver Ordenes" Foreground="White"/>
@@ -78,7 +92,14 @@
 
                     <StackPanel Orientation="Horizontal" Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Rectangle Width="10" Height="60" Fill="#0B5563"/>
-                        <Button Name="btnGestionar" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="30" Width="340" Height="60" Click="btnGestionar_Click" MouseEnter="BotonCajero_MouseEnter" MouseLeave="BotonCajero_MouseLeave">
+                        <Button Name="btnGestionar" 
+                                Background="{x:Null}" 
+                                BorderBrush="{x:Null}" 
+                                FontSize="30" 
+                                Width="340" Height="60" 
+                                Click="btnGestionar_Click" 
+                                MouseEnter="BotonCajero_MouseEnter" 
+                                MouseLeave="BotonCajero_MouseLeave">
                             <StackPanel Orientation="Horizontal"  Width="325">
                                 <Image Width="60" Height="50" Margin="0" Source="/Assets/GestionarOrden.png" />
                                 <Label Content="Gestionar Orden" Foreground="White"/>
@@ -89,7 +110,13 @@
 
                     <StackPanel Orientation="Horizontal" Margin="0,20,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Rectangle Width="10" Height="60" Fill="#0B5563"/>
-                        <Button Name="btnFacturar" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="30" Width="340" Height="60" MouseEnter="BotonCajero_MouseEnter" MouseLeave="BotonCajero_MouseLeave" Click="btnFacturar_Click">
+                        <Button Name="btnFacturar" 
+                                Background="{x:Null}" 
+                                BorderBrush="{x:Null}" 
+                                FontSize="30" 
+                                Width="340" Height="60" 
+                                MouseEnter="BotonCajero_MouseEnter" 
+                                MouseLeave="BotonCajero_MouseLeave" Click="btnFacturar_Click">
                             <StackPanel Orientation="Horizontal"  Width="325">
                                 <Image Width="60" Height="50" Margin="0" Source="/Assets/Facturar.png" />
                                 <Label Content="Facturar Ordenes" Foreground="White"/>
@@ -100,7 +127,14 @@
 
                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
                     <Rectangle Width="10" Height="60" Fill="#0B5563"/>
-                    <Button Name="btnCerrarSesion" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="30" Width="340" Height="60" Click="btnCerrarSesion_Click_1" MouseEnter="btnCerrarSesion_MouseEnter" MouseLeave="btnCerrarSesion_MouseLeave">
+                    <Button Name="btnCerrarSesion" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            FontSize="30" 
+                            Width="340" Height="60" 
+                            Click="btnCerrarSesion_Click_1" 
+                            MouseEnter="BotonCajero_MouseEnter" 
+                            MouseLeave="BotonCajero_MouseLeave">
                         <StackPanel Orientation="Horizontal"  Width="320">
                             <Image  Width="60" Height="50" Margin="0" Source="/Assets/CerrarSesion.png" Cursor="" />
                             <Label Content="Cerrar Sesion" Foreground="White"></Label>
