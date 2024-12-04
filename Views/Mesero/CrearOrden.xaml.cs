@@ -233,7 +233,7 @@ namespace Rapid_Plus.Views.Mesero
                 orden.FechaOrden = fecha;
                 orden.Total = 0;
                 orden.Mesa = (int)cmbMesa.SelectedValue;
-                orden.IdEstadoOrden = 0;
+                orden.IdEstadoOrden = 1;
 
                 idOrden = OrdenController.CrearOrden(orden);
                 mensaje = "Orden creada con éxito";

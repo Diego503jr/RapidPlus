@@ -43,6 +43,7 @@ namespace Rapid_Plus.Views.Mesero
         private int idDetalleOrden = -1;
         private bool agregando = false, editando = false;
         private DispatcherTimer timer;
+
         #endregion
 
         #region MÉTODOS PERSONALIZADOS
@@ -53,7 +54,7 @@ namespace Rapid_Plus.Views.Mesero
             using (var conDb = new SqlConnection(Properties.Settings.Default.DbRapidPlus))
             {
                 conDb.Open();
-                using (var command = new SqlCommand("SELECT IdMesa, Mesa FROM Mesa WHERE IdEstado = 0", conDb))
+                using (var command = new SqlCommand("SELECT IdMesa, Mesa FROM Mesa WHERE IdEstado = 2", conDb))
                 {
                     SqlDataReader dr = command.ExecuteReader();
                     var mesas = new List<dynamic>();
@@ -351,6 +352,7 @@ namespace Rapid_Plus.Views.Mesero
                 detalle.IdOrden = Convert.ToInt32(txbOrden.Text);
                 detalle.Cantidad = Convert.ToInt32(txtCantidad.Text);
                 detalle.IdEstado = 1;
+                detalle.IdEstadoOrden = 1;
                 detalle.IdPlatillo = idplatillo;
                 detalle.IdPlatilloOrden = idPlatilloOrden;
 

@@ -34,11 +34,11 @@
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="30,0,60,185">
-            <Label Content="Platillos Disponibles:" FontSize="18" Margin="15,0,460,0" BorderBrush="Black"></Label>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="12,0,60,185">
+            <Label Content="Platillos Disponibles:" FontSize="18" Margin="0,0,395,0" BorderBrush="Black"></Label>
             <Label Content="Detalle de orden:" FontSize="18"></Label>
         </StackPanel>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,100,0,0" Height="250" Width="600">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,100,0,0" Height="250" Width="525">
             <DataGrid Name="dgPlatillos"  AutoGenerateColumns="False" IsReadOnly="true" ItemsSource ="{Binding}"  SelectionChanged="dgPlatillos_SelectionChanged" Background="{x:Null}" FontSize="16">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Platillo" CanUserResize="False" Binding="{Binding Platillo}"/>
@@ -46,11 +46,12 @@
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <ScrollViewer  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,100,57,0" Height="250" Width="300" >
+        <ScrollViewer  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,100,10,0" Height="250" Width="450" >
             <DataGrid Name="dgOrdenes" AutoGenerateColumns="False" IsReadOnly="true" ItemsSource ="{Binding}" SelectionChanged="dgOrdenes_SelectionChanged" Background="{x:Null}" FontSize="16">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Platillo" CanUserResize="False" Binding="{Binding NombrePlatillo}"/>
                     <DataGridTextColumn Header="Cantidad" CanUserResize="False" Binding="{Binding Cantidad}"/>
+                    <DataGridTextColumn Header="Estado" CanUserResize="False" Binding="{Binding EstadoOrden}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

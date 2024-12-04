@@ -38,7 +38,7 @@ namespace Rapid_Plus.Views.Mesero
         //Lista las ordenes en un datagrid
         void MostrarOrdenes()
         {
-            int idEstadoOrden = 0; //Estado pendiente
+            int idEstadoOrden = 1; //Estado pendiente
             dgOrdenes.DataContext = OrdenController.MostrarOrdenes(idEstadoOrden);
         }
         private void IniciarTemporizador()
