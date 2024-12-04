@@ -27,7 +27,7 @@ namespace Rapid_Plus.Views.Cajero
             crearOrden = new CrearOrden(usuarioId);
         }
 
-        
+
         #region Instancias de las paginas
         FacturarOrden factura = new FacturarOrden();
         TomarOrden tomarOrden = new TomarOrden();
@@ -109,8 +109,12 @@ namespace Rapid_Plus.Views.Cajero
 
         }
 
+        private void btnCerrarVentana_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         #endregion
 
-        
     }
 }

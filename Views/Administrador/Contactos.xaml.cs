@@ -51,18 +51,18 @@ namespace Rapid_Plus.Views.Administrador
 
         #region METODOS PERSONALIZADOS
 
-        private void IniciarTemporizador()
-        {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(3);
-            timer.Tick += Timer_Tik;
-            timer.Start();
-        }
+        //private void IniciarTemporizador()
+        //{
+        //    timer = new DispatcherTimer();
+        //    timer.Interval = TimeSpan.FromSeconds(3);
+        //    timer.Tick += Timer_Tik;
+        //    timer.Start();
+        //}
 
-        private void Timer_Tik(object sender, EventArgs e)
-        {
-            MostrarUsuarios();
-        }
+        //private void Timer_Tik(object sender, EventArgs e)
+        //{
+        //    MostrarUsuarios();
+        //}
 
         //Validar el formulario
         bool ValidarFormulario()
