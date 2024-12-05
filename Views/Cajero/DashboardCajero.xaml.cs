@@ -114,11 +114,6 @@ namespace Rapid_Plus.Views.Cajero
             this.Close();
         }
 
-        private void btnCerrarVentana_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         #endregion
 
     }

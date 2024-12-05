@@ -10,167 +10,194 @@
       d:DesignHeight="600" d:DesignWidth="1033"
       Title="Contactos" 
       Loaded="Page_Loaded">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid HorizontalAlignment="Center" 
+          VerticalAlignment="Center">
         <Label Content="Usuarios" 
-               FontSize="36" HorizontalAlignment="Center" 
+               FontSize="36" 
+               HorizontalAlignment="Center" 
                VerticalAlignment="Top" />
         <GroupBox  Header="Usuarios" 
-         materialDesign:ColorZoneAssist.Background="#A2BCE0"
-         materialDesign:ColorZoneAssist.Foreground="White"
-         materialDesign:ColorZoneAssist.Mode="Custom"
-         FontSize="20"
-         Style="{StaticResource MaterialDesignGroupBox}"
-         HorizontalAlignment="Center" 
-         Width="900" Height="275" 
-         Margin="0,80,0,0"
-         VerticalAlignment="Top" 
-         UseLayoutRounding="False" >
+                   FontSize="20"
+                   materialDesign:ColorZoneAssist.Foreground="White"
+                   materialDesign:ColorZoneAssist.Background="{StaticResource c-grey}"
+                   materialDesign:ColorZoneAssist.Mode="Custom"
+                   HorizontalAlignment="Center" 
+                   Width="900" Height="275" 
+                   Margin="0,80,0,0"
+                   VerticalAlignment="Top" 
+                   UseLayoutRounding="False" >
             <Grid>
                 <TextBox x:Name="txtUsuario" 
-                HorizontalAlignment="Left" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Top" 
-                Width="160" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Usuario"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,10,0,0"/>
+                         HorizontalAlignment="Left" 
+                         TextWrapping="Wrap" 
+                         VerticalAlignment="Top" 
+                         Width="160" 
+                         FontSize="18"
+                         materialDesign:HintAssist.Hint="Usuario"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         Margin="10,10,0,0"/>
                 <PasswordBox x:Name="txtClave" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Width="135" 
-                Margin="190,10,0,0" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Clave"
-                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Width="135" 
+                             Margin="190,10,0,0" 
+                             FontSize="18"
+                             materialDesign:HintAssist.Hint="Clave"
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
                 <TextBox x:Name="txtNombre" 
-                HorizontalAlignment="Left" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Top" 
-                Width="160" 
-                Margin="350,10,0,0" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Nombres"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtNombre_PreviewTextInput"/>
+                         HorizontalAlignment="Left" 
+                         TextWrapping="Wrap" 
+                         VerticalAlignment="Top" 
+                         Width="160" 
+                         Margin="350,10,0,0" 
+                         FontSize="18"
+                         materialDesign:HintAssist.Hint="Nombres"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         PreviewTextInput="txtNombre_PreviewTextInput"/>
                 <TextBox x:Name="txtApellido" 
-                HorizontalAlignment="Left" 
-                TextWrapping="Wrap"
-                VerticalAlignment="Top" 
-                Width="160" 
-                Margin="540,10,0,0" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Apellidos"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="txtApellido_PreviewTextInput"/>
+                         HorizontalAlignment="Left" 
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top" 
+                         Width="160" 
+                         Margin="540,10,0,0" 
+                         FontSize="18"
+                         materialDesign:HintAssist.Hint="Apellidos"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         PreviewTextInput="txtApellido_PreviewTextInput"/>
                 <ComboBox x:Name="cmbRol" 
-                HorizontalAlignment="Left" 
-                Margin="730,10,0,0" 
-                VerticalAlignment="Top" 
-                Width="150" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Rol"
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                          HorizontalAlignment="Left" 
+                          Margin="730,10,0,0" 
+                          VerticalAlignment="Top" 
+                          Width="150" 
+                          FontSize="18"
+                          materialDesign:HintAssist.Hint="Rol"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                 <TextBox x:Name="txtDUI" 
-                HorizontalAlignment="Left" 
-                TextWrapping="Wrap"
-                VerticalAlignment="Top" 
-                Width="130" 
-                Margin="10,80,0,0" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="DUI"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                         HorizontalAlignment="Left" 
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top" 
+                         Width="130" 
+                         Margin="10,80,0,0" 
+                         FontSize="18"
+                         materialDesign:HintAssist.Hint="DUI"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <ComboBox x:Name="cmbSexo" 
-                HorizontalAlignment="Left" 
-                Margin="170,81,0,0" 
-                VerticalAlignment="Top" 
-                Width="130" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Sexo"
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                          HorizontalAlignment="Left" 
+                          Margin="170,81,0,0" 
+                          VerticalAlignment="Top" 
+                          Width="130" 
+                          FontSize="18"
+                          materialDesign:HintAssist.Hint="Sexo"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                 <Label x:Name="lbFecha" 
-                Content="Fecha nacimiento: " 
-                HorizontalAlignment="Left" 
-                Margin="320,98,0,0" 
-                VerticalAlignment="Top" 
-                FontSize="18"/>
+                       Content="Fecha nacimiento: " 
+                       HorizontalAlignment="Left" 
+                       Margin="320,98,0,0" 
+                       VerticalAlignment="Top" 
+                       FontSize="18"/>
                 <DatePicker x:Name="dtpFechaNacimiento" 
-                HorizontalAlignment="Left" 
-                Margin="480,99,0,0" 
-                VerticalAlignment="Top" 
-                FontSize="18"/>
+                            HorizontalAlignment="Left" 
+                            Margin="480,99,0,0" 
+                            VerticalAlignment="Top" 
+                            FontSize="18"/>
                 <ComboBox x:Name="cmbEstado" 
-                HorizontalAlignment="Left" 
-                Margin="652,80,0,0" 
-                VerticalAlignment="Top" 
-                Width="150" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Estado"
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                          HorizontalAlignment="Left" 
+                          Margin="652,80,0,0" 
+                          VerticalAlignment="Top" 
+                          Width="150" 
+                          FontSize="18"
+                          materialDesign:HintAssist.Hint="Estado"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
                 <TextBox x:Name="txtTelefono1" 
-                HorizontalAlignment="Left" 
-                TextWrapping="Wrap"
-                VerticalAlignment="Top" 
-                Width="130" 
-                Margin="10,162,0,0" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Telefono1"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                         HorizontalAlignment="Left" 
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top" 
+                         Width="130" 
+                         Margin="10,162,0,0" 
+                         FontSize="18"
+                         materialDesign:HintAssist.Hint="Telefono1"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <TextBox x:Name="txtTelefono2" 
-                HorizontalAlignment="Left" 
-                TextWrapping="Wrap"
-                VerticalAlignment="Top" 
-                Width="130" 
-                Margin="170,162,0,0" 
-                FontSize="18"
-                materialDesign:HintAssist.Hint="Telefono2"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                         HorizontalAlignment="Left" 
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top" 
+                         Width="130" 
+                         Margin="170,162,0,0" 
+                         FontSize="18"
+                         materialDesign:HintAssist.Hint="Telefono2"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </Grid>
         </GroupBox>
-        <Grid VerticalAlignment="Top" Width="750" Height="50" HorizontalAlignment="Center" Margin="0,380,0,0">
-            <StackPanel Height="50" HorizontalAlignment="Left" Orientation="Horizontal" Margin="49,0,0,0">
+        <Grid VerticalAlignment="Top" 
+              Width="750" Height="50" 
+              HorizontalAlignment="Center" 
+              Margin="0,380,0,0">
+            <StackPanel Height="50" 
+                        HorizontalAlignment="Left" 
+                        Orientation="Horizontal" 
+                        Margin="49,0,0,0">
                 <Button x:Name="btnNuevo" 
-                        BorderBrush="{x:Null}" Background="#A2BCE0" 
+                        Foreground="{StaticResource c-light}"
+                        BorderBrush="{x:Null}"  
                         Content="Crear" FontSize="18" 
                         Click="btnNuevo_Click"/>
                 <Button x:Name="btnEditar"
-                        BorderBrush="{x:Null}" Background="#A2BCE0" 
-                        Content="Editar" FontSize="18" Margin="20,0,0,0" 
+                        Foreground="{StaticResource c-light}"
+                        BorderBrush="{x:Null}" 
+                        Content="Editar" FontSize="18" 
+                        Margin="20,0,0,0" 
                         Click="btnEditar_Click"/>
                 <Button x:Name="btnEliminar" 
-                        BorderBrush="{x:Null}" Background="#A2BCE0" 
-                        Content="Eliminar" FontSize="18" Margin="20,0,0,0" 
+                        Foreground="{StaticResource c-light}"
+                        BorderBrush="{x:Null}" 
+                        Content="Eliminar" FontSize="18" 
+                        Margin="20,0,0,0" 
                         Click="btnEliminar_Click"/>
             </StackPanel>
-            <StackPanel Height="50" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,50,0">
+            <StackPanel Height="50" 
+                        HorizontalAlignment="Right" 
+                        Orientation="Horizontal" 
+                        Margin="0,0,50,0">
                 <Button x:Name="btnGuardar" 
-                        BorderBrush="{x:Null}" Background="#0B5563"
-                        Content="Guardar" FontSize="18" Margin="0,0,23,0" 
+                        BorderBrush="{x:Null}" 
+                        Background="{StaticResource c-success}"
+                        Foreground="{StaticResource c-light}"
+                        Content="Guardar" FontSize="18" 
+                        Margin="0,0,23,0" 
                         Click="btnGuardar_Click"/>
-                <Button x:Name="btnCancelar" BorderBrush="{x:Null}" 
-                        Content="Cancelar" Background="#FFD63C3C" FontSize="18" 
+                <Button x:Name="btnCancelar" 
+                        BorderBrush="{x:Null}" 
+                        Content="Cancelar" 
+                        Background="{StaticResource c-danger}"
+                        Foreground="{StaticResource c-light}"
+                        FontSize="18" 
                         Click="btnCancelar_Click"/>
             </StackPanel>
         </Grid>
         <DataGrid Name="dgUsuarios" 
-         FontSize="16"
+                  FontSize="16"
                   ItemsSource="{Binding}" 
                   HorizontalAlignment="Center" 
                   AutoGenerateColumns="False" 
                   IsReadOnly="True" 
                   SelectionChanged="dgUsuarios_SelectionChanged" 
                   Width="900" Height="250" 
-                  VerticalAlignment="Top" Margin="0,450,0,0" Background="{x:Null}">
+                  VerticalAlignment="Top" 
+                  Margin="0,450,0,0" 
+                  Background="{x:Null}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding UsuarioId}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Clave" Binding="{Binding Clave}" Visibility="Hidden"></DataGridTextColumn>
-                <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Rol" Binding="{Binding Rol}"></DataGridTextColumn>
-                <DataGridTextColumn Header="DUI" Binding="{Binding DUI}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Sexo" Binding="{Binding Sexo}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding FechaNacimiento}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Telefono 1" Binding="{Binding Telefono1}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Telefono 2" Binding="{Binding Telefono2}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Estado" Binding="{Binding Estado}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id" Binding="{Binding UsuarioId}"/>
+                <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario}"/>
+                <DataGridTextColumn Header="Clave" Binding="{Binding Clave}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"/>
+                <DataGridTextColumn Header="Rol" Binding="{Binding Rol}"/>
+                <DataGridTextColumn Header="DUI" Binding="{Binding DUI}"/>
+                <DataGridTextColumn Header="Sexo" Binding="{Binding Sexo}"/>
+                <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding FechaNacimiento}"/>
+                <DataGridTextColumn Header="Telefono 1" Binding="{Binding Telefono1}"/>
+                <DataGridTextColumn Header="Telefono 2" Binding="{Binding Telefono2}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding Estado}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

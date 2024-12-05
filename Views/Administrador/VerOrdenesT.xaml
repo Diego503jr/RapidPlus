@@ -10,24 +10,67 @@
        Title="VerOrden" Height="900" Width="874" Loaded="Page_Loaded">
 
     <Grid >
-        <Label Content="Ordenes Completas" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0" />
-        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="50,150,50,0" Height="300">
-            <DataGrid Name="dgOrdenes" AutoGenerateColumns="False" IsReadOnly="true" ItemsSource ="{Binding}" Background="{x:Null}" FontSize="16" >
+        <Label Content="Ordenes Completas" 
+               FontSize="36" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top" 
+               Margin="0,60,0,0" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      VerticalAlignment="Top" 
+                      HorizontalAlignment="Center" 
+                      Margin="50,150,50,0" 
+                      Height="300">
+            <DataGrid Name="dgOrdenes" 
+                      AutoGenerateColumns="False" 
+                      IsReadOnly="true" 
+                      ItemsSource ="{Binding}" 
+                      Background="{x:Null}" FontSize="16" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Número de orden" Width="*" Binding="{Binding IdOrden}"/>
-                    <DataGridTextColumn Header="Orden" CanUserResize="False" Width="*" Binding="{Binding Orden}"/>
-                    <DataGridTextColumn Header="Cantidad" CanUserResize="False" Width="*" Binding="{Binding Cantidad}"/>
-                    <DataGridTextColumn Header="Número de mesa" Width="*" Binding="{Binding Mesa}"/>
-                    <DataGridTextColumn Header="Estado" Width="*" Binding="{Binding EstadoOrden}"/>
+                    <DataGridTextColumn Header="Número de orden" 
+                                        Width="*" 
+                                        Binding="{Binding IdOrden}"/>
+                    <DataGridTextColumn Header="Orden" 
+                                        CanUserResize="False" 
+                                        Width="*" 
+                                        Binding="{Binding Orden}"/>
+                    <DataGridTextColumn Header="Cantidad" 
+                                        CanUserResize="False" 
+                                        Width="*" 
+                                        Binding="{Binding Cantidad}"/>
+                    <DataGridTextColumn Header="Número de mesa" 
+                                        Width="*" 
+                                        Binding="{Binding Mesa}"/>
+                    <DataGridTextColumn Header="Estado" 
+                                        Width="*" 
+                                        Binding="{Binding EstadoOrden}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" Margin="0,300,0,0">
-            <GroupBox VerticalAlignment="Center" HorizontalAlignment="Center" Header = "Filtrar Estado de Ordenes"  materialDesign:ColorZoneAssist.Background="#A2BCE0"
-       materialDesign:ColorZoneAssist.Foreground="White" materialDesign:ColorZoneAssist.Mode="Custom" FontSize="18" Style="{StaticResource MaterialDesignGroupBox}" Width="275">
-                <ComboBox Name="cmbFiltro" SelectionChanged="cmbFiltro_SelectionChanged"></ComboBox>
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Width="700" 
+                    Margin="0,300,0,0">
+            <GroupBox VerticalAlignment="Center" 
+                      HorizontalAlignment="Center" 
+                      Header = "Filtrar Estado de Ordenes"  
+                      materialDesign:ColorZoneAssist.Background="{StaticResource c-grey}"
+                      materialDesign:ColorZoneAssist.Foreground="White" 
+                      materialDesign:ColorZoneAssist.Mode="Custom" 
+                      FontSize="18" Style="{StaticResource MaterialDesignGroupBox}" 
+                      Width="275">
+                <ComboBox Name="cmbFiltro" 
+                          SelectionChanged="cmbFiltro_SelectionChanged"/>
             </GroupBox>
-            <Button Content="Cancelar filtro" Name="btnCancelar" VerticalAlignment="bottom" BorderBrush="{x:Null}" Background="#A2BCE0" Margin="275,0,0,23" Cursor="Hand" Click="btnCancelar_Click"></Button>
+            <Button Content="Cancelar filtro" 
+                    Name="btnCancelar" 
+                    VerticalAlignment="bottom" 
+                    BorderBrush="{x:Null}" 
+                    Background="{StaticResource c-danger}"
+                    Foreground="{StaticResource c-light}"
+                    Margin="275,0,0,23" 
+                    Cursor="Hand" 
+                    Click="btnCancelar_Click"/>
         </StackPanel>
 
 
