@@ -6,18 +6,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Rapid_Plus.Views.Cajero"
       mc:Ignorable="d"
-      Title="FacturarOrden" Loaded="Page_Loaded" Height="750" Width="1086" Background="White">
+      Title="FacturarOrden" 
+      Loaded="Page_Loaded" 
+      Height="750" 
+      Width="1086" 
+      Background="{StaticResource c-light}">
 
     <Grid Margin="0,-139,-27,-84">
 
         <Rectangle VerticalAlignment="Top" 
                    Height="150" 
-                   Stroke="#A2BCE0" 
+                   Stroke="{StaticResource c-dark}" 
                    Margin="62,205,62,0" />
         <Label Content="Facturar Orden" 
-               Background="#A2BCE0" 
+               Background="{StaticResource c-dark}" 
                Height="50" Width="996" 
-               Foreground="White" 
+               Foreground="{StaticResource c-light}" 
                VerticalAlignment="Top" 
                HorizontalAlignment="Center"
                Margin="0,155,0,0"
@@ -45,21 +49,35 @@
                   ItemsSource ="{Binding}" 
                   Margin="15,454,9,271" 
                   RenderTransformOrigin="0.5,0.5">
-            <DataGrid.RenderTransform>
+            <!--<DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform AngleX="-0.316"/>
                     <RotateTransform/>
                     <TranslateTransform X="0.744"/>
                 </TransformGroup>
-            </DataGrid.RenderTransform>
+            </DataGrid.RenderTransform>-->
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Fecha de orden" Width="*" Binding="{Binding FechaOrden}"/>
-                <DataGridTextColumn Header="Platillo" CanUserResize="False" Width="*" Binding="{Binding Orden}"/>
-                <DataGridTextColumn Header="Precio" CanUserResize="False" Width="*" Binding="{Binding PrecioPlatillo,StringFormat=\${0:F2}}"/>
-                <DataGridTextColumn Header="Cantidad" CanUserResize="False" Width="*" Binding="{Binding Cantidad}"/>
-                <DataGridTextColumn Header="Subtotal" CanUserResize="False" Width="*" Binding="{Binding Subtotal, StringFormat=\${0:F2}}"/>
+                <DataGridTextColumn Header="Fecha de orden" 
+                                    Width="*" 
+                                    Binding="{Binding FechaOrden}"/>
+                <DataGridTextColumn Header="Platillo" 
+                                    CanUserResize="False" 
+                                    Width="*" 
+                                    Binding="{Binding Orden}"/>
+                <DataGridTextColumn Header="Precio" 
+                                    CanUserResize="False" 
+                                    Width="*" 
+                                    Binding="{Binding PrecioPlatillo,StringFormat=\${0:F2}}"/>
+                <DataGridTextColumn Header="Cantidad" 
+                                    CanUserResize="False" 
+                                    Width="*" 
+                                    Binding="{Binding Cantidad}"/>
+                <DataGridTextColumn Header="Subtotal" 
+                                    CanUserResize="False" 
+                                    Width="*" 
+                                    Binding="{Binding Subtotal, StringFormat=\${0:F2}}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="TOTAL" 
@@ -99,14 +117,20 @@
                    VerticalAlignment="Top" 
                    FontSize="20"/>
         <Button x:Name="btnRealizar" 
-                    BorderBrush="{x:Null}" Background="#0B5563" 
-                    Content="Realizar" FontSize="18" 
-                    Margin="592,828,410,113" Click="btnRealizar_Click_1"/>
+                BorderBrush="{x:Null}" 
+                Foreground="{StaticResource c-light}"
+                Background="{StaticResource c-success}" 
+                Content="Realizar" 
+                FontSize="18" 
+                Margin="592,828,410,113" 
+                Click="btnRealizar_Click_1"/>
         <Button x:Name="btnCancelar" 
-                    BorderBrush="{x:Null}" 
-                    Background="#FFD63C3C" 
-                    Content="Cancelar" FontSize="18" 
-                    Margin="730,828,272,113" 
+                BorderBrush="{x:Null}"
+                Foreground="{StaticResource c-light}"
+                Background="{StaticResource c-danger}" 
+                Content="Cancelar" 
+                FontSize="18" 
+                Margin="730,828,272,113" 
                 Click="btnCancelar_Click"/>
         <Label Content="Numero de Orden:" 
                HorizontalAlignment="Left" 
