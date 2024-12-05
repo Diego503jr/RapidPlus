@@ -35,15 +35,17 @@ namespace Rapid_Plus.Views.Mesero
         }
 
         #region Declaracion de variables locales
+
         private int idOrden = 0;
-        private int idCliente = -1;
+        private int idCliente = 0;
         private int usuarioId;
         private bool agregando = false;
         private DispatcherTimer timer;
+
         #endregion
 
         #region MÉTODOS PERSONALIZADOS
-        //Llenar combobox de numero de mesa
+        //Mostrar números de mesa en el combobox
         private int CargarNumeroMesa()
         {
             int numMesas = -1;
@@ -96,7 +98,10 @@ namespace Rapid_Plus.Views.Mesero
 
             if (!estado)
             {
-                MessageBox.Show("Debe completar los campos:\n" + mensaje, "Validación de formulario", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Debe completar los campos:\n" + mensaje, 
+                    "Validación de formulario", 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Error);
             }
 
             return estado;
@@ -120,15 +125,13 @@ namespace Rapid_Plus.Views.Mesero
         //Activar/Desactivar botones
         private void ControlAcciones(bool agregando)
         {
-            btnGuardar.IsEnabled = agregando;
-            btnCancelar.IsEnabled = agregando;
             txtNombre.IsEnabled = false;
             txtApellido.IsEnabled = false;
+            btnGuardar.IsEnabled = agregando;
+            btnCancelar.IsEnabled = agregando;
             btnCrear.IsEnabled = !agregando;
-            
             dgClientes.IsEnabled = agregando;
             cmbMesa.IsEnabled = agregando;
-           
         }
 
         //Temporizador para refrescar
@@ -154,6 +157,7 @@ namespace Rapid_Plus.Views.Mesero
             MostrarClientes();
             
         }
+
         //Validar que solo se ingrese texto en los combobox
         private void txtFiltro_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -212,6 +216,7 @@ namespace Rapid_Plus.Views.Mesero
         //BOTONES
         #region BOTONES
         //Acciones con botones
+
         //Crear Orden
         private void btnCrear_Click(object sender, RoutedEventArgs e)
         {
@@ -227,7 +232,7 @@ namespace Rapid_Plus.Views.Mesero
             if (ValidarFormulario())
             {
                 OrdenesModel orden = new OrdenesModel();
-                DateTime fecha = DateTime.Now; //Fecha y hora actual
+                DateTime fecha = DateTime.Now;
                 orden.IdCliente = idCliente;
                 orden.IdUsuario = usuarioId;
                 orden.FechaOrden = fecha;
@@ -243,7 +248,10 @@ namespace Rapid_Plus.Views.Mesero
                     LimpiarObjetos();
                     agregando = false;
                     ControlAcciones(agregando);
-                    MessageBox.Show(mensaje, "Validación de formulario", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(mensaje, 
+                        "Validación de formulario", 
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Information);
                 }
 
             }
@@ -252,7 +260,10 @@ namespace Rapid_Plus.Views.Mesero
         //Cancela la operación
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Desea cancelar la operación", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Desea cancelar la operación", 
+                "Confirmación", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 LimpiarObjetos();
                 agregando = false;

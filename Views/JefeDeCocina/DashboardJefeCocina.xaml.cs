@@ -29,7 +29,7 @@ namespace Rapid_Plus.Views.JefeDeCocina
             InitializeComponent();
         }
 
-        #region METODOS FORMULARIO
+        #region EVENTOS
         private void btnOrdenes_Click(object sender, RoutedEventArgs e)
         {
             frContent.NavigationService.Navigate(estadoOrden);
@@ -57,24 +57,24 @@ namespace Rapid_Plus.Views.JefeDeCocina
         #endregion
 
         #region METODOS ESTILOS
-        private void btnOrdenes_MouseEnter(object sender, MouseEventArgs e)
+        private void BotonJefeCocina_MouseEnter(object sender, MouseEventArgs e)
         {
-            btnOrdenes.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
+            Button boton = sender as Button;
+
+            if (boton != null)
+            {
+                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
+            }
         }
 
-        private void btnOrdenes_MouseLeave(object sender, MouseEventArgs e)
+        private void BotonJefeCocina_MouseLeave(object sender, MouseEventArgs e)
         {
-            btnOrdenes.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
-        }
+            Button boton = sender as Button;
 
-        private void btnCerrarSesion_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnCerrarSesion.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
-        }
-
-        private void btnCerrarSesion_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnCerrarSesion.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
+            if (boton != null)
+            {
+                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
+            }
         }
         #endregion
     }
