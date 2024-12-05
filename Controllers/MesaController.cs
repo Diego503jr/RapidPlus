@@ -16,7 +16,7 @@ namespace Rapid_Plus.Controllers
 
         private static string conexion = Properties.Settings.Default.DbRapidPlus;
 
-        //Leer Mesa
+        //Metodo para leer Mesa
         public static List<MesasModel> MostrarMesa() 
         {
             List<MesasModel> lstMesas = new List<MesasModel>();
@@ -31,8 +31,10 @@ namespace Rapid_Plus.Controllers
                         command.CommandType = CommandType.StoredProcedure;
                         command.CommandText = "SPMOSTRARMESAS";
 
+                        //Se ejecuta la consulta
                         using (DbDataReader dr = command.ExecuteReader())
                         { 
+                            //Lee los datos y los agrega al modelo
                             while (dr.Read())
                             {
                                 MesasModel mesa = new MesasModel();
@@ -55,7 +57,7 @@ namespace Rapid_Plus.Controllers
             return lstMesas;
         }
 
-        //Crear Mesa
+        //Metodo para crear Mesa
         public static int CrearMesa(MesasModel mesa, int idEstado) 
         {
             int res = -1;
@@ -74,7 +76,8 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@IdEstado", idEstado);
 
                         res = command.ExecuteNonQuery();
-
+                        //Una vez ejecutada la consulta verifica si es menor a 0
+                        //Es porque ya existe
                         if (res < 0)
                         {
                             throw new Exception(" Ya existe esta mesa");
@@ -92,7 +95,7 @@ namespace Rapid_Plus.Controllers
             return res;
         }
 
-        //Editar Mesa
+        //Metodo para editar Mesa
         public static int EditarMesa(MesasModel mesa, int idMesa)
         {
             int res = -1;
@@ -112,7 +115,8 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@IdEstado", mesa.EstadoId);
 
                         res = command.ExecuteNonQuery();
-
+                        //Una vez ejecutada la consulta verifica si es menor a 0
+                        //Es porque ya existe
                         if (res < 0)
                         {
                             throw new Exception(" Ya existe esta mesa");
@@ -130,7 +134,7 @@ namespace Rapid_Plus.Controllers
             return res;
         }
 
-        //Eliminar Mesa
+        //Metodo para eliminar Mesa
         public static int EliminarMesa(int mesa, int estado)
         {
             int res = -1;

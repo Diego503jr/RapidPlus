@@ -96,7 +96,8 @@ namespace Rapid_Plus.Controllers
             }
             return mesas;
         }
-        //ACTUALIZAR/FACTURAR LA ORDEN QUE ESTE LISTA
+
+        //ACTUALIZAR FACTURAR LA ORDEN QUE ESTE LISTA
         public static void CambiarEstadoOrden(int idOrden)
         {
             using (var con = new SqlConnection(conexion))

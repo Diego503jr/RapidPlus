@@ -16,7 +16,7 @@ namespace Rapid_Plus.Controllers
     {
         private static string conexion = Properties.Settings.Default.DbRapidPlus;
 
-        //Leer Usuario
+        //Metodo para leer Usuario
         public static List<UsuarioModel> MostrarUsuarios() 
         {
             List<UsuarioModel> lstUsuarios = new List<UsuarioModel>();
@@ -83,7 +83,7 @@ namespace Rapid_Plus.Controllers
             return lstUsuarios;
         }
 
-        //Crear Usuario
+        //Metodo para crear Usuario
         public static int CrearUsuario(UsuarioModel user, int idEstado) 
         {
             int res = -1;
@@ -111,7 +111,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@Telefono2", user.Telefono2);
 
                         res = command.ExecuteNonQuery();
-
+                        //Si la res es menor a 0 es porque ya existe el registro
                         if (res < 0) 
                         {
                             throw new Exception(" Ya existe este usuario");
@@ -128,7 +128,7 @@ namespace Rapid_Plus.Controllers
             return res;
         }
 
-        //Editar Usuario
+        //Metodo para editar Usuario
         public static int EditarUsuario(UsuarioModel user, int idUsuario) 
         {
             int res = -1;
@@ -159,6 +159,7 @@ namespace Rapid_Plus.Controllers
 
                         res = command.ExecuteNonQuery();
 
+                        //Si la res es menor a 0 es porque ya existe el registro
                         if (res < 0)
                         {
                             throw new Exception(" Ya existe este usuario");
@@ -175,7 +176,7 @@ namespace Rapid_Plus.Controllers
             return res;
         }
 
-        //Eliminar Usuario
+        //Metodo para eliminar Usuario
         public static int EliminarUsuario(int idUsuario, int idEstado) 
         { 
             int res = -1;

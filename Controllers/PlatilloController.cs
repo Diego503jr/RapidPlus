@@ -16,7 +16,7 @@ namespace Rapid_Plus.Controllers
     {
         private static string conexion = Properties.Settings.Default.DbRapidPlus;
 
-        //Leer Platillos
+        //Metodo para leer Platillos
         public static List<PlatilloModel> MostrarMenu() 
         { 
             List<PlatilloModel> lstPlatillos = new List<PlatilloModel>();
@@ -33,6 +33,7 @@ namespace Rapid_Plus.Controllers
 
                         using (DbDataReader dr = command.ExecuteReader()) 
                         {
+                            //Se ejecuta la consulta y se leen los datos para establecerlos al modelo
                             while (dr.Read())
                             {
                                 PlatilloModel platillo = new PlatilloModel();
@@ -59,7 +60,7 @@ namespace Rapid_Plus.Controllers
             return lstPlatillos;
         }
 
-        //Crear Platillos
+        //Metodo para crear Platillos
         public static int AgregarPlatillo(PlatilloModel platillo, int idEstado) 
         {
             int res = -1;
@@ -81,7 +82,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@IdEstado", idEstado);
 
                         res = command.ExecuteNonQuery();
-
+                        //Si la res es menor a 0 es porque ya existe el registro
                         if (res < 0)
                         {
                             throw new Exception(" Ya existe este platillo");
@@ -98,7 +99,7 @@ namespace Rapid_Plus.Controllers
             return res;
         }
 
-        //Editar Platillos
+        //Metodo para editar Platillos
         public static int EditarPlatillo(PlatilloModel platillo, int idPlatillo)
         {
             int res = -1;
@@ -139,7 +140,7 @@ namespace Rapid_Plus.Controllers
             return res;
         }
 
-        //Eliminar Platillos
+        //Metodo para eliminar Platillos
         public static int EliminarPlatillo(int id, int estado) 
         { 
             int res = -1;

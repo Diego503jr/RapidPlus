@@ -15,10 +15,11 @@ using Rapid_Plus.Views.Mesero;
 
 namespace Rapid_Plus.Controllers
 {
-    class LoginController
+    internal class LoginController
     {
         private static string conexion = Properties.Settings.Default.DbRapidPlus;
 
+        // Metodo para iniciar sesion
         public static int Login(UsuarioModel user) 
         {
             int idusuario = -1, idrol = -1;
@@ -40,8 +41,10 @@ namespace Rapid_Plus.Controllers
                         // Obtiene los valores de salida
                         using (DbDataReader ddr = command.ExecuteReader())
                         {
+                            //Verifica si hay o no hay datos
                             if (ddr.HasRows)
                             {
+                                //Si hay lee los datos 
                                 while (ddr.Read())
                                 {
                                     idusuario = int.Parse(ddr["IdUsuario"].ToString());
@@ -79,6 +82,7 @@ namespace Rapid_Plus.Controllers
                             }
                             else
                             {
+                                //Si no hay es porque no se encontro el usuario
                                 MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
