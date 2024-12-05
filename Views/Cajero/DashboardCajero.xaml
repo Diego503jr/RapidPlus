@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rapid_Plus.Views.Cajero"
         mc:Ignorable="d"
-        Title="DashboardCajero" Height="874" Width="1141" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None" Loaded="Window_Loaded">
+        Title="DashboardCajero" 
+        Height="874" 
+        Width="1141" 
+        Loaded="Window_Loaded">
     <Grid>
         <DockPanel>
 

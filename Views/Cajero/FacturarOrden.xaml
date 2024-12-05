@@ -9,8 +9,7 @@
       Title="FacturarOrden" 
       Loaded="Page_Loaded" 
       Height="750" 
-      Width="1086" 
-      Background="{StaticResource c-light}">
+      Width="1086">
 
     <Grid Margin="0,-139,-27,-84">
 
@@ -44,11 +43,12 @@
         </StackPanel>
 
         <DataGrid x:Name="dgOrdenes" 
+                  Background="{x:Null}"
                   AutoGenerateColumns="False" 
                   IsReadOnly="true" 
+                  Width="1050"
                   ItemsSource ="{Binding}" 
-                  Margin="15,454,9,271" 
-                  RenderTransformOrigin="0.5,0.5">
+                  Margin="20,451,43,274">
             <!--<DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
