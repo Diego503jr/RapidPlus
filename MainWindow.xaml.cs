@@ -101,29 +101,9 @@ namespace Rapid_Plus
         {
             Close();
         }
-        private void BotonIngresar_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Button boton = sender as Button;
-
-            if (boton != null)
-            {
-                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
-            }
-        }
-
-        private void BotonIngresar_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Button boton = sender as Button;
-
-            if (boton != null)
-            {
-                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A2BCE0"));
-            }
-        }
 
         private void btnIngresar_Click(object sender, RoutedEventArgs e)
         {
-            string msj = null;
 
             if(ValidarFormulario())
             {
@@ -133,13 +113,9 @@ namespace Rapid_Plus
                 user.Clave = txtPassword.Password;
 
                 idUsuario = LoginController.Login(user);
-                msj = "Inicio de sesion exitoso!";
 
                 if(idUsuario > -1)
                 {
-                    MessageBox.Show(msj, "Validacion del formulario",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
                     this.Close();
                 }
             }
