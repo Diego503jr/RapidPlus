@@ -28,7 +28,6 @@ namespace Rapid_Plus.Views.Administrador
         Contactos contacto = new Contactos();
         Menu menu = new Menu();
         Configuraciones configuracion = new Configuraciones();
-        ParametroReporte prReport = new ParametroReporte();
         TomarOrden tomarOrden = new TomarOrden();
         VerOrden verOrden = new VerOrden();
         private CrearOrden crearOrden;
@@ -98,7 +97,7 @@ namespace Rapid_Plus.Views.Administrador
 
         private void btnReportes_Click(object sender, RoutedEventArgs e)
         {
-            var prReport = new ParametroReporte();
+            ParametroReporte prReport = new ParametroReporte();
             prReport.ShowDialog();
         }
 
