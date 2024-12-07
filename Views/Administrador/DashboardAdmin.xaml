@@ -48,6 +48,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnMenu" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -74,6 +75,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnUsuario" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -102,6 +104,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnMas" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -129,6 +132,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnReportes" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -156,6 +160,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnOrdenesFinal" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -182,6 +187,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnClientes" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}"
                                 Width="340" Height="40" 
@@ -208,6 +214,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnCrear" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}"
                                 Width="340" Height="40" 
@@ -233,6 +240,7 @@
                                 Margin="0,5,0,0">
                         <Rectangle Width="10" Height="40" Fill="{StaticResource c-dark}"/>
                         <Button Name="btnVerOrden" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -260,6 +268,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnGestionar" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -287,6 +296,7 @@
                                    Height="40" 
                                    Fill="{StaticResource c-dark}"/>
                         <Button Name="btnOrdenes"
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -313,6 +323,7 @@
                                 Margin="0,5,0,0">
                         <Rectangle Width="10" Height="40" Fill="{StaticResource c-dark}"/>
                         <Button Name="btnFacturar" 
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="{x:Null}" 
                                 BorderBrush="{x:Null}" 
                                 Width="340" Height="40" 
@@ -339,6 +350,7 @@
                                Height="50" 
                                Fill="{StaticResource c-dark}"/>
                     <Button Name="btnCerrarSesion" 
+                            Style="{StaticResource MaterialDesignFlatButton}"
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
                             Width="340" Height="50" 
