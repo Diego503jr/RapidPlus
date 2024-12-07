@@ -25,18 +25,16 @@ namespace Rapid_Plus.Reports
             InitializeComponent();
         }
 
-        #region VARIABLES LOCALES
-        ReporteFechas rpFecha = new ReporteFechas();
-        ReporteCategoria rpCategoria = new ReporteCategoria();
+        #region Botones para reportes
 
         private void btnReporteFecha_Click(object sender, RoutedEventArgs e)
         {
-            var rpFecha = new ReporteFechas();
+            ReporteFechas rpFecha = new ReporteFechas();
             rpFecha.ShowDialog();
         }
         private void btnReporteCategoria_Click(object sender, RoutedEventArgs e)
         {
-            var rpCategoria = new ReporteCategoria();
+            ReporteCategoria rpCategoria = new ReporteCategoria();
             rpCategoria.ShowDialog();
         }
 

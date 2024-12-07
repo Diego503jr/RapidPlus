@@ -17,11 +17,11 @@
        HorizontalAlignment="Left" Margin="288,41,0,0" 
        VerticalAlignment="Top" FontSize="26" Height="42"/>
         <GroupBox Header="Valores Generales"
-          materialDesign:ColorZoneAssist.Background="#5299D3"
-          materialDesign:ColorZoneAssist.Foreground="White"
-          materialDesign:ColorZoneAssist.Mode="Custom"
-          FontSize="20"
-          Margin="0,120,0,0" Grid.ColumnSpan="2">
+                  materialDesign:ColorZoneAssist.Foreground="White"
+                  materialDesign:ColorZoneAssist.Background="{StaticResource c-grey}"
+                  materialDesign:ColorZoneAssist.Mode="Custom"
+                  FontSize="20"
+                  Margin="0,120,0,0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel>
                     <TextBlock Text="Seleccionar Fecha Inicio" HorizontalAlignment="Center" Margin="30,30"/>
@@ -34,9 +34,10 @@
             </StackPanel>
         </GroupBox>
         <Button x:Name="btnGnRFecha"
-        Background="#0B5563"
-        BorderBrush="{x:Null}"
-        Content="Imprimir Reporte" HorizontalAlignment="Left" 
-        Margin="306,350,0,0" VerticalAlignment="Top" FontSize="18" Height="45" Click="btnGnRFecha_Click"/>
+                BorderBrush="{x:Null}"
+                Foreground="White"
+                Content="Imprimir Reporte" HorizontalAlignment="Left" 
+                Margin="306,350,0,0" VerticalAlignment="Top" 
+                FontSize="18" Height="45" Click="btnGnRFecha_Click"/>
     </Grid>
 </Window>

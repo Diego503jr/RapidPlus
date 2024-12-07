@@ -17,25 +17,25 @@
            HorizontalAlignment="Left" Margin="215,41,0,0" 
            VerticalAlignment="Top" FontSize="26" Height="42"/>
         <GroupBox Header="Valores Generales"
-              materialDesign:ColorZoneAssist.Background="#5299D3"
-              materialDesign:ColorZoneAssist.Foreground="White"
-              materialDesign:ColorZoneAssist.Mode="Custom"
+                  materialDesign:ColorZoneAssist.Foreground="White"
+                  materialDesign:ColorZoneAssist.Background="{StaticResource c-grey}"
+                  materialDesign:ColorZoneAssist.Mode="Custom"
               FontSize="20"
               Margin="0,120,0,0" Grid.ColumnSpan="2">
             <StackPanel HorizontalAlignment="Center">
                 <Button x:Name="btnReporteFecha"
-                 Background="#0B5563"
-                 BorderBrush="{x:Null}"
-                 Content="Imprimir Reporte por Fecha" HorizontalAlignment="Center" 
-                 VerticalAlignment="Top" FontSize="18" 
-                 Height="45" Margin="0,50,0,0" Click="btnReporteFecha_Click"/>
+                        Foreground="White"
+                        BorderBrush="{x:Null}"
+                        Content="Imprimir Reporte por Fecha" HorizontalAlignment="Center" 
+                        VerticalAlignment="Top" FontSize="18" 
+                        Height="45" Margin="0,50,0,0" Click="btnReporteFecha_Click"/>
 
                 <Button x:Name="btnReporteCategoria"
-                 Background="#0B5563"
-                 BorderBrush="{x:Null}"
-                 Content="Imprimir Reporte por Categoria" HorizontalAlignment="Center" 
-                 VerticalAlignment="Top" FontSize="18" 
-                 Height="45" Click="btnReporteCategoria_Click" Margin="0,30,0,0"/>
+                        Foreground="White"
+                        BorderBrush="{x:Null}"
+                        Content="Imprimir Reporte por Categoria" HorizontalAlignment="Center" 
+                        VerticalAlignment="Top" FontSize="18" 
+                        Height="45" Click="btnReporteCategoria_Click" Margin="0,30,0,0"/>
             </StackPanel>
         </GroupBox>
        

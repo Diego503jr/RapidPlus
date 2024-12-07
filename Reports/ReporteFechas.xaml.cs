@@ -30,6 +30,30 @@ namespace Rapid_Plus.Reports
             dtpFin.SelectedDate = null;
         }
 
+        bool ValidarFormulario() 
+        {
+            bool estado = true;
+            string msj = null;
+
+            if (dtpInicio.SelectedDate == null && dtpFin.SelectedDate != null)
+            {
+                estado = false;
+                msj += "debe seleccionar Fecha de Inicio\n";
+            }
+            else if(dtpInicio.SelectedDate != null && dtpFin.SelectedDate == null) 
+            {
+                estado = false;
+                msj += "Debe seleccionar Fecha de Finalizacion\n";
+            }
+
+            if(!estado)
+            {
+                MessageBox.Show($"Debe Cumplir: \n{msj}", "Validacion de Formulario", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+            return estado;
+        }
+
         //Parametros para abrir el reporte
         private void btnGnRFecha_Click(object sender, RoutedEventArgs e)
         {
@@ -44,16 +68,14 @@ namespace Rapid_Plus.Reports
             rpt.Load(@"rptFechas.rpt");
 
             // Verificar fechas y asignar parámetros
-            if (fechaInicio.HasValue && fechaFin.HasValue)
+            if (ValidarFormulario())
             {
-                rpt.SetParameterValue("@FechaInicio", fechaInicio.Value);
-                rpt.SetParameterValue("@FechaFin", fechaFin.Value);
+                rpt.SetParameterValue("@FechaInicio", fechaInicio ?? (object)DBNull.Value);
+                rpt.SetParameterValue("@FechaFin", fechaFin ?? (object)DBNull.Value);
             }
             else
             {
-                // Si no hay valor, establece DBNull
-                rpt.SetParameterValue("@FechaInicio", DBNull.Value);
-                rpt.SetParameterValue("@FechaFin", DBNull.Value);
+                return;
             }
 
             // Asignar el reporte al visor
