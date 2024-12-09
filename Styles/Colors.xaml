@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="c-dark" Color="#262526"/>
+    <SolidColorBrush x:Key="c-light" Color="#F3F3F3"/>
+    <SolidColorBrush x:Key="c-light-emphasis" Color="#D7D8DA"/>
+    <SolidColorBrush x:Key="c-grey-emphasis" Color="#AFB2B7"/>
+    <SolidColorBrush x:Key="c-grey" Color="#7f8084"/>
+    <SolidColorBrush x:Key="c-warning" Color="#FFC107"/>
+    <SolidColorBrush x:Key="c-danger" Color="#DC3545"/>
+    <SolidColorBrush x:Key="c-success" Color="#198754"/>
+</ResourceDictionary>
