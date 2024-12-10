@@ -70,6 +70,16 @@ namespace Rapid_Plus.Views.Administrador
 
         #region METODOS FORMULARIO
 
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             frContent.NavigationService.Navigate(contacto);
@@ -151,8 +161,8 @@ namespace Rapid_Plus.Views.Administrador
             }
         }
 
+
         #endregion
 
-       
     }
 }

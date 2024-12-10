@@ -150,7 +150,6 @@ namespace Rapid_Plus.Views.Administrador
             txtDUI.IsEnabled = accion;
             cmbSexo.IsEnabled = accion;
             dtpFechaNacimiento.IsEnabled = accion;
-            lbFecha.IsEnabled = accion;
             cmbEstado.IsEnabled = accion;
             txtTelefono1.IsEnabled = accion;
             txtTelefono2.IsEnabled = accion;
