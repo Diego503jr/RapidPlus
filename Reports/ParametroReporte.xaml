@@ -39,7 +39,7 @@
                         Click="btnReporteFecha_Click"/>
 
                 <Button x:Name="btnReporteCategoria"
-                        Content="Imprimir Reporte por Fechas"
+                        Content="Imprimir Reporte por Categorias"
                         Style="{StaticResource btn-base}"
                         Margin="10 0"
                         Click="btnReporteCategoria_Click"/>
