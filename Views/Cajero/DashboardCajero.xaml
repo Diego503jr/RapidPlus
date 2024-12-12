@@ -1,4 +1,5 @@
 ﻿<Window x:Class="Rapid_Plus.Views.Cajero.DashboardCajero"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,213 +7,144 @@
         xmlns:local="clr-namespace:Rapid_Plus.Views.Cajero"
         mc:Ignorable="d"
         Title="DashboardCajero" 
-        Height="874" 
-        Width="1141" 
+        Height="860" Width="1000" 
+        WindowStyle="None" 
+        WindowState="Maximized" 
+        ResizeMode="NoResize"
+        Background="{x:Null}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        AllowsTransparency="True"
         Loaded="Window_Loaded">
-    <Grid>
+    <materialDesign:Card UniformCornerRadius="15" 
+                         materialDesign:ShadowAssist.ShadowDepth="Depth4">
         <DockPanel>
-
-            <Grid DockPanel.Dock="Top" 
-                  Background="{StaticResource c-dark}" 
-                  Height="60">
-                <Label Content="Panel Cajero" 
-                       Foreground="{StaticResource c-light}" 
-                       Margin="5" FontSize="30"/>
-                <Button x:Name="btnCerrarVentana" 
-                        VerticalAlignment="Top" 
-                        HorizontalAlignment="Right" 
-                        Height="60" 
-                        Background="{x:Null}" 
-                        BorderBrush="{x:Null}" 
-                        Click="btnCerrarVentana_Click">
-                    <Image Source="/Assets/CerrarVentana.png"/>
-                </Button>
-            </Grid>
-
-            <Grid DockPanel.Dock="Left" 
-                  Background="{StaticResource c-grey}" 
-                  MinWidth="350">
-                <StackPanel Grid.Row="0">
-                    <Image Source="/Assets/logo.png" 
-                           Width="175" 
-                           VerticalAlignment="Top" 
-                           Margin="0,50,0,0"/>
-
-                    <StackPanel Orientation="Horizontal" 
-                                Margin="0,20,0,0" 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Center">
-                        <Rectangle Fill="{StaticResource c-dark}"
-                                   Width="10" 
-                                   Height="60"/>
+            <materialDesign:Card DockPanel.Dock="Left"
+                                 materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                 UniformCornerRadius="15"
+                                 MinWidth="40">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0">
                         <Button Name="btnClientes" 
-                                Background="{x:Null}" 
-                                BorderBrush="{x:Null}" 
-                                FontSize="30" 
-                                Width="340" 
-                                Height="60" 
-                                Click="btnClientes_Click" 
-                                MouseEnter="BotonCajero_MouseEnter" 
-                                MouseLeave="BotonCajero_MouseLeave">
-                            <StackPanel Orientation="Horizontal"  
-                                        Width="325">
-                                <Image Source="/Assets/usuario.png"
-                                       Width="60" 
-                                       Height="50"/>
-                                <Label Content="Clientes" 
-                                       Foreground="{StaticResource c-light}"/>
-                            </StackPanel>
+                                ToolTip="Clientes"
+                                Margin="0,50,0,0"
+                                Style="{StaticResource btn-base}"
+                                Height="50" 
+                                Click="btnClientes_Click">
+                            <materialDesign:PackIcon Kind="AccountGroup"
+                                                     Height="40"
+                                                     Width="40"/>
                         </Button>
-                    </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" 
-                                Margin="0,20,0,0" 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Center">
-                        <Rectangle Width="10" 
-                                   Height="60" 
-                                   Fill="{StaticResource c-dark}"/>
                         <Button Name="btnCrearOrden" 
-                                Background="{x:Null}" 
-                                BorderBrush="{x:Null}" 
-                                FontSize="30" 
-                                Width="340" 
-                                Height="60" 
-                                Click="btnCrearOrden_Click" 
-                                MouseEnter="BotonCajero_MouseEnter" 
-                                MouseLeave="BotonCajero_MouseLeave">
-                            <StackPanel Orientation="Horizontal"  
-                                        Width="325">
-                                <Image Width="60" 
-                                       Height="50" 
-                                       Margin="0" 
-                                       Source="/Assets/AgregarOrden.png" />
-                                <Label Content="Crear Orden" 
-                                       Foreground="{StaticResource c-light}"/>
-                            </StackPanel>
+                                ToolTip="Crear Orden"
+                                Margin="0,5,0,0"
+                                Style="{StaticResource btn-base}"
+                                Height="50" Click="btnCrearOrden_Click">
+                            <materialDesign:PackIcon Kind="CartPlus"
+                         Height="40"
+                         Width="40"/>
                         </Button>
-                    </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" 
-                                Margin="0,20,0,0" 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Center">
-                        <Rectangle Width="10" 
-                                   Height="60" 
-                                   Fill="{StaticResource c-dark}"/>
                         <Button Name="btnVerOrden" 
-                                Background="{x:Null}" 
-                                BorderBrush="{x:Null}" 
-                                FontSize="30" 
-                                Width="340" 
-                                Height="60" 
-                                Click="btnVerOrden_Click" 
-                                MouseEnter="BotonCajero_MouseEnter" 
-                                MouseLeave="BotonCajero_MouseLeave">
-                            <StackPanel Orientation="Horizontal"  
-                                        Width="325">
-                                <Image Width="60" 
-                                       Height="50" 
-                                       Margin="0" 
-                                       Source="/Assets/VerOrden.png" />
-                                <Label Content="Ver Ordenes" 
-                                       Foreground="{StaticResource c-light}"/>
-                            </StackPanel>
+                                ToolTip="Ordenes"
+                                Margin="0,5,0,0"
+                                Style="{StaticResource btn-base}"
+                                Height="50" 
+                                Click="btnVerOrden_Click">
+                            <materialDesign:PackIcon Kind="ListStatus"
+                                                     Height="40"
+                                                     Width="40"/>
                         </Button>
-                    </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" 
-                                Margin="0,20,0,0" 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Center">
-                        <Rectangle Width="10" 
-                                   Height="60" 
-                                   Fill="{StaticResource c-dark}"/>
                         <Button Name="btnGestionar" 
-                                Background="{x:Null}" 
-                                BorderBrush="{x:Null}" 
-                                FontSize="30" 
-                                Width="340" 
-                                Height="60" 
-                                Click="btnGestionar_Click" 
-                                MouseEnter="BotonCajero_MouseEnter" 
-                                MouseLeave="BotonCajero_MouseLeave">
-                            <StackPanel Orientation="Horizontal"  
-                                        Width="325">
-                                <Image Width="60" 
-                                       Height="50" 
-                                       Margin="0" 
-                                       Source="/Assets/GestionarOrden.png" />
-                                <Label Content="Gestionar Orden" 
-                                       Foreground="{StaticResource c-light}"/>
-                            </StackPanel>
+                                ToolTip="Gestionar Ordenes"
+                                Margin="0,5,0,0"
+                                Style="{StaticResource btn-base}"
+                                Height="50" 
+                                Click="btnGestionar_Click">
+                            <materialDesign:PackIcon Kind="HamburgerPlus"
+                                                     Height="40"
+                                                     Width="40"/>
                         </Button>
-                    </StackPanel>
 
 
-                    <StackPanel Orientation="Horizontal" 
-                                Margin="0,20,0,0" 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Center">
-                        <Rectangle Width="10" 
-                                   Height="60" 
-                                   Fill="{StaticResource c-dark}"/>
                         <Button Name="btnFacturar" 
-                                Background="{x:Null}" 
-                                BorderBrush="{x:Null}" 
-                                FontSize="30" 
-                                Width="340" 
-                                Height="60" 
-                                MouseEnter="BotonCajero_MouseEnter" 
-                                MouseLeave="BotonCajero_MouseLeave" 
+                                ToolTip="Facturar Ordenes"
+                                Margin="0,5,0,0"
+                                Style="{StaticResource btn-base}"
+                                Height="50" 
                                 Click="btnFacturar_Click">
-                            <StackPanel Orientation="Horizontal"  
-                                        Width="325">
-                                <Image Width="60" 
-                                       Height="50" 
-                                       Margin="0" 
-                                       Source="/Assets/Facturar.png" />
-                                <Label Content="Facturar Ordenes" 
-                                       Foreground="{StaticResource c-light}"/>
-                            </StackPanel>
+                            <materialDesign:PackIcon Kind="StorePlus"
+                                                     Height="40"
+                                                     Width="40"/>
                         </Button>
                     </StackPanel>
-                </StackPanel>
 
-                <StackPanel Grid.Row="1" 
-                            VerticalAlignment="Bottom" 
-                            Orientation="Horizontal">
-                    <Rectangle Width="10" 
-                               Height="60" 
-                               Fill="{StaticResource c-dark}"/>
-                    <Button Name="btnCerrarSesion" 
-                            Background="{x:Null}" 
-                            BorderBrush="{x:Null}" 
-                            FontSize="30" 
-                            Width="340" Height="60" 
-                            Click="btnCerrarSesion_Click_1" 
-                            MouseEnter="BotonCajero_MouseEnter" 
-                            MouseLeave="BotonCajero_MouseLeave">
-                        <StackPanel Orientation="Horizontal"  
-                                    Width="320">
-                            <Image  Width="60" 
-                                    Height="50" 
-                                    Margin="0" 
-                                    Source="/Assets/CerrarSesion.png"/>
-                            <Label Content="Cerrar Sesion" 
-                                   Foreground="{StaticResource c-light}"/>
-                        </StackPanel>
+                    <Button Name="btnCerrarSesion"
+                            ToolTip="Cerrar Sesion"
+                            Grid.Row="1"
+                            Margin="0,150,0,0"
+                            Style="{StaticResource btn-base}"
+                            Height="50" 
+                            Click="btnCerrarSesion_Click">
+                        <materialDesign:PackIcon Kind="Logout"
+                                                 Height="40"
+                                                 Width="40"/>
                     </Button>
-                </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.08*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0">
+                    <StackPanel VerticalAlignment="Center"
+                                HorizontalAlignment="Left">
+                        <Label Content="Dashboard Cajero"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Margin="20,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" 
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <Button x:Name="btnMinimizar" 
+                                Height="40" Width="50" 
+                                Margin="0,0,10,0"
+                                Style="{StaticResource btn-base}"
+                                Cursor="Hand" 
+                                Click="btnMinimizar_Click">
+                            <materialDesign:PackIcon Kind="WindowMinimize"
+                                                     Height="40"
+                                                     Width="40" 
+                                                     VerticalAlignment="Center" 
+                                                     HorizontalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="btnCerrar" 
+                                Height="40" Width="50" 
+                                Margin="0,0,20,0"
+                                Style="{StaticResource btn-base}"
+                                Cursor="Hand" Click="btnCerrar_Click">
+                            <materialDesign:PackIcon Kind="Close"
+                                                     Height="40"
+                                                     Width="40" 
+                                                     VerticalAlignment="Center" 
+                                                     HorizontalAlignment="Center"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Frame Name="frContent"
+                       Grid.Row="1"
+                       NavigationUIVisibility="Hidden"/>
             </Grid>
-
-            <Rectangle DockPanel.Dock="Bottom" 
-                       Fill="{StaticResource c-dark}" 
-                       Height="60" 
-                       MinWidth="450"/>
-
-            <Frame Name="frContent" 
-                   NavigationUIVisibility="Hidden"/>
+            
         </DockPanel>
-    </Grid>
+    </materialDesign:Card>
 </Window>
