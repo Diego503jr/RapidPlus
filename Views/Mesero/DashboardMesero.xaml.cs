@@ -59,29 +59,6 @@ namespace Rapid_Plus.Views.Mesero
         }
         #endregion
 
-        #region ESTILOS
-
-        //Estilo al pasar sobre los botones
-        private void BotonMesero_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Button boton = sender as Button;
-
-            if (boton != null)
-            {
-                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
-            }
-        }
-
-        private void BotonMesero_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Button boton = sender as Button;
-
-            if (boton != null)
-            {
-                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
-            }
-        }
-        #endregion
 
         #region EVENTOS
         //Cerrar Sesión
@@ -98,7 +75,7 @@ namespace Rapid_Plus.Views.Mesero
         }
 
         //Cerrar Ventana
-        private void BtnCerrarVentana_Click(object sender, RoutedEventArgs e)
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -109,8 +86,12 @@ namespace Rapid_Plus.Views.Mesero
         {
             frContent.NavigationService.Navigate(verOrden);
         }
+
         #endregion
 
-       
+        private void btnMinimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }
