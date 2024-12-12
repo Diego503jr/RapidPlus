@@ -79,21 +79,6 @@ namespace Rapid_Plus
             txtPassword.Password = txtPasswordVisible.Text;
         }
 
-        //Metodo para mover formulario
-        //private void Window_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-        //{
-        //    if (e.Button != System.Windows.Forms.MouseButtons.Left)
-        //    {
-        //        xClick = e.X;
-        //        yClick = e.Y;
-        //    }
-        //    else
-        //    {
-        //        this.Left = this.Left + (e.X);
-        //        this.Top = this.Top + (e.Y);
-        //    }
-        //}
-
         #endregion
 
         #region EVENTOS BOTONES
@@ -102,7 +87,7 @@ namespace Rapid_Plus
             Close();
         }
 
-        private void btnIngresar_Click(object sender, RoutedEventArgs e)
+        private async void btnIngresar_Click(object sender, RoutedEventArgs e)
         {
 
             if(ValidarFormulario())
@@ -112,7 +97,7 @@ namespace Rapid_Plus
                 user.Usuario = txtCorreo.Text;
                 user.Clave = txtPassword.Password;
 
-                idUsuario = LoginController.Login(user);
+                idUsuario = await LoginController.Login(user);
 
                 if(idUsuario > -1)
                 {

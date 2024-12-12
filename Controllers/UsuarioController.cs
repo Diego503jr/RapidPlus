@@ -26,6 +26,7 @@ namespace Rapid_Plus.Controllers
                 using (var conDb = new SqlConnection(conexion)) 
                 {
                     conDb.Open();
+
                     using (var command = conDb.CreateCommand()) 
                     { 
                         command.CommandType = CommandType.StoredProcedure;
@@ -84,14 +85,14 @@ namespace Rapid_Plus.Controllers
         }
 
         //Metodo para crear Usuario
-        public static int CrearUsuario(UsuarioModel user, int idEstado) 
+        public static async Task<int> CrearUsuario(UsuarioModel user, int idEstado) 
         {
             int res = -1;
             try
             {
                 using (var conDb = new SqlConnection(conexion)) 
                 {
-                    conDb.Open();
+                    await conDb.OpenAsync();
 
                     using (var command = conDb.CreateCommand()) 
                     {
@@ -110,7 +111,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@Telefono1", user.Telefono1);
                         command.Parameters.AddWithValue("@Telefono2", user.Telefono2);
 
-                        res = command.ExecuteNonQuery();
+                        res = await command.ExecuteNonQueryAsync();
                         //Si la res es menor a 0 es porque ya existe el registro
                         if (res < 0) 
                         {
@@ -129,15 +130,15 @@ namespace Rapid_Plus.Controllers
         }
 
         //Metodo para editar Usuario
-        public static int EditarUsuario(UsuarioModel user, int idUsuario) 
+        public static async Task<int> EditarUsuario(UsuarioModel user, int idUsuario) 
         {
             int res = -1;
 
             try
             {
-                using (var conDb = new SqlConnection(conexion)) 
+                using (var conDb = new SqlConnection(conexion))
                 {
-                    conDb.Open();
+                    await conDb.OpenAsync();
 
                     using (var command = conDb.CreateCommand()) 
                     {
@@ -157,7 +158,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@Telefono1", user.Telefono1);
                         command.Parameters.AddWithValue("@Telefono2", user.Telefono2);
 
-                        res = command.ExecuteNonQuery();
+                        res = await command.ExecuteNonQueryAsync();
 
                         //Si la res es menor a 0 es porque ya existe el registro
                         if (res < 0)
@@ -177,7 +178,7 @@ namespace Rapid_Plus.Controllers
         }
 
         //Metodo para eliminar Usuario
-        public static int EliminarUsuario(int idUsuario, int idEstado) 
+        public static async Task<int> EliminarUsuario(int idUsuario, int idEstado) 
         { 
             int res = -1;
 
@@ -185,7 +186,7 @@ namespace Rapid_Plus.Controllers
             {
                 using (var conDB = new SqlConnection(conexion)) 
                 {
-                    conDB.Open();
+                    await conDB.OpenAsync();
 
                     using (var command = conDB.CreateCommand()) 
                     {
@@ -195,7 +196,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@IdUsuario", idUsuario);
                         command.Parameters.AddWithValue("@IdEstado", idEstado);
 
-                        res = command.ExecuteNonQuery();
+                        res = await command.ExecuteNonQueryAsync();
                     }
                 }
             }

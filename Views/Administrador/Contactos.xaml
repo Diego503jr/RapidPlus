@@ -200,7 +200,7 @@
                   ItemsSource="{Binding}" 
                   AutoGenerateColumns="False" 
                   IsReadOnly="True" 
-                  Width="1100" Height="250" 
+                  Width="1200" Height="250" 
                   Background="{x:Null}"
                   SelectionChanged="dgUsuarios_SelectionChanged">
             <DataGrid.Columns>
