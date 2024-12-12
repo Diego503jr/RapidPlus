@@ -30,9 +30,6 @@ namespace Rapid_Plus.Views.Administrador
         public Contactos()
         {
             InitializeComponent();
-            CargarSexos();
-            CargarRoles();
-            CargarEstados();
         }
 
         #region VARIABLES LOCALES
@@ -50,19 +47,6 @@ namespace Rapid_Plus.Views.Administrador
         #endregion
 
         #region METODOS PERSONALIZADOS
-
-        //private void IniciarTemporizador()
-        //{
-        //    timer = new DispatcherTimer();
-        //    timer.Interval = TimeSpan.FromSeconds(3);
-        //    timer.Tick += Timer_Tik;
-        //    timer.Start();
-        //}
-
-        //private void Timer_Tik(object sender, EventArgs e)
-        //{
-        //    MostrarUsuarios();
-        //}
 
         //Validar el formulario
         bool ValidarFormulario()
@@ -278,6 +262,9 @@ namespace Rapid_Plus.Views.Administrador
             HabilitarFormulario(false);
             ControlFormulario();
             LimpiarFormulario();
+            CargarSexos();
+            CargarRoles();
+            CargarEstados();
         }
 
         #endregion

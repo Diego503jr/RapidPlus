@@ -6,72 +6,94 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Rapid_Plus.Views.Administrador"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-       Title="VerOrden" Height="900" Width="874" Loaded="Page_Loaded">
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontSize="18"
+      Title="VerOrden" Loaded="Page_Loaded">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-    <Grid >
-        <Label Content="Ordenes Completas" 
-               FontSize="36" 
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top" 
-               Margin="0,60,0,0" />
-        <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                      VerticalAlignment="Top" 
-                      HorizontalAlignment="Center" 
-                      Margin="50,150,50,0" 
-                      Height="300">
-            <DataGrid Name="dgOrdenes" 
-                      AutoGenerateColumns="False" 
-                      IsReadOnly="true" 
-                      ItemsSource ="{Binding}" 
-                      Background="{x:Null}" FontSize="16" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Número de orden" 
-                                        Width="*" 
-                                        Binding="{Binding IdOrden}"/>
-                    <DataGridTextColumn Header="Orden" 
-                                        CanUserResize="False" 
-                                        Width="*" 
-                                        Binding="{Binding Orden}"/>
-                    <DataGridTextColumn Header="Cantidad" 
-                                        CanUserResize="False" 
-                                        Width="*" 
-                                        Binding="{Binding Cantidad}"/>
-                    <DataGridTextColumn Header="Número de mesa" 
-                                        Width="*" 
-                                        Binding="{Binding Mesa}"/>
-                    <DataGridTextColumn Header="Estado" 
-                                        Width="*" 
-                                        Binding="{Binding EstadoOrden}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </ScrollViewer>
-        <StackPanel Orientation="Horizontal" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Width="700" 
-                    Margin="0,300,0,0">
-            <GroupBox VerticalAlignment="Center" 
-                      HorizontalAlignment="Center" 
-                      Header = "Filtrar Estado de Ordenes"  
-                      materialDesign:ColorZoneAssist.Background="{StaticResource c-grey}"
-                      materialDesign:ColorZoneAssist.Foreground="White" 
-                      materialDesign:ColorZoneAssist.Mode="Custom" 
-                      FontSize="18" Style="{StaticResource MaterialDesignGroupBox}" 
-                      Width="275">
-                <ComboBox Name="cmbFiltro" 
+        <Label Grid.Row="0"
+               Content="Ordenes" 
+               FontSize="24"
+               Width="750"/>
+
+        <DataGrid Name="dgOrdenes"
+                  FontSize="16"
+                  Grid.Row="1"
+                  ItemsSource="{Binding}" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  Margin="1 20"
+                  Width="750" Height="300" 
+                  Background="{x:Null}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="#" 
+                                    Width="*" 
+                                    Binding="{Binding IdOrden}"/>
+                <DataGridTextColumn Header="Orden" 
+                                    Width="*" 
+                                    Binding="{Binding Orden}"/>
+                <DataGridTextColumn Header="Cantidad" 
+                                    Width="*" 
+                                    Binding="{Binding Cantidad}"/>
+                <DataGridTextColumn Header="Mesa" 
+                                    Width="*" 
+                                    Binding="{Binding Mesa}"/>
+                <DataGridTextColumn Header="Estado" 
+                                    Width="*" 
+                                    Binding="{Binding EstadoOrden}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <materialDesign:Card Grid.Row="2"
+                             Width="600"
+                             Style="{StaticResource card-primary}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Formulario de Acciones"
+                       FontSize="18"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       FontWeight="Bold"
+                       Margin="20 10"/>
+
+                <ComboBox Name="cmbFiltro"
+                          Grid.Column="0"
+                          Grid.Row="1"
+                          Margin="20 20"
+                          materialDesign:HintAssist.Hint="Estado"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                           SelectionChanged="cmbFiltro_SelectionChanged"/>
-            </GroupBox>
-            <Button Content="Cancelar filtro" 
-                    Name="btnCancelar" 
-                    VerticalAlignment="bottom" 
-                    BorderBrush="{x:Null}" 
-                    Background="{StaticResource c-danger}"
-                    Foreground="{StaticResource c-light}"
-                    Margin="275,0,0,23" 
-                    Cursor="Hand" 
-                    Click="btnCancelar_Click"/>
-        </StackPanel>
+                <Button Name="btnCancelar" 
+                        Grid.Column="3"
+                        Grid.Row="4"
+                        Margin="30 10"
+                        Style="{StaticResource btn-danger}"
+                        Click="btnCancelar_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="Cancel"
+                                                 VerticalAlignment="Stretch"
+                                                 Height="20"
+                                                 Width="20"/>
+                        <TextBlock Text="Cancelar"
+                                   Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
+            </Grid>
+        </materialDesign:Card>
 
 
     </Grid>

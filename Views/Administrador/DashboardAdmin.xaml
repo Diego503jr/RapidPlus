@@ -212,7 +212,7 @@
                         <Button x:Name="btnMinimizar" 
                                 Height="40" Width="50" 
                                 Margin="0,0,10,0"
-                                Style="{StaticResource btn-outline}"
+                                Style="{StaticResource btn-base}"
                                 Cursor="Hand" Click="btnMinimizar_Click">
                             <materialDesign:PackIcon Kind="WindowMinimize"
                                                      Height="40"
@@ -223,7 +223,7 @@
                         <Button x:Name="btnCerrar" 
                                 Height="40" Width="50" 
                                 Margin="0,0,20,0"
-                                Style="{StaticResource btn-outline}"
+                                Style="{StaticResource btn-base}"
                                 Cursor="Hand" Click="btnCerrar_Click">
                             <materialDesign:PackIcon Kind="Close"
                                                      Height="40"

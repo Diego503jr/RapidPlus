@@ -29,7 +29,6 @@ namespace Rapid_Plus.Views.Administrador
         public Configuraciones()
         {
             InitializeComponent();
-            IniciarTemporizador();
             CargarEstados();
         }
 
@@ -52,19 +51,6 @@ namespace Rapid_Plus.Views.Administrador
         #endregion
 
         #region METODOS PERSONALIZADOS
-
-        private void IniciarTemporizador()
-        {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(3);
-            timer.Tick += Timer_Tik;
-            timer.Start();
-        }
-
-        private void Timer_Tik(object sender, EventArgs e)
-        {
-            MostrarMesas();
-        }
 
         //Validar formulario 
         bool ValidarFormulario()
@@ -305,6 +291,11 @@ namespace Rapid_Plus.Views.Administrador
         {
             //Validación para poder ingresar solo números
             e.Handled = !char.IsDigit(e.Text, 0);
+        }
+
+        private void txtNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)

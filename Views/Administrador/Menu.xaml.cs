@@ -28,9 +28,6 @@ namespace Rapid_Plus.Views.Administrador
         public Menu()
         {
             InitializeComponent();
-            IniciarTemporizador();
-            CargarEstados();
-            CargarCategorias();
         }
 
         #region VARIABLES LOCALES
@@ -49,19 +46,6 @@ namespace Rapid_Plus.Views.Administrador
         #endregion
 
         #region METODOS PERSONALIZADOS
-
-        private void IniciarTemporizador()
-        {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(3);
-            timer.Tick += Timer_Tik;
-        }
-
-        private void Timer_Tik(object sender, EventArgs e)
-        {
-            MostrarMenu();
-            CargarCategorias();
-        }
 
         //Validar formulario 
         bool ValidarFormulario() 
@@ -119,7 +103,6 @@ namespace Rapid_Plus.Views.Administrador
             txtNombrePlatillo.IsEnabled = accion;
             txtDescripicion.IsEnabled = accion;
             cmbCategoria.IsEnabled = accion;
-            lbDolar.IsEnabled = accion;
             txtPrecio.IsEnabled = accion;
             cmbEstado.IsEnabled = accion;
         }
@@ -220,6 +203,8 @@ namespace Rapid_Plus.Views.Administrador
             HabilitarFormulario(false);
             ControlFormulario();
             LimpiarFormulario();
+            CargarEstados();
+            CargarCategorias();
         }
 
         #endregion
