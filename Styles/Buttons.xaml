@@ -20,6 +20,11 @@
         <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
     </Style>
 
+    <Style x:Key="btn-light" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBackground}" />
+    </Style>
+
     <Style x:Key="btn-outline" TargetType="Button" BasedOn="{StaticResource MaterialDesignOutlinedButton}">
         <Setter Property="FontSize" Value="18"/>
     </Style>
