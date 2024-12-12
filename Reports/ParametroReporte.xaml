@@ -5,37 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rapid_Plus.Reports"
         mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         Title="ParametroReporte" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="393*"/>
-            <ColumnDefinition Width="7*"/>
-        </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="100" Margin="50,15,0,0" VerticalAlignment="Top" Width="110" Source="/Assets/LogoN.png"/>
-        <Label Content="Reporte por fechas o categorias" 
-           HorizontalAlignment="Left" Margin="215,41,0,0" 
-           VerticalAlignment="Top" FontSize="26" Height="42"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <Image HorizontalAlignment="Left" 
+                   Height="100" 
+                   Margin="50 15"
+                   Source="/Assets/LogoN.png"/>
+            <Label Content="Reporte por fechas o categorias" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="24"/>
+        </StackPanel>
         <GroupBox Header="Valores Generales"
-                  materialDesign:ColorZoneAssist.Foreground="White"
-                  materialDesign:ColorZoneAssist.Background="{StaticResource c-grey}"
+                  Grid.Row="1"
+                  materialDesign:ColorZoneAssist.Foreground="{DynamicResource MaterialDesignPaper}"
+                  materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignBody}"
                   materialDesign:ColorZoneAssist.Mode="Custom"
-              FontSize="20"
-              Margin="0,120,0,0" Grid.ColumnSpan="2">
-            <StackPanel HorizontalAlignment="Center">
+                  FontSize="20">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Top">
                 <Button x:Name="btnReporteFecha"
-                        Foreground="White"
-                        BorderBrush="{x:Null}"
-                        Content="Imprimir Reporte por Fecha" HorizontalAlignment="Center" 
-                        VerticalAlignment="Top" FontSize="18" 
-                        Height="45" Margin="0,50,0,0" Click="btnReporteFecha_Click"/>
+                        Content="Imprimir Reporte por Fechas"
+                        Style="{StaticResource btn-base}"
+                        Margin="10 40"
+                        Click="btnReporteFecha_Click"/>
 
                 <Button x:Name="btnReporteCategoria"
-                        Foreground="White"
-                        BorderBrush="{x:Null}"
-                        Content="Imprimir Reporte por Categoria" HorizontalAlignment="Center" 
-                        VerticalAlignment="Top" FontSize="18" 
-                        Height="45" Click="btnReporteCategoria_Click" Margin="0,30,0,0"/>
+                        Content="Imprimir Reporte por Categorias"
+                        Style="{StaticResource btn-base}"
+                        Margin="10 0"
+                        Click="btnReporteCategoria_Click"/>
             </StackPanel>
         </GroupBox>
        

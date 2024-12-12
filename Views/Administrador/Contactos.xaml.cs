@@ -25,8 +25,6 @@ namespace Rapid_Plus.Views.Administrador
     /// </summary>
     public partial class Contactos : Page
     {
-        private DispatcherTimer timer;
-
         public Contactos()
         {
             InitializeComponent();
@@ -50,19 +48,6 @@ namespace Rapid_Plus.Views.Administrador
         #endregion
 
         #region METODOS PERSONALIZADOS
-
-        //private void IniciarTemporizador()
-        //{
-        //    timer = new DispatcherTimer();
-        //    timer.Interval = TimeSpan.FromSeconds(3);
-        //    timer.Tick += Timer_Tik;
-        //    timer.Start();
-        //}
-
-        //private void Timer_Tik(object sender, EventArgs e)
-        //{
-        //    MostrarUsuarios();
-        //}
 
         //Validar el formulario
         bool ValidarFormulario()
@@ -205,17 +190,18 @@ namespace Rapid_Plus.Views.Administrador
         }
 
         //Mostrar Usuarios
-        void MostrarUsuarios() 
+        async void MostrarUsuarios() 
         {
-            dgUsuarios.DataContext = UsuarioController.MostrarUsuarios();
+            var usuarios = await UsuarioController.MostrarUsuarios();
+            dgUsuarios.ItemsSource = usuarios;
         }
 
         //Metodos para cargar en los comboboxes
-        private void CargarRoles()
+        private async void CargarRoles()
         {
             using (var conDb = new SqlConnection(Properties.Settings.Default.DbRapidPlus))
             {
-                conDb.Open();
+                await conDb.OpenAsync();
                 using (var command = new SqlCommand("SELECT IdRol, Rol FROM Rol", conDb))
                 {
                     SqlDataReader dr = command.ExecuteReader();
@@ -231,11 +217,11 @@ namespace Rapid_Plus.Views.Administrador
             cmbRol.SelectedValuePath = "Id";
         }
 
-        private void CargarSexos()
+        private async void CargarSexos()
         {
             using (var conDb = new SqlConnection(Properties.Settings.Default.DbRapidPlus))
             {
-                conDb.Open();
+                await conDb.OpenAsync();
                 using (var command = new SqlCommand("SELECT IdSexo, Sexo FROM Sexo", conDb))
                 {
                     SqlDataReader dr = command.ExecuteReader();
@@ -251,11 +237,11 @@ namespace Rapid_Plus.Views.Administrador
             cmbSexo.SelectedValuePath = "Id";
         }
 
-        private void CargarEstados()
+        private async void CargarEstados()
         {
             using (var conDB = new SqlConnection(Properties.Settings.Default.DbRapidPlus))
             { 
-                conDB.Open();
+                await conDB.OpenAsync();
                 using (var command = new SqlCommand("SELECT IdEstado, Estado FROM Estado", conDB))
                 {
                     SqlDataReader dr = command.ExecuteReader();
@@ -339,7 +325,7 @@ namespace Rapid_Plus.Views.Administrador
             txtUsuario.Focus();
         }
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        private async void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             //Verificar si hay registro
             if (dgUsuarios.Items.Count > 0 && !String.IsNullOrEmpty(txtUsuario.Text))
@@ -353,7 +339,7 @@ namespace Rapid_Plus.Views.Administrador
                 )
                 {
                     idEstado = 0;
-                    if (UsuarioController.EliminarUsuario(idUsuario, idEstado) > -1)
+                    if (await UsuarioController.EliminarUsuario(idUsuario, idEstado) > -1)
                     {
                         MessageBox.Show("Registro eliminado correctamente", "Validacion",
                            MessageBoxButton.OK, MessageBoxImage.Information);
@@ -377,7 +363,7 @@ namespace Rapid_Plus.Views.Administrador
             }
         }
 
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        private async void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             string msj = null;
 
@@ -401,13 +387,13 @@ namespace Rapid_Plus.Views.Administrador
                 if (agregar)
                 {
                     idEstado = 1;
-                    idUsuario = UsuarioController.CrearUsuario(usuario, idEstado);
+                    idUsuario = await UsuarioController.CrearUsuario(usuario, idEstado);
                     msj = "Insercion correctamente";
                 }
                 else
                 {
                     usuario.EstadoId = (int)cmbEstado.SelectedValue;
-                    idUsuario = UsuarioController.EditarUsuario(usuario, idUsuario);
+                    idUsuario = await UsuarioController.EditarUsuario(usuario, idUsuario);
                     msj = "Actualizacion correctamente";
                 }
 

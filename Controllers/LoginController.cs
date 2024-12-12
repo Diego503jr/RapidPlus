@@ -20,7 +20,7 @@ namespace Rapid_Plus.Controllers
         private static string conexion = Properties.Settings.Default.DbRapidPlus;
 
         // Metodo para iniciar sesion
-        public static int Login(UsuarioModel user) 
+        public static async Task<int> Login(UsuarioModel user) 
         {
             int idusuario = -1, idrol = -1;
 
@@ -28,7 +28,7 @@ namespace Rapid_Plus.Controllers
             {
                 using (var conDB = new SqlConnection(conexion))
                 {
-                    conDB.Open();
+                    await conDB.OpenAsync();
 
                     using (var command = conDB.CreateCommand())
                     {
@@ -39,7 +39,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@CLAVE", user.Clave);
 
                         // Obtiene los valores de salida
-                        using (DbDataReader ddr = command.ExecuteReader())
+                        using (DbDataReader ddr = await command.ExecuteReaderAsync())
                         {
                             //Verifica si hay o no hay datos
                             if (ddr.HasRows)

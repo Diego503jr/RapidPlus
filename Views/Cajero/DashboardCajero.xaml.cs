@@ -38,30 +38,8 @@ namespace Rapid_Plus.Views.Cajero
         #endregion
 
 
-        #region ESTILOS
-        private void BotonCajero_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Button boton = sender as Button;
-
-            if (boton != null)
-            {
-                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
-            }
-        }
-
-        private void BotonCajero_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Button boton = sender as Button;
-
-            if (boton != null)
-            {
-                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
-            }
-        }
-        #endregion
-
-
         #region Navegación Hacia las Paginas
+
         private void btnFacturar_Click(object sender, RoutedEventArgs e)
         {
             frContent.NavigationService.Navigate(factura);
@@ -94,27 +72,31 @@ namespace Rapid_Plus.Views.Cajero
         }
 
         //Metodo para cerrar sesión
-        private void btnCerrarSesion_Click_1(object sender, RoutedEventArgs e)
+
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             if (
-              MessageBox.Show("Desea Cerrar Sesión?",
-              "Cerrar sesión",
-              MessageBoxButton.YesNo,
-              MessageBoxImage.Information) == MessageBoxResult.Yes)
+                MessageBox.Show("Desea Cerrar Sesión?",
+                "Cerrar sesión",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Information) == MessageBoxResult.Yes
+               )
             {
                 MainWindow login = new MainWindow();
                 login.Show();
                 this.Close();
             }
-
         }
-        
-        private void btnCerrarVentana_Click(object sender, RoutedEventArgs e)
+
+        private void btnMinimizar_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            WindowState = WindowState.Minimized;
         }
-
         #endregion
-
     }
 }

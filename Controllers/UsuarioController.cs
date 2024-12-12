@@ -17,7 +17,7 @@ namespace Rapid_Plus.Controllers
         private static string conexion = Properties.Settings.Default.DbRapidPlus;
 
         //Metodo para leer Usuario
-        public static List<UsuarioModel> MostrarUsuarios() 
+        public static async Task<List<UsuarioModel>> MostrarUsuarios() 
         {
             List<UsuarioModel> lstUsuarios = new List<UsuarioModel>();
 
@@ -25,51 +25,19 @@ namespace Rapid_Plus.Controllers
             {
                 using (var conDb = new SqlConnection(conexion)) 
                 {
-                    conDb.Open();
-                    using (var command = conDb.CreateCommand()) 
+                    await conDb.OpenAsync();
+
+                    using (var command = new SqlCommand("SPMOSTRARUSUARIOS", conDb)) 
                     { 
                         command.CommandType = CommandType.StoredProcedure;
-                        command.CommandText = "SPMOSTRARUSUARIOS";
 
-                        using (DbDataReader dr = command.ExecuteReader()) 
+                        using (DbDataReader dr = await command.ExecuteReaderAsync()) 
                         {
-                            while (dr.Read()) 
+                            lstUsuarios = await LeerUsuariosAsync(dr);
+
+                            if(await dr.NextResultAsync())
                             {
-                                UsuarioModel usuario = new UsuarioModel();
-                                usuario.UsuarioId = int.Parse(dr["IdUsuario"].ToString());
-                                usuario.Usuario = dr["Usuario"].ToString();
-                                usuario.Clave = dr["Clave"].ToString();
-                                usuario.Nombres = dr["NombreUsuario"].ToString();
-                                usuario.Apellidos = dr["ApellidoUsuario"].ToString();
-                                usuario.Rol = dr["Rol"].ToString();
-                                usuario.DUI = int.Parse(dr["DUI"].ToString());
-                                usuario.Sexo = dr["Sexo"].ToString();
-                                usuario.FechaNacimiento = DateTime.Parse(dr["FechaNacimiento"].ToString());
-                                usuario.Estado = dr["Estado"].ToString();
-
-                                //Agregar a la lista
-                                lstUsuarios.Add(usuario);
-                            }
-
-                            // Mover al siguiente conjunto de resultados (teléfonos)
-                            if (dr.NextResult())
-                            {
-                                // Segunda consulta: obtener los teléfonos de los usuarios
-                                while (dr.Read())
-                                {
-                                    int usuarioId = int.Parse(dr["IdUsuario"].ToString());
-                                    string telefono1 = dr["Telefono1"].ToString();
-                                    string telefono2 = dr["Telefono2"].ToString();
-
-                                    // Encontrar el usuario y asignarle el teléfono
-                                    var usuario = lstUsuarios.FirstOrDefault(u => u.UsuarioId == usuarioId);
-
-                                    if (usuario != null)
-                                    {
-                                        usuario.Telefono1 = telefono1;
-                                        usuario.Telefono2 = telefono2;
-                                    }
-                                }
+                                await LeerTelefonosAsync(dr, lstUsuarios);
                             }
                         }
                     }
@@ -83,15 +51,60 @@ namespace Rapid_Plus.Controllers
             return lstUsuarios;
         }
 
+        // Método auxiliar para leer usuarios
+        private static async Task<List<UsuarioModel>> LeerUsuariosAsync(DbDataReader dr)
+        {
+            List<UsuarioModel> usuarios = new List<UsuarioModel>();
+
+            while (await dr.ReadAsync())
+            {
+                UsuarioModel usuario = new UsuarioModel
+                {
+                    UsuarioId = Convert.ToInt32(dr["IdUsuario"]),
+                    Usuario = dr["Usuario"].ToString(),
+                    Clave = dr["Clave"].ToString(),
+                    Nombres = dr["NombreUsuario"].ToString(),
+                    Apellidos = dr["ApellidoUsuario"].ToString(),
+                    Rol = dr["Rol"].ToString(),
+                    DUI = Convert.ToInt32(dr["DUI"]),
+                    Sexo = dr["Sexo"].ToString(),
+                    FechaNacimiento = Convert.ToDateTime(dr["FechaNacimiento"]),
+                    Estado = dr["Estado"].ToString()
+                };
+                usuarios.Add(usuario);
+            }
+
+            return usuarios;
+        }
+
+        // Método auxiliar para leer teléfonos
+        private static async Task LeerTelefonosAsync(DbDataReader dr, List<UsuarioModel> usuarios)
+        {
+            while (await dr.ReadAsync())
+            {
+                int usuarioId = Convert.ToInt32(dr["IdUsuario"]);
+                string telefono1 = dr["Telefono1"].ToString();
+                string telefono2 = dr["Telefono2"].ToString();
+
+                // Buscar el usuario y asignarle los teléfonos
+                var usuario = usuarios.FirstOrDefault(u => u.UsuarioId == usuarioId);
+                if (usuario != null)
+                {
+                    usuario.Telefono1 = telefono1;
+                    usuario.Telefono2 = telefono2;
+                }
+            }
+        }
+
         //Metodo para crear Usuario
-        public static int CrearUsuario(UsuarioModel user, int idEstado) 
+        public static async Task<int> CrearUsuario(UsuarioModel user, int idEstado) 
         {
             int res = -1;
             try
             {
                 using (var conDb = new SqlConnection(conexion)) 
                 {
-                    conDb.Open();
+                    await conDb.OpenAsync();
 
                     using (var command = conDb.CreateCommand()) 
                     {
@@ -110,7 +123,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@Telefono1", user.Telefono1);
                         command.Parameters.AddWithValue("@Telefono2", user.Telefono2);
 
-                        res = command.ExecuteNonQuery();
+                        res = await command.ExecuteNonQueryAsync();
                         //Si la res es menor a 0 es porque ya existe el registro
                         if (res < 0) 
                         {
@@ -129,15 +142,15 @@ namespace Rapid_Plus.Controllers
         }
 
         //Metodo para editar Usuario
-        public static int EditarUsuario(UsuarioModel user, int idUsuario) 
+        public static async Task<int> EditarUsuario(UsuarioModel user, int idUsuario) 
         {
             int res = -1;
 
             try
             {
-                using (var conDb = new SqlConnection(conexion)) 
+                using (var conDb = new SqlConnection(conexion))
                 {
-                    conDb.Open();
+                    await conDb.OpenAsync();
 
                     using (var command = conDb.CreateCommand()) 
                     {
@@ -157,7 +170,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@Telefono1", user.Telefono1);
                         command.Parameters.AddWithValue("@Telefono2", user.Telefono2);
 
-                        res = command.ExecuteNonQuery();
+                        res = await command.ExecuteNonQueryAsync();
 
                         //Si la res es menor a 0 es porque ya existe el registro
                         if (res < 0)
@@ -177,7 +190,7 @@ namespace Rapid_Plus.Controllers
         }
 
         //Metodo para eliminar Usuario
-        public static int EliminarUsuario(int idUsuario, int idEstado) 
+        public static async Task<int> EliminarUsuario(int idUsuario, int idEstado) 
         { 
             int res = -1;
 
@@ -185,7 +198,7 @@ namespace Rapid_Plus.Controllers
             {
                 using (var conDB = new SqlConnection(conexion)) 
                 {
-                    conDB.Open();
+                    await conDB.OpenAsync();
 
                     using (var command = conDB.CreateCommand()) 
                     {
@@ -195,7 +208,7 @@ namespace Rapid_Plus.Controllers
                         command.Parameters.AddWithValue("@IdUsuario", idUsuario);
                         command.Parameters.AddWithValue("@IdEstado", idEstado);
 
-                        res = command.ExecuteNonQuery();
+                        res = await command.ExecuteNonQueryAsync();
                     }
                 }
             }

@@ -6,36 +6,43 @@
         xmlns:local="clr-namespace:Rapid_Plus.Reports"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
-        Title="ReporteCategoria" Height="450" Width="800">
+        Title="ReporteCategoria" Height="450" Width="600">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="393*"/>
-            <ColumnDefinition Width="7*"/>
-        </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="100" Margin="50,15,0,0" VerticalAlignment="Top" Width="110" Source="/Assets/LogoN.png"/>
-        <Label Content="Reporte por categorias" 
-        HorizontalAlignment="Center" Margin="0,41,0,0" 
-        VerticalAlignment="Top" FontSize="26" Height="42"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <Image HorizontalAlignment="Left" 
+                   Height="100" 
+                   Margin="50 15"
+                   Source="/Assets/LogoN.png"/>
+            <Label Content="Reporte por Categorias" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="24"/>
+        </StackPanel>
+
         <GroupBox Header="Valores Generales"
-                  materialDesign:ColorZoneAssist.Foreground="White"
-                  materialDesign:ColorZoneAssist.Background="{StaticResource c-grey}"
+                  Grid.Row="1"
+                  materialDesign:ColorZoneAssist.Foreground="{DynamicResource MaterialDesignPaper}"
+                  materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignBody}"
                   materialDesign:ColorZoneAssist.Mode="Custom"
-       FontSize="20"
-       Margin="0,120,0,0" Grid.ColumnSpan="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <StackPanel>
-                    <TextBlock Text="Seleccionar Categoria" HorizontalAlignment="Center" Margin="30,30"/>
-                    <ComboBox Name="cmbCategoria"  Width="150"/>
-                </StackPanel>
+                  FontSize="20">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Top">
+                <ComboBox Name="cmbCategoria"
+                          materialDesign:HintAssist.Hint="Seleccione la categoria"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          Width="230"
+                          Margin="40"/>
+                <Button x:Name="btnGnRCategoria"
+                        Content="Imprimir Reporte"
+                        Style="{StaticResource btn-base}"
+                        Click="btnGnRCategoria_Click"/>
             </StackPanel>
         </GroupBox>
-        <Button x:Name="btnGnRCategoria"
-                Foreground="White"
-                BorderBrush="{x:Null}"
-                Content="Imprimir Reporte" HorizontalAlignment="Left" 
-                Margin="306,350,0,0" 
-                VerticalAlignment="Top" 
-                FontSize="18" Height="45" 
-                Click="btnGnRCategoria_Click"/>
+        
     </Grid>
 </Window>

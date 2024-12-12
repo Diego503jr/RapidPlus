@@ -7,156 +7,28 @@
       xmlns:local="clr-namespace:Rapid_Plus.Views.Administrador"
       x:Class="Rapid_Plus.Views.Administrador.Contactos"
       mc:Ignorable="d"
+      Title="Contactos" 
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontSize="18"
-      d:DesignHeight="800" d:DesignWidth="1000"
-      Title="Contactos" 
       Loaded="Page_Loaded">
-    <Grid>
+    <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
         <Label Grid.Row="0"
                Content="Usuarios" 
-               FontSize="24" 
-               Margin="50 10"/>
-        <materialDesign:Card Grid.Row="2"
-                             Style="{StaticResource card-primary}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0"
-                       Content="Formulario Usuario"
-                       FontSize="18"
-                       FontWeight="Bold"
-                       Margin="20 10"/>
-                <TextBox x:Name="txtUsuario"
-                         Margin="10 5"
-                         Grid.Row="1"
-                         Grid.Column="0"
-                         materialDesign:HintAssist.Hint="Usuario"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <PasswordBox x:Name="txtClave"
-                             Margin="10 5" 
-                             Grid.Row="1"
-                             Grid.Column="1"
-                             materialDesign:HintAssist.Hint="Clave"
-                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-                <TextBox x:Name="txtNombre"
-                             Margin="10 5"  
-                         Grid.Row="1"
-                         Grid.Column="2"
-                         materialDesign:HintAssist.Hint="Nombres"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                         PreviewTextInput="txtNombre_PreviewTextInput"/>
-                <TextBox x:Name="txtApellido" 
-                             Margin="10 5" 
-                         Grid.Row="1"
-                         Grid.Column="3"
-                         materialDesign:HintAssist.Hint="Apellidos"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                         PreviewTextInput="txtApellido_PreviewTextInput"/>
-                <ComboBox x:Name="cmbRol"
-                             Margin="10 5"  
-                         Grid.Row="3"
-                         Grid.Column="2"
-                          materialDesign:HintAssist.Hint="Rol"
-                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <TextBox x:Name="txtDUI" 
-                             Margin="10 5"  
-                         Grid.Row="2"
-                         Grid.Column="0"
-                         materialDesign:HintAssist.Hint="DUI"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <ComboBox x:Name="cmbSexo"
-                             Margin="10 5"   
-                         Grid.Row="2"
-                         Grid.Column="1"
-                          materialDesign:HintAssist.Hint="Sexo"
-                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <DatePicker x:Name="dtpFechaNacimiento"  
-                             Margin="10 5" 
-                         Grid.Row="2"
-                         Grid.Column="2"
-                            materialDesign:HintAssist.Hint="Fecha Nacimiento"
-                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-                <ComboBox x:Name="cmbEstado"  
-                             Margin="10 5" 
-                         Grid.Row="2"
-                         Grid.Column="3"
-                          materialDesign:HintAssist.Hint="Estado"
-                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <TextBox x:Name="txtTelefono1" 
-                             Margin="10 5"   
-                         Grid.Row="3"
-                         Grid.Column="1"
-                         materialDesign:HintAssist.Hint="Telefono1"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <TextBox x:Name="txtTelefono2"  
-                             Margin="10 5" 
-                         Grid.Row="3"
-                         Grid.Column="0"
-                         materialDesign:HintAssist.Hint="Telefono2"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-
-                <Button x:Name="btnGuardar"
-                        Grid.Column="2"
-                        Grid.Row="4"
-                        Height="35"
-                        Margin="20 10"
-                        Style="{StaticResource btn-success}"
-                        FontSize="18" 
-                        Click="btnGuardar_Click">
-                    <WrapPanel>
-                        <materialDesign:PackIcon Kind="ContentSaveSettings"
-                                                 VerticalAlignment="Stretch"
-                                                 Height="20"
-                                                 Width="20"/>
-                        <TextBlock Text="Guardar"
-                                   Margin="10 0"/>
-                    </WrapPanel>
-                </Button>
-                <Button x:Name="btnCancelar" 
-                        Grid.Column="3"
-                        Grid.Row="4"
-                        Height="35"
-                        Margin="20 10"
-                        Style="{StaticResource btn-danger}"
-                        Click="btnCancelar_Click">
-                    <WrapPanel>
-                        <materialDesign:PackIcon Kind="Cancel"
-                                                 VerticalAlignment="Stretch"
-                                                 Height="20"
-                                                 Width="20"/>
-                        <TextBlock Text="Cancelar"
-                                   Margin="10 0"/>
-                    </WrapPanel>
-                </Button>
-            </Grid>
-        </materialDesign:Card>
+               FontSize="24"
+               Width="950"/>
+        
         <Grid Grid.Row="1"
-              Width="900" Height="50">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="41*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Height="50" 
-                        HorizontalAlignment="Left" 
-                        Orientation="Horizontal" Grid.Column="1" Margin="124,0,0,0">
+              Width="950" 
+              Height="50">
+            <StackPanel HorizontalAlignment="Right" 
+                        Orientation="Horizontal">
                 <Button x:Name="btnNuevo" 
                         Style="{StaticResource btn-base}"
                         Click="btnNuevo_Click">
@@ -165,7 +37,7 @@
                                                  VerticalAlignment="Stretch"
                                                  Height="20"
                                                  Width="20"/>
-                        <TextBlock Text="Agregar Nuevo Usuario"
+                        <TextBlock Text="Agregar Usuario"
                                    Margin="10 0"/>
                     </WrapPanel>
                 </Button>
@@ -198,15 +70,138 @@
                 </Button>
             </StackPanel>
         </Grid>
+        
+        <materialDesign:Card Grid.Row="2"
+                             Style="{StaticResource card-primary}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Label Grid.Row="0"
+                       Content="Formulario Usuario"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Margin="20 10"/>
+                <TextBox x:Name="txtUsuario"
+                         Margin="10 5"
+                         Grid.Row="1"
+                         Grid.Column="0"
+                         materialDesign:HintAssist.Hint="Usuario"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <PasswordBox x:Name="txtClave"
+                             Margin="10 5" 
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             materialDesign:HintAssist.Hint="Clave"
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <TextBox x:Name="txtNombre"
+                             Margin="10 5"  
+                             Grid.Row="1"
+                             Grid.Column="2"
+                             materialDesign:HintAssist.Hint="Nombres"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="txtApellido" 
+                             Margin="10 5" 
+                             Grid.Row="1"
+                             Grid.Column="3"
+                             materialDesign:HintAssist.Hint="Apellidos"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="txtDUI" 
+                             Margin="10 5"  
+                             Grid.Row="2"
+                             Grid.Column="0"
+                             materialDesign:HintAssist.Hint="DUI"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <ComboBox x:Name="cmbSexo"
+                             Margin="10 5"   
+                             Grid.Row="2"
+                             Grid.Column="1"
+                              materialDesign:HintAssist.Hint="Sexo"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                <DatePicker x:Name="dtpFechaNacimiento"  
+                             Margin="10 5" 
+                             Grid.Row="2"
+                             Grid.Column="2"
+                            materialDesign:HintAssist.Hint="Fecha Nacimiento"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                <ComboBox x:Name="cmbEstado"  
+                             Margin="10 5" 
+                             Grid.Row="2"
+                             Grid.Column="3"
+                              materialDesign:HintAssist.Hint="Estado"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                <TextBox x:Name="txtTelefono1" 
+                             Margin="10 5"   
+                             Grid.Row="3"
+                             Grid.Column="0"
+                             materialDesign:HintAssist.Hint="Telefono1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="txtTelefono2"  
+                             Margin="10 5" 
+                             Grid.Row="3"
+                             Grid.Column="1"
+                             materialDesign:HintAssist.Hint="Telefono2"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <ComboBox x:Name="cmbRol"
+                             Margin="10 5"  
+                             Grid.Row="3"
+                             Grid.Column="2"
+                              materialDesign:HintAssist.Hint="Rol"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                <Button x:Name="btnGuardar"
+                        Grid.Column="2"
+                        Grid.Row="4"
+                        Margin="20 10"
+                        Style="{StaticResource btn-success}"
+                        Click="btnGuardar_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="ContentSaveSettings"
+                                                 VerticalAlignment="Stretch"
+                                                 Height="20"
+                                                 Width="20"/>
+                        <TextBlock Text="Guardar"
+                                   Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
+                <Button x:Name="btnCancelar" 
+                        Grid.Column="3"
+                        Grid.Row="4"
+                        Margin="20 10"
+                        Style="{StaticResource btn-danger}"
+                        Click="btnCancelar_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="Cancel"
+                                                 VerticalAlignment="Stretch"
+                                                 Height="20"
+                                                 Width="20"/>
+                        <TextBlock Text="Cancelar"
+                                   Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
+            </Grid>
+        </materialDesign:Card>
+        
         <DataGrid Name="dgUsuarios"
+                  HorizontalAlignment="Center"
                   FontSize="16"
                   Grid.Row="3"
                   ItemsSource="{Binding}" 
                   AutoGenerateColumns="False" 
                   IsReadOnly="True" 
-                  SelectionChanged="dgUsuarios_SelectionChanged" 
-                  Width="950" Height="250" 
-                  Background="{x:Null}">
+                  Width="1200" Height="250" 
+                  Background="{x:Null}"
+                  SelectionChanged="dgUsuarios_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario}"/>
                 <DataGridTextColumn Header="Clave" Binding="{Binding Clave}" Visibility="Hidden"/>
