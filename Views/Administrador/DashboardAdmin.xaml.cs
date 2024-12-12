@@ -44,29 +44,6 @@ namespace Rapid_Plus.Views.Administrador
             crearOrden = new CrearOrden(usuarioId);
         }
 
-        #region METODOS ESTILOS
-
-        private void BotonAdmin_MouseEnter(object sender, MouseEventArgs e)
-        {
-            //Button boton = sender as Button;
-
-            //if (boton != null)
-            //{
-            //    boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
-            //}
-        }
-
-        private void BotonAdmin_MouseLeave(object sender, MouseEventArgs e)
-        {
-            //Button boton = sender as Button;
-
-            //if (boton != null)
-            //{
-            //    boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
-            //}
-        }
-
-        #endregion
 
         #region METODOS FORMULARIO
 
