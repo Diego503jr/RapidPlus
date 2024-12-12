@@ -6,38 +6,60 @@
         xmlns:local="clr-namespace:Rapid_Plus.Reports"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ReporteFechas" Height="450" Width="800">
+        Title="ReporteFechas" Height="450" Width="700">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="393*"/>
-            <ColumnDefinition Width="7*"/>
-        </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="100" Margin="50,15,0,0" VerticalAlignment="Top" Width="110" Source="/Assets/LogoN.png"/>
-        <Label Content="Reporte por fechas" 
-       HorizontalAlignment="Left" Margin="288,41,0,0" 
-       VerticalAlignment="Top" FontSize="26" Height="42"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <Image HorizontalAlignment="Left" 
+                   Height="100" 
+                   Margin="50 15"
+                   Source="/Assets/LogoN.png"/>
+            <Label Content="Reporte por Fechas" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="24"/>
+        </StackPanel>
+
         <GroupBox Header="Valores Generales"
-                  materialDesign:ColorZoneAssist.Foreground="White"
-                  materialDesign:ColorZoneAssist.Background="{StaticResource c-grey}"
+                  Grid.Row="1"
+                  materialDesign:ColorZoneAssist.Foreground="{DynamicResource MaterialDesignPaper}"
+                  materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignBody}"
                   materialDesign:ColorZoneAssist.Mode="Custom"
-                  FontSize="20"
-                  Margin="0,120,0,0" Grid.ColumnSpan="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <StackPanel>
-                    <TextBlock Text="Seleccionar Fecha Inicio" HorizontalAlignment="Center" Margin="30,30"/>
-                    <DatePicker x:Name="dtpInicio" Width="150"/>
+                  FontSize="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="0"
+                            HorizontalAlignment="Center">
+                    <DatePicker x:Name="dtpInicio" 
+                                Margin="25 10"
+                                materialDesign:HintAssist.Hint="Fecha de Inicio"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                Width="250"/>
+
+                    <DatePicker x:Name="dtpFin" 
+                                Margin="25 10"
+                                materialDesign:HintAssist.Hint="Fecha de Finalizacion"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                Width="250"/>
                 </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Seleccionar Fecha Fin" HorizontalAlignment="Center" Margin="30,30"/>
-                    <DatePicker x:Name="dtpFin" Width="150"/>
-                </StackPanel>
-            </StackPanel>
+                <Button x:Name="btnGnRFecha"
+                        Grid.Row="1"
+                        Margin="10"
+                        Content="Imprimir Reporte"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource btn-base}"
+                        Click="btnGnRFecha_Click"/>
+            </Grid>
         </GroupBox>
-        <Button x:Name="btnGnRFecha"
-                BorderBrush="{x:Null}"
-                Foreground="White"
-                Content="Imprimir Reporte" HorizontalAlignment="Left" 
-                Margin="306,350,0,0" VerticalAlignment="Top" 
-                FontSize="18" Height="45" Click="btnGnRFecha_Click"/>
+        
     </Grid>
 </Window>
