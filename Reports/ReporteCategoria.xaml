@@ -31,7 +31,12 @@
                   materialDesign:ColorZoneAssist.Mode="Custom"
                   FontSize="20">
             <StackPanel HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Top">
+                <ComboBox Name="cmbCategoria"
+                          materialDesign:HintAssist.Hint="Seleccione la categoria"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          Width="230"
+                          Margin="40"/>
                 <Button x:Name="btnGnRCategoria"
                         Content="Imprimir Reporte"
                         Style="{StaticResource btn-base}"
