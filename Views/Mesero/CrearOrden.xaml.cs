@@ -36,7 +36,8 @@ namespace Rapid_Plus.Views.Mesero
 
         #region Declaracion de variables locales
         private int idOrden = 0;
-        private int idCliente = -1;
+        private int idCliente = 0;
+        private int idEstadoMesa = 0;
         private int usuarioId;
         private bool agregando = false;
         private DispatcherTimer timer;
@@ -44,32 +45,12 @@ namespace Rapid_Plus.Views.Mesero
 
         #region MÉTODOS PERSONALIZADOS
         //Llenar combobox de numero de mesa
-        private int CargarNumeroMesa()
+        private void CargarNumeroMesa()
         {
-            int numMesas = -1;
-            using (var conDb = new SqlConnection(Properties.Settings.Default.DbRapidPlus))
-            {
-                conDb.Open();
-                using (var command = new SqlCommand("SELECT IdMesa, Mesa FROM Mesa WHERE IdEstado = 1", conDb)) 
-                {
-                    SqlDataReader dr = command.ExecuteReader();
-                    var mesas = new List<dynamic>();
-                    while (dr.Read())
-                    {
-                        mesas.Add(new { Id = dr.GetInt32(0), Mesa = dr.GetInt32(1) }); 
-                    }
-
-                    //Cuenta la cantidad de elementos (mesas) encontrados 
-                    cmbMesa.ItemsSource = mesas;
-                    numMesas = mesas.Count;
-                }
-            }
-
-            //Define que campos mostrar
-            cmbMesa.DisplayMemberPath = "Mesa";  
-            cmbMesa.SelectedValuePath = "Id";
-
-            return numMesas ;
+            idEstadoMesa = 1;
+            cmbMesa.ItemsSource = OrdenController.ObtenerMesas(idEstadoMesa);
+            cmbMesa.DisplayMemberPath = "Mesa";
+            cmbMesa.SelectedValuePath = "Mesa";  
         }
 
         //Validar campos llenos
@@ -178,7 +159,7 @@ namespace Rapid_Plus.Views.Mesero
         private void cmbMesa_DropDownOpened(object sender, EventArgs e)
         {
             //Si no existen elementos en el combobox
-            if (CargarNumeroMesa() <= 0)
+            if (cmbMesa.Items.Count  <= 0)
             {
                 MessageBox.Show("No hay mesas disponibles", "Mesas", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }

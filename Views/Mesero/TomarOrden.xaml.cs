@@ -1,6 +1,7 @@
 ﻿using Rapid_Plus.Controllers;
 using Rapid_Plus.Models;
 using Rapid_Plus.Models.Mesero;
+using Rapid_Plus.Views.JefeDeCocina;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -35,12 +36,13 @@ namespace Rapid_Plus.Views.Mesero
         }
 
         #region VARIABLES LOCALES
-        private int idMesa = -1;
-        private int idOrden = -1;
-        private int idplatillo = -1; //Datagrid de platillos
-        private int idPlatilloOrden = -1; //Para datagrid platillos por orden
-        private int idCategoria = -1;
-        private int idDetalleOrden = -1;
+        private int idMesa = 0;
+        private int idOrden = 0;
+        private int idplatillo = 0; //Datagrid de platillos
+        private int idPlatilloOrden = 0; //Para datagrid platillos por orden
+        private int idCategoria = 0;
+        private int idDetalleOrden = 0;
+        private int idEstadoMesa = 0;
         private bool agregando = false, editando = false;
         private DispatcherTimer timer;
 
@@ -48,31 +50,12 @@ namespace Rapid_Plus.Views.Mesero
 
         #region MÉTODOS PERSONALIZADOS
         //Muestra mesas asignadas (ocupadas)
-        private int CargarNumeroMesa()
+        private void CargarNumeroMesa()
         {
-            int numMesas = -1;
-            using (var conDb = new SqlConnection(Properties.Settings.Default.DbRapidPlus))
-            {
-                conDb.Open();
-                using (var command = new SqlCommand("SELECT IdMesa, Mesa FROM Mesa WHERE IdEstado = 2", conDb))
-                {
-                    SqlDataReader dr = command.ExecuteReader();
-                    var mesas = new List<dynamic>();
-                    while (dr.Read())
-                    {
-                        mesas.Add(new { Id = dr.GetInt32(0), Mesa = dr.GetInt32(1) });
-                    }
-
-                    cmbMesa.ItemsSource = mesas;
-                    numMesas = mesas.Count;
-                }
-            }
-
-            //Define que campos mostrar
+            idEstadoMesa = 2;
+            cmbMesa.ItemsSource = OrdenController.ObtenerMesas(idEstadoMesa);
             cmbMesa.DisplayMemberPath = "Mesa";
-            cmbMesa.SelectedValuePath = "Id";
-
-            return numMesas;
+            cmbMesa.SelectedValuePath = "Mesa";
         }
 
         //Muestra categorías de platillos
@@ -316,7 +299,7 @@ namespace Rapid_Plus.Views.Mesero
         private void cmbMesa_DropDownOpened(object sender, EventArgs e)
         {
             //Si no existen elementos en el combobox
-            if (CargarNumeroMesa() <= 0)
+            if (cmbMesa.Items.Count  <= 0)
             {
                 MessageBox.Show("No hay mesas asignadas", "Mesas", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
