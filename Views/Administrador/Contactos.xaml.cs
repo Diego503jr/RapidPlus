@@ -190,9 +190,10 @@ namespace Rapid_Plus.Views.Administrador
         }
 
         //Mostrar Usuarios
-        void MostrarUsuarios() 
+        async void MostrarUsuarios() 
         {
-            dgUsuarios.DataContext = UsuarioController.MostrarUsuarios();
+            var usuarios = await UsuarioController.MostrarUsuarios();
+            dgUsuarios.ItemsSource = usuarios;
         }
 
         //Metodos para cargar en los comboboxes
