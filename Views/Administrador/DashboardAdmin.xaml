@@ -24,7 +24,11 @@
                                  UniformCornerRadius="15"
                                  MinWidth="40">
                 <Grid>
-                    <StackPanel>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
                         <Button Name="btnUsuario"
                                 ToolTip="Usuarios"
                                 Margin="0,50,0,0"

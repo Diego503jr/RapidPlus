@@ -26,22 +26,14 @@ namespace Rapid_Plus.Views.Administrador
 
         #region INSTANCIAS DE LAS PAGINAS
         Contactos contacto = new Contactos();
-        Menu menu = new Menu();
-        Configuraciones configuracion = new Configuraciones();
-        TomarOrden tomarOrden = new TomarOrden();
-        VerOrden verOrden = new VerOrden();
-        private CrearOrden crearOrden;
-        GestionClientes clientes = new GestionClientes();
-        VerOrdenesT verOrdenes = new VerOrdenesT();
-        FacturarOrden factura = new FacturarOrden();
-        EstadoOrden estadoOrden = new EstadoOrden();
+        int idUsuario = -1;
 
         #endregion
 
         public DashboardAdmin(int usuarioId)
         {
+            this.idUsuario = usuarioId;
             InitializeComponent();
-            crearOrden = new CrearOrden(usuarioId);
             LoadDarkMode();
         }
 
@@ -97,6 +89,7 @@ namespace Rapid_Plus.Views.Administrador
 
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
+            Menu menu = new Menu();
             frContent.NavigationService.Navigate(menu);
         }
 
@@ -107,11 +100,13 @@ namespace Rapid_Plus.Views.Administrador
 
         private void btnMas_Click(object sender, RoutedEventArgs e)
         {
+            Configuraciones configuracion = new Configuraciones();
             frContent.NavigationService.Navigate(configuracion);
         }
 
         private void btnOrdenesFinal_Click(object sender, RoutedEventArgs e)
         {
+            VerOrdenesT verOrdenes = new VerOrdenesT();
             frContent.NavigationService.Navigate(verOrdenes);
         }
 
@@ -123,32 +118,37 @@ namespace Rapid_Plus.Views.Administrador
 
         private void btnTomarOrden_Click(object sender, RoutedEventArgs e)
         {
+            CrearOrden crearOrden = new CrearOrden(idUsuario);
             frContent.NavigationService.Navigate(crearOrden);
         }
 
         private void btnVerOrden_Click(object sender, RoutedEventArgs e)
         {
-
+            VerOrden verOrden = new VerOrden();
             frContent.NavigationService.Navigate(verOrden);
         }
 
         private void btnGestionar_Click(object sender, RoutedEventArgs e)
         {
+            TomarOrden tomarOrden = new TomarOrden();
             frContent.NavigationService.Navigate(tomarOrden);
         }
 
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
+            GestionClientes clientes = new GestionClientes();
             frContent.NavigationService.Navigate(clientes);
         }
 
         private void btnOrdenes_Click(object sender, RoutedEventArgs e)
         {
+            EstadoOrden estadoOrden = new EstadoOrden();
             frContent.NavigationService.Navigate(estadoOrden);
         }
 
         private void btnFacturar_Click(object sender, RoutedEventArgs e)
         {
+            FacturarOrden factura = new FacturarOrden();
             frContent.NavigationService.Navigate(factura);
         }
 
@@ -170,7 +170,6 @@ namespace Rapid_Plus.Views.Administrador
                 this.Close();
             }
         }
-
 
         #endregion
 
