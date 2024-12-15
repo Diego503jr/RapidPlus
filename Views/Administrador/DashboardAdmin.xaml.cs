@@ -24,7 +24,7 @@ namespace Rapid_Plus.Views.Administrador
     public partial class DashboardAdmin : Window
     {
 
-        #region INSTANCIAS DE LAS PAGINAS
+        #region DECLARACION DE VARIABLES Y CLASES
         private Contactos contacto;
         int idUsuario = -1;
 
@@ -32,9 +32,9 @@ namespace Rapid_Plus.Views.Administrador
 
         public DashboardAdmin(int usuarioId)
         {
-            this.idUsuario = usuarioId;
             InitializeComponent();
             LoadDarkMode();
+            this.idUsuario = usuarioId;
         }
 
         #region METODOS MODO OSCURO
