@@ -38,25 +38,24 @@
             <StackPanel Grid.Row="1"
                         Orientation="Vertical">
                 <TextBox x:Name="txtCorreo"
+                         Foreground="White"
                          Margin="40 10"
-                         Background="White" 
                          materialDesign:HintAssist.Hint="Usuario"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <Grid Margin="40 10">
                     <PasswordBox x:Name="txtPassword"
-                                 Background="White" 
+                                 Foreground="White"
                                  materialDesign:HintAssist.Hint="Contraseña"
                                  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
                     <!-- Campo de contraseña visible (inicialmente oculto) -->
                     <TextBox x:Name="txtPasswordVisible"
-                             Background="White"  
+                             Foreground="White"
                              materialDesign:HintAssist.Hint="Contraseña"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                              Visibility="Collapsed" />
                     <Button x:Name="btnVisualizar" 
                             Width="50" Height="50"
-                            Background="{x:Null}" 
-                            BorderBrush="{x:Null}"
+                    Style="{StaticResource btn-light}"
                             HorizontalAlignment="Right"
                             PreviewMouseDown="btnVisualizar_MouseDown" 
                             PreviewMouseUp="btnVisualizar_MouseUp">
@@ -98,7 +97,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Button x:Name="btnCerrarLogin"
-                    Style="{StaticResource btn-base}"
+                    Style="{StaticResource btn-dark}"
                     Cursor="Hand"
                     Grid.Row="0"
                     Height="40" Width="50" 
