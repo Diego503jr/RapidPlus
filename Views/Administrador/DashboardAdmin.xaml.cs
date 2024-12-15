@@ -25,7 +25,7 @@ namespace Rapid_Plus.Views.Administrador
     {
 
         #region INSTANCIAS DE LAS PAGINAS
-        Contactos contacto = new Contactos();
+        private Contactos contacto;
         int idUsuario = -1;
 
         #endregion
@@ -84,6 +84,11 @@ namespace Rapid_Plus.Views.Administrador
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (contacto == null) // Inicializar solo si es necesario
+            {
+                contacto = new Contactos();
+            }
+
             frContent.NavigationService.Navigate(contacto);
         }
 
@@ -95,6 +100,10 @@ namespace Rapid_Plus.Views.Administrador
 
         private void btnUsuario_Click(object sender, RoutedEventArgs e)
         {
+            if (contacto == null) // Inicializar solo si es necesario
+            {
+                contacto = new Contactos();
+            }
             frContent.NavigationService.Navigate(contacto);
         }
 
