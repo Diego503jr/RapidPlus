@@ -22,7 +22,12 @@
 
     <Style x:Key="btn-light" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
         <Setter Property="FontSize" Value="18"/>
-        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBackground}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="btn-dark" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="Black" />
     </Style>
 
     <Style x:Key="btn-outline" TargetType="Button" BasedOn="{StaticResource MaterialDesignOutlinedButton}">
