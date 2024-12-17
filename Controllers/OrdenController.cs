@@ -87,7 +87,7 @@ namespace Rapid_Plus.Controllers
                                 OrdenesModel ordenes = new OrdenesModel();
                                 ordenes.IdOrden = int.Parse(dr["IDORDEN"].ToString());
                                 ordenes.Cantidad = int.Parse(dr["CANTIDAD"].ToString());
-                                ordenes.Orden = dr["PLATILLO"].ToString();
+                                ordenes.NombrePlatillo = dr["PLATILLO"].ToString();
                                 ordenes.Mesa = int.Parse(dr["MESA"].ToString()); //Número de mesa
                                 ordenes.EstadoOrden = dr["ESTADOORDEN"].ToString();
 
@@ -143,8 +143,9 @@ namespace Rapid_Plus.Controllers
                                 ordenes.IdPlatilloOrden = int.Parse(dr["IDPLATILLOORDEN"].ToString());
                                 ordenes.IdDetalleOrden = int.Parse(dr["IDDETALLEORDEN"].ToString());
                                 ordenes.NombrePlatillo = dr["PLATILLO"].ToString();
-                                ordenes.DescripcionPlatillo = dr["DESCRIPCION"].ToString();
+                                ordenes.Orden = dr["DESCRIPCION"].ToString();
                                 ordenes.IdMesa = int.Parse(dr["MESA"].ToString());
+                                ordenes.Mesa = int.Parse(dr["NUMMESA"].ToString());
                                 ordenes.Cantidad = int.Parse(dr["CANTIDAD"].ToString());
                                 ordenes.EstadoOrden = dr["ESTADOORDEN"].ToString();
 

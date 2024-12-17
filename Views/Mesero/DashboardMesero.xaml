@@ -98,29 +98,29 @@
                             Margin="20,0,0,0"/>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Center" 
-                             HorizontalAlignment="Right"
-                             Orientation="Horizontal">
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
                         <Button Name="btnMinimizar" 
-                             Height="40" Width="50" 
-                             Margin="0,0,10,0"
-                             Style="{StaticResource btn-outline}"
-                             Cursor="Hand" Click="btnMinimizar_Click" >
+                                Height="40" Width="50" 
+                                Margin="0,0,10,0"
+                                Style="{StaticResource btn-base}"
+                                Cursor="Hand" Click="btnMinimizar_Click">
                             <materialDesign:PackIcon Kind="WindowMinimize"
-                                                  Height="40"
-                                                  Width="40" 
-                                                  VerticalAlignment="Center" 
-                                                  HorizontalAlignment="Center"/>
+                                                     Height="40"
+                                                     Width="40" 
+                                                     VerticalAlignment="Center" 
+                                                     HorizontalAlignment="Center"/>
                         </Button>
                         <Button Name="btnCerrar" 
-                             Height="40" Width="50" 
-                             Margin="0,0,20,0"
-                             Style="{StaticResource btn-outline}"
-                             Cursor="Hand" Click="btnCerrar_Click">
+                                Height="40" Width="50" 
+                                Margin="0,0,20,0"
+                                Style="{StaticResource btn-base}"
+                                Cursor="Hand" Click="btnCerrar_Click">
                             <materialDesign:PackIcon Kind="Close"
-                                                  Height="40"
-                                                  Width="40" 
-                                                  VerticalAlignment="Center" 
-                                                  HorizontalAlignment="Center"/>
+                                                     Height="40"
+                                                     Width="40" 
+                                                     VerticalAlignment="Center" 
+                                                     HorizontalAlignment="Center"/>
                         </Button>
                     </StackPanel>
                 </Grid>

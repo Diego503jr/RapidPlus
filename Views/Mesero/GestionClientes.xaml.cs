@@ -43,6 +43,7 @@ namespace Rapid_Plus.Views.Mesero
         {
             txtApellido.Clear();
             txtNombre.Clear();
+            txtFiltro.Clear();
             dgClientes.SelectedIndex = -1;
         }
 
@@ -168,8 +169,13 @@ namespace Rapid_Plus.Views.Mesero
         //Refrescar página
         private void Timer_Tik(object sender, EventArgs e)
         {
-            MostrarClientes();
+            if (string.IsNullOrEmpty(txtFiltro.Text)){
+                MostrarClientes();
+            }
+            
         }
+
+        #endregion
 
         //Acciones con botones
         #region BOTONES
@@ -248,8 +254,6 @@ namespace Rapid_Plus.Views.Mesero
                 ControlAcciones();
             }
         }
-        #endregion
-       
         #endregion
     }
 }

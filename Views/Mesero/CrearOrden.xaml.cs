@@ -106,7 +106,6 @@ namespace Rapid_Plus.Views.Mesero
             txtNombre.IsEnabled = false;
             txtApellido.IsEnabled = false;
             btnCrear.IsEnabled = !agregando;
-            
             dgClientes.IsEnabled = agregando;
             cmbMesa.IsEnabled = agregando;
            
@@ -187,12 +186,16 @@ namespace Rapid_Plus.Views.Mesero
         //Refrescar página
         private void Timer_Tik(object sender, EventArgs e)
         {
-            MostrarClientes();
+            if (string.IsNullOrEmpty(txtFiltro.Text))
+            {
+                MostrarClientes();
+            }
         }
 
-        //BOTONES
+        #endregion
+
         #region BOTONES
-        //Acciones con botones
+        
         //Crear Orden
         private void btnCrear_Click(object sender, RoutedEventArgs e)
         {
@@ -240,8 +243,6 @@ namespace Rapid_Plus.Views.Mesero
                 ControlAcciones(agregando);
             }
         }
-        #endregion
-
         #endregion
 
 

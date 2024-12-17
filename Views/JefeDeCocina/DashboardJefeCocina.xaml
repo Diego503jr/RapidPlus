@@ -17,12 +17,12 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         AllowsTransparency="True">
     <materialDesign:Card UniformCornerRadius="15" 
-                      materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                        materialDesign:ShadowAssist.ShadowDepth="Depth4">
         <DockPanel>
             <materialDesign:Card DockPanel.Dock="Left"
-                              materialDesign:ShadowAssist.ShadowDepth="Depth4"
-                              UniformCornerRadius="15"
-                              MinWidth="40">
+                                 materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                 UniformCornerRadius="15"
+                                 MinWidth="40">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -31,17 +31,16 @@
                     <StackPanel Grid.Row="0">
 
                         <Button Name="btnOrdenes" 
-                             ToolTip="Ordenes Pendientes"
-                             Margin="0,50,0,0"
-                             Style="{StaticResource btn-base}"
-                             Height="50" 
-                             Click="btnOrdenes_Click">
+                                ToolTip="Ordenes Pendientes"
+                                Margin="0,50,0,0"
+                                Style="{StaticResource btn-base}"
+                                Height="50" 
+                                Click="btnOrdenes_Click">
                             <materialDesign:PackIcon Kind="PlaylistRemove"
-                                                  Height="40"
-                                                  Width="40"/>
+                                                     Height="40"
+                                                     Width="40"/>
                         </Button>
                     </StackPanel>
-
                     <Button Name="btnCerrarSesion"
                             ToolTip="Cerrar Sesion"
                             Grid.Row="1"
@@ -50,12 +49,11 @@
                             Height="50" 
                             Click="btnCerrarSesion_Click" >
                         <materialDesign:PackIcon Kind="Logout"
-                             Height="40"
-                             Width="40"/>
+                                                 Height="40"
+                                                 Width="40"/>
                     </Button>
                 </Grid>
             </materialDesign:Card>
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.08*"/>
@@ -63,44 +61,43 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Column="0">
                     <StackPanel VerticalAlignment="Center"
-                             HorizontalAlignment="Left">
+                                HorizontalAlignment="Left">
                         <Label Content="Dashboard Jefe de Cocina"
-                            FontSize="24"
-                            FontWeight="Bold"
-                            Margin="20,0,0,0"/>
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Margin="20,0,0,0"/>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Center" 
-                             HorizontalAlignment="Right"
-                             Orientation="Horizontal">
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
                         <Button Name="btnMinimizar" 
-                             Height="40" Width="50" 
-                             Margin="0,0,10,0"
-                             Style="{StaticResource btn-outline}"
-                             Cursor="Hand" Click="btnMinimizar_Click">
+                                Height="40" Width="50" 
+                                Margin="0,0,10,0"
+                                Style="{StaticResource btn-base}"
+                                Cursor="Hand" Click="btnMinimizar_Click">
                             <materialDesign:PackIcon Kind="WindowMinimize"
-                                                  Height="40"
-                                                  Width="40" 
-                                                  VerticalAlignment="Center" 
-                                                  HorizontalAlignment="Center"/>
+                                                     Height="40"
+                                                     Width="40" 
+                                                     VerticalAlignment="Center" 
+                                                     HorizontalAlignment="Center"/>
                         </Button>
                         <Button Name="btnCerrar" 
-                             Height="40" Width="50" 
-                             Margin="0,0,20,0"
-                             Style="{StaticResource btn-outline}"
-                             Cursor="Hand" Click="btnCerrar_Click">
+                                Height="40" Width="50" 
+                                Margin="0,0,20,0"
+                                Style="{StaticResource btn-base}"
+                                Cursor="Hand" Click="btnCerrar_Click">
                             <materialDesign:PackIcon Kind="Close"
-                                                  Height="40"
-                                                  Width="40" 
-                                                  VerticalAlignment="Center" 
-                                                  HorizontalAlignment="Center"/>
+                                                     Height="40"
+                                                     Width="40" 
+                                                     VerticalAlignment="Center" 
+                                                     HorizontalAlignment="Center"/>
                         </Button>
                     </StackPanel>
                 </Grid>
                 <Frame Name="frContent"
-                    Grid.Row="1"
-                    NavigationUIVisibility="Hidden"/>
+                       Grid.Row="1"
+                       NavigationUIVisibility="Hidden"/>
             </Grid>
-
         </DockPanel>
     </materialDesign:Card>
 </Window>
