@@ -6,13 +6,49 @@
         xmlns:local="clr-namespace:Rapid_Plus.Reports"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
+        WindowStyle="None" 
+        Background="{x:Null}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        AllowsTransparency="True"
         Title="ReporteCategoria" Height="450" Width="600">
+    <materialDesign:Card UniformCornerRadius="15" 
+                         materialDesign:ShadowAssist.ShadowDepth="Depth4">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0"
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel VerticalAlignment="Center" 
+            Grid.Row="0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+                <Button x:Name="btnMinimizar" 
+                    Height="40" Width="50" 
+                    Margin="0,0,10,0"
+                    Style="{StaticResource btn-base}"
+                    Cursor="Hand" Click="btnMinimizar_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize"
+                                 Height="40"
+                                 Width="40" 
+                                 VerticalAlignment="Center" 
+                                 HorizontalAlignment="Center"/>
+                </Button>
+                <Button x:Name="btnCerrar" 
+                    Height="40" Width="50" 
+                    Margin="0,0,20,0"
+                    Style="{StaticResource btn-base}"
+                    Cursor="Hand" Click="btnCerrar_Click">
+                    <materialDesign:PackIcon Kind="Close"
+                                         Height="40"
+                                         Width="40" 
+                                         VerticalAlignment="Center" 
+                                         HorizontalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+        
+            <StackPanel Grid.Row="1"
                     Orientation="Horizontal">
             <Image HorizontalAlignment="Left" 
                    Height="100" 
@@ -25,7 +61,7 @@
         </StackPanel>
 
         <GroupBox Header="Valores Generales"
-                  Grid.Row="1"
+                  Grid.Row="2"
                   materialDesign:ColorZoneAssist.Foreground="{DynamicResource MaterialDesignPaper}"
                   materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignBody}"
                   materialDesign:ColorZoneAssist.Mode="Custom"
@@ -45,4 +81,5 @@
         </GroupBox>
         
     </Grid>
+    </materialDesign:Card>
 </Window>

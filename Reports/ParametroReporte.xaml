@@ -4,47 +4,83 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rapid_Plus.Reports"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
+        WindowStyle="None" 
+        Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        AllowsTransparency="True"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        Title="ParametroReporte" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0"
-                    Orientation="Horizontal">
-            <Image HorizontalAlignment="Left" 
-                   Height="100" 
-                   Margin="50 15"
-                   Source="/Assets/LogoN.png"/>
-            <Label Content="Reporte por fechas o categorias" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center" 
-                   FontSize="24"/>
-        </StackPanel>
-        <GroupBox Header="Valores Generales"
-                  Grid.Row="1"
-                  materialDesign:ColorZoneAssist.Foreground="{DynamicResource MaterialDesignPaper}"
-                  materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignBody}"
-                  materialDesign:ColorZoneAssist.Mode="Custom"
-                  FontSize="20">
-            <StackPanel HorizontalAlignment="Center"
-                        VerticalAlignment="Top">
-                <Button x:Name="btnReporteFecha"
-                        Content="Imprimir Reporte por Fechas"
-                        Style="{StaticResource btn-base}"
-                        Margin="10 40"
-                        Click="btnReporteFecha_Click"/>
+        Title="ParametroReporte" Height="500" Width="800">
+    <materialDesign:Card UniformCornerRadius="15" 
+                         materialDesign:ShadowAssist.ShadowDepth="Depth4">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                <Button x:Name="btnReporteCategoria"
-                        Content="Imprimir Reporte por Categorias"
-                        Style="{StaticResource btn-base}"
-                        Margin="10 0"
-                        Click="btnReporteCategoria_Click"/>
+            <StackPanel VerticalAlignment="Center" 
+                        Grid.Row="0"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                <Button x:Name="btnMinimizar" 
+                                Height="40" Width="50" 
+                                Margin="0,0,10,0"
+                                Style="{StaticResource btn-base}"
+                                Cursor="Hand" Click="btnMinimizar_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize"
+                                             Height="40"
+                                             Width="40" 
+                                             VerticalAlignment="Center" 
+                                             HorizontalAlignment="Center"/>
+                </Button>
+                <Button x:Name="btnCerrar" 
+                                Height="40" Width="50" 
+                                Margin="0,0,20,0"
+                                Style="{StaticResource btn-base}"
+                                Cursor="Hand" Click="btnCerrar_Click">
+                    <materialDesign:PackIcon Kind="Close"
+                                                     Height="40"
+                                                     Width="40" 
+                                                     VerticalAlignment="Center" 
+                                                     HorizontalAlignment="Center"/>
+                </Button>
             </StackPanel>
-        </GroupBox>
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal">
+                <Image HorizontalAlignment="Left" 
+                       Height="100" 
+                       Margin="50 15"
+                       Source="/Assets/LogoN.png"/>
+                <Label Content="Reporte por fechas o categorias" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       FontSize="24"/>
+            </StackPanel>
+            <GroupBox Header="Valores Generales"
+                      Grid.Row="2"
+                      materialDesign:ColorZoneAssist.Foreground="{DynamicResource MaterialDesignPaper}"
+                      materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignBody}"
+                      materialDesign:ColorZoneAssist.Mode="Custom"
+                      FontSize="20">
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                    <Button x:Name="btnReporteFecha"
+                            Content="Imprimir Reporte por Fechas"
+                            Style="{StaticResource btn-base}"
+                            Margin="10 40"
+                            Click="btnReporteFecha_Click"/>
+
+                    <Button x:Name="btnReporteCategoria"
+                            Content="Imprimir Reporte por Categorias"
+                            Style="{StaticResource btn-base}"
+                            Margin="10 0"
+                            Click="btnReporteCategoria_Click"/>
+                </StackPanel>
+            </GroupBox>
        
-    </Grid>
+        </Grid>
+    </materialDesign:Card>
 </Window>

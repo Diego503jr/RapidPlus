@@ -85,5 +85,15 @@ namespace Rapid_Plus.Reports
             //Limpiamos los campos
             LimpiarFormulario();
         }
+
+        private void btnMinimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

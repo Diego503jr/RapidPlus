@@ -6,7 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Rapid_Plus.Views.Cajero"
       mc:Ignorable="d"
-      Title="FacturarOrden"
+      Title="FacturarOrden"      
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontSize="18"
       Loaded="Page_Loaded">
