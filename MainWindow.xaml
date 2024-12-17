@@ -72,6 +72,7 @@
                     Grid.Row="2"
                     Width="130"
                     Height="40"
+                    IsDefault="True"
                     Style="{StaticResource btn-light}"
                     Click="btnIngresar_Click">
                 <StackPanel Orientation="Horizontal"
