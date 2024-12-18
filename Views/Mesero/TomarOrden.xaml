@@ -6,68 +6,237 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Rapid_Plus.Views.Mesero"
       mc:Ignorable="d"
-      Title="TomarOrden" Height="750" Width="1024" Loaded="Page_Loaded" >
-    <Grid>
-        <GroupBox Header="Gestionar Orden" materialDesign:ColorZoneAssist.Background="#A2BCE0"
-                materialDesign:ColorZoneAssist.Foreground="White" materialDesign:ColorZoneAssist.Mode="Custom"
-                FontSize="20" Style="{StaticResource MaterialDesignGroupBox}"  VerticalAlignment="Top" Margin="30,30" MinHeight="200">
-            <StackPanel Orientation="Horizontal" Width="850" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical" Width="425">
-                    <StackPanel Orientation="Horizontal"  Width="425" Height="40">
-                        <Label Content="Número de mesa: " FontSize="20" Width="181"></Label>
-                        <ComboBox Name="cmbMesa" Width="80" FontSize="20"  SelectionChanged="cmbMesa_SelectionChanged" DropDownOpened="cmbMesa_DropDownOpened" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"  Width="425" Height="40" >
-                        <Label Content="Categoría: " FontSize="20" Width="181"></Label>
-                        <ComboBox Name="cmbPlatillo" Width="160" FontSize="20" SelectionChanged="cmbPlatillo_SelectionChanged"  />
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Width="425">
-                    <StackPanel Orientation="Horizontal"  Width="425" Height="40">
-                        <Label Content="Número de Orden: " FontSize="20"/>
-                        <TextBlock Name="txbOrden" TextAlignment="Center" Width="80"  Height="40" FontSize="20" IsEnabled="False" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"  Width="425" Height="40" >
-                        <Label Content="Estado de la orden: " FontSize="20"></Label>
-                        <TextBlock Name="txbEstado"  TextAlignment="Center" Width="118" Height="40" FontSize="20" IsEnabled="False"></TextBlock>
-                    </StackPanel>
-                </StackPanel>
+      Title="GestoinarOrden" 
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontSize="18"
+      Loaded="Page_Loaded">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               Content="Gestión de Orden" 
+               FontSize="24"
+               Width="950"/>
+        <Grid Grid.Row="1"
+              Width="950" 
+              Height="50">
+            <StackPanel HorizontalAlignment="Right" 
+                        Orientation="Horizontal">
+                <Button Name="btnNuevo" 
+                        Style="{StaticResource btn-base}"
+                        Click="btnNuevo_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="PlusThick"
+                                                 VerticalAlignment="Stretch"
+                                                 Height="20"
+                                                 Width="20"/>
+                        <TextBlock Text="Agregar Detalle"
+                                   Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
+                <Button Name="btnEditar"
+                        Style="{StaticResource btn-base}"
+                        Margin="20,0,0,0" 
+                        Click="btnEditar_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="Pencil"
+                                                 VerticalAlignment="Stretch"
+                                                 Height="20"
+                                                 Width="20"/>
+                        <TextBlock Text="Editar Orden"
+                                   Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
+                <Button Name="btnEliminar" 
+                        Style="{StaticResource btn-base}"
+                        FontSize="18" 
+                        Margin="20,0,0,0" 
+                        Click="btnEliminar_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="Delete"
+                                                 VerticalAlignment="Stretch"
+                                                 Height="20"
+                                                 Width="20"/>
+                        <TextBlock Text="Eliminar Detalle"
+                                   Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
             </StackPanel>
-        </GroupBox>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="12,0,60,185">
-            <Label Content="Platillos Disponibles:" FontSize="18" Margin="0,0,395,0" BorderBrush="Black"></Label>
-            <Label Content="Detalle de orden:" FontSize="18"></Label>
-        </StackPanel>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,100,0,0" Height="250" Width="525">
-            <DataGrid Name="dgPlatillos"  AutoGenerateColumns="False" IsReadOnly="true" ItemsSource ="{Binding}"  SelectionChanged="dgPlatillos_SelectionChanged" Background="{x:Null}" FontSize="16">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Platillo" CanUserResize="False" Binding="{Binding Platillo}"/>
-                    <DataGridTextColumn Header="Descripción" CanUserResize="False" Binding="{Binding Descripcion}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </ScrollViewer>
-        <ScrollViewer  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,100,10,0" Height="250" Width="450" >
-            <DataGrid Name="dgOrdenes" AutoGenerateColumns="False" IsReadOnly="true" ItemsSource ="{Binding}" SelectionChanged="dgOrdenes_SelectionChanged" Background="{x:Null}" FontSize="16">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Platillo" CanUserResize="False" Binding="{Binding NombrePlatillo}"/>
-                    <DataGridTextColumn Header="Cantidad" CanUserResize="False" Binding="{Binding Cantidad}"/>
-                    <DataGridTextColumn Header="Estado" CanUserResize="False" Binding="{Binding EstadoOrden}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </ScrollViewer>
-        
+        </Grid>
+        <materialDesign:Card Grid.Row="2"
+                             Style="{StaticResource card-primary}"
+                             Width="900">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       Content="Formulario Orden"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Margin="20 10"/>
+                <ComboBox Name="cmbMesa" 
+                          Margin="10 5"
+                          Grid.Row="1"
+                          Grid.Column="0"
+                          materialDesign:HintAssist.Hint="Mesa"
+                          Width="200"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          SelectionChanged="cmbMesa_SelectionChanged"/>
+                <ComboBox Name="cmbPlatillo" 
+                          Margin="10 5"
+                          Grid.Row="2"
+                          Grid.Column="0"
+                          materialDesign:HintAssist.Hint="Categoría"
+                          Width="200"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          SelectionChanged="cmbPlatillo_SelectionChanged"/>
+                <StackPanel Grid.Row="1"
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            Margin="50 10">
+                    <Label Content="Orden:"
+                           VerticalAlignment="Center"
+                           Margin="20 10"/>
+                    <TextBlock Name="txbOrden" 
+                               Width="120" 
+                               Margin="10"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4"
+                            Grid.Column="0"
+                            Orientation="Horizontal"
+                            Margin="10 5"
+                            Width="200">
+                    <Label Content="Cantidad:"
+                           VerticalAlignment="Center"
+                           Margin="0 5"/>
+                    <TextBox Name="txtCantidad" 
+                             Width="120" 
+                             Margin="10"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2"
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            Margin="50 10">
+                    <Label Content="Estado Orden:"
+                           VerticalAlignment="Center"
+                           Margin="20 10"/>
+                    <TextBlock Name="txbEstado" 
+                               Width="120" 
+                               Margin="10"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Width="700" Height="40" HorizontalAlignment="Center" Margin="0,0,0,100" Cursor="">
-            <TextBox   Name="txtCantidad"  Width="200"    FontSize="20"      materialDesign:HintAssist.Hint="Cantidad de Platillo" HorizontalAlignment="Left" PreviewTextInput="txtCantidad_PreviewTextInput"/>
-            <Label     Content="Platillo:" FontSize="20"  Margin="100,0,0,0" HorizontalAlignment="Right"></Label>
-            <TextBlock Name="txbPlatillo"  Width="300"    FontSize="20"      TextAlignment="Center" IsEnabled="false"  HorizontalAlignment="Right"></TextBlock>    
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Height="50" HorizontalAlignment="Center" Margin="0,0,0,20">
-            <Button Name="btnNuevo"    Width="100" FontSize="18" Content="Crear"    Height="40"  HorizontalAlignment="Left"   Margin="0,0,0,0"  BorderBrush="{x:Null}" Background="#A2BCE0"   Click="btnNuevo_Click" />
-            <Button Name="btnEditar"   Width="100" FontSize="18" Content="Editar"   Height="40"  HorizontalAlignment="Center" Margin="40,0,0,0" BorderBrush="{x:Null}" Background="#A2BCE0" Click="btnEditar_Click"   />
-            <Button Name="btnEliminar" Width="100" FontSize="18" Content="Eliminar" Height="40"  HorizontalAlignment="Right"  Margin="40,0,0,0" BorderBrush="{x:Null}" Background="#A2BCE0" Click="btnEliminar_Click"   />
-            <Button Name="btnGuardar"  Width="100" FontSize="18" Content="Guardar"  Height= "40" HorizontalAlignment="Left"   Margin="150,0,0,0" BorderBrush="{x:Null}" Background="#0B5563" Click="btnGuardar_Click"   />
-            <Button Name="btnCancelar" Width="100" FontSize="18" Content="Cancelar" Height="40"  HorizontalAlignment="Right"  Margin="40,0,0,0" BorderBrush="{x:Null}" Background="#FFD63C3C" Click="btnCancelar_Click"/>
-        </StackPanel>
+                <StackPanel Grid.Row="4"
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            Margin="50 10">
+                    <Label Content="Platillo:"
+                           VerticalAlignment="Center"
+                           Margin="20 10"/>
+                    <TextBlock Name="txbPlatillo" 
+                             Width="200" 
+                             Margin="0 10"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <Button Name="btnGuardar"
+                    Grid.Column="0"
+                    Grid.Row="5"
+                    Margin="20 10"
+                    Style="{StaticResource btn-success}"
+                    Click="btnGuardar_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="ContentSaveSettings"
+                                             VerticalAlignment="Stretch"
+                                             Height="20"
+                                             Width="20"/>
+                        <TextBlock Text="Guardar"
+                               Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
+                <Button Name="btnCancelar" 
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Margin="20 10"
+                        Style="{StaticResource btn-danger}"
+                        Click="btnCancelar_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="Cancel"
+                                                 VerticalAlignment="Stretch"
+                                                 Height="20"
+                                                 Width="20"/>
+                        <TextBlock Text="Cancelar"
+                               Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
+            </Grid>
+        </materialDesign:Card>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Name="dgPlatillos"
+                      HorizontalAlignment="Left"
+                      FontSize="16"
+                      ItemsSource="{Binding}" 
+                      AutoGenerateColumns="False" 
+                      IsReadOnly="True" 
+                      Width="500" Height="250" 
+                      Background="{x:Null}"
+                      Grid.Column="0"
+                      SelectionChanged="dgPlatillos_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Platillo" 
+                                        CanUserResize="False"
+                                        Binding="{Binding Platillo}"/>
+                    <DataGridTextColumn Header="Descripción" 
+                                        CanUserResize="False"
+                                        Binding="{Binding Descripcion}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Name="dgOrdenes"
+                      HorizontalAlignment="Right"
+                      FontSize="16"
+                      Grid.Row="3"
+                      ItemsSource="{Binding}" 
+                      AutoGenerateColumns="False" 
+                      IsReadOnly="True" 
+                      Width="500" Height="250" 
+                      Background="{x:Null}" Grid.Column="1"
+                      SelectionChanged="dgOrdenes_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Platillo" 
+                                        CanUserResize="False"
+                                        Binding="{Binding NombrePlatillo}" />
+                    <DataGridTextColumn Header="Cantidad" 
+                                        CanUserResize="False"
+                                        Binding="{Binding Cantidad}" />
+                    <DataGridTextColumn Header="Desscripción" 
+                                        CanUserResize="False"
+                                        Binding="{Binding EstadoOrden}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        
     </Grid>
 </Page>

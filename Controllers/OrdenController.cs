@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Rapid_Plus.Models;
+using Rapid_Plus.Views.JefeDeCocina;
 
 namespace Rapid_Plus.Controllers
 {
@@ -85,7 +87,7 @@ namespace Rapid_Plus.Controllers
                                 OrdenesModel ordenes = new OrdenesModel();
                                 ordenes.IdOrden = int.Parse(dr["IDORDEN"].ToString());
                                 ordenes.Cantidad = int.Parse(dr["CANTIDAD"].ToString());
-                                ordenes.Orden = dr["PLATILLO"].ToString();
+                                ordenes.NombrePlatillo = dr["PLATILLO"].ToString();
                                 ordenes.Mesa = int.Parse(dr["MESA"].ToString()); //Número de mesa
                                 ordenes.EstadoOrden = dr["ESTADOORDEN"].ToString();
 
@@ -141,8 +143,9 @@ namespace Rapid_Plus.Controllers
                                 ordenes.IdPlatilloOrden = int.Parse(dr["IDPLATILLOORDEN"].ToString());
                                 ordenes.IdDetalleOrden = int.Parse(dr["IDDETALLEORDEN"].ToString());
                                 ordenes.NombrePlatillo = dr["PLATILLO"].ToString();
-                                ordenes.DescripcionPlatillo = dr["DESCRIPCION"].ToString();
+                                ordenes.Orden = dr["DESCRIPCION"].ToString();
                                 ordenes.IdMesa = int.Parse(dr["MESA"].ToString());
+                                ordenes.Mesa = int.Parse(dr["NUMMESA"].ToString());
                                 ordenes.Cantidad = int.Parse(dr["CANTIDAD"].ToString());
                                 ordenes.EstadoOrden = dr["ESTADOORDEN"].ToString();
 
@@ -160,6 +163,39 @@ namespace Rapid_Plus.Controllers
             }
             return lstOrdenes;
 
+        }
+        //Obtener mesas según esatado (libres u ocupadas)
+        internal static List<MesasModel> ObtenerMesas(int idEstadoMesa)
+        {
+            List<MesasModel> mesas = new List<MesasModel>();
+            try
+            {
+                using (var con = new SqlConnection(conexion))
+                {
+                    con.Open();
+                    using (var command = con.CreateCommand())
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandText = "SPMOSTRARMESAESTADO";
+                        command.Parameters.AddWithValue("@IDESTADO", idEstadoMesa);
+                        using (DbDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                mesas.Add(new MesasModel
+                                {
+                                    Mesa = reader.GetInt32(0)
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al intentar mostrar los registros de mesas: " + ex.Message, "Validación", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return mesas;
         }
     }
 }

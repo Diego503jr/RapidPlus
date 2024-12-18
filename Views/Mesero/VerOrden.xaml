@@ -6,20 +6,93 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Rapid_Plus.Views.Mesero"
       mc:Ignorable="d"
-      Title="VerOrden" Height="900" Width="874" Loaded="Page_Loaded">
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontSize="18"
+      Title="OrdenesPendientes" Loaded="Page_Loaded">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               Content="Ordenes Pendientes" 
+               FontSize="24"
+               Width="950"/>
+        <DataGrid Name="dgOrdenes"
+                  FontSize="16"
+                  Grid.Row="1"
+                  ItemsSource="{Binding}" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  Margin="1 20"
+                  Width="750" Height="400" 
+                  Background="{x:Null}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Orden" 
+                                    Width="100" 
+                                    CanUserResize="False"
+                                    Binding="{Binding IdOrden}"/>
+                <DataGridTextColumn Header="Platillo" 
+                                    CanUserResize="False" 
+                                    Width="300" 
+                                    Binding="{Binding NombrePlatillo}"/>
+                <DataGridTextColumn Header="Cantidad" 
+                                    CanUserResize="False" 
+                                    Width="100" 
+                                    Binding="{Binding Cantidad}"/>
+                <DataGridTextColumn Header="Mesa" 
+                                    Width="100" 
+                                    CanUserResize="False"
+                                    Binding="{Binding Mesa}"/>
+                <DataGridTextColumn Header="Estado" 
+                                    Width="150" 
+                                    CanUserResize="False" 
+                                    Binding="{Binding EstadoOrden}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <materialDesign:Card Grid.Row="2"
+                             Width="600"
+                             Style="{StaticResource card-primary}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Formulario de Acciones"
+                       FontSize="18"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       FontWeight="Bold"
+                       Margin="20 10"/>
+                <ComboBox Name="cmbMesa"
+                          Grid.Column="0"
+                          Grid.Row="1"
+                          Margin="20 20"
+                          materialDesign:HintAssist.Hint="Mesa"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                          SelectionChanged="cmbMesa_SelectionChanged" />
+                <Button Name="btnCancelar" 
+                        Grid.Column="3"
+                        Grid.Row="4"
+                        Margin="30 10"
+                        Style="{StaticResource btn-danger}" Click="btnCancelar_Click">
+                    <WrapPanel>
+                        <materialDesign:PackIcon Kind="Cancel"
+                                             VerticalAlignment="Stretch"
+                                             Height="20"
+                                             Width="20"/>
+                        <TextBlock Text="Cancelar"
+                                   Margin="10 0"/>
+                    </WrapPanel>
+                </Button>
+            </Grid>
+        </materialDesign:Card>
 
-    <Grid >
-        <Label Content="Ordenes Pendientes" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0" />
-        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="50,150,50,0" Height="300">
-            <DataGrid Name="dgOrdenes" AutoGenerateColumns="False" IsReadOnly="true" ItemsSource ="{Binding}" Background="{x:Null}" FontSize="16" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Orden" Width="100" Binding="{Binding IdOrden}"/>
-                    <DataGridTextColumn Header="Orden" CanUserResize="False" Width="300" Binding="{Binding Orden}"/>
-                    <DataGridTextColumn Header="Cantidad" CanUserResize="False" Width="100" Binding="{Binding Cantidad}"/>
-                    <DataGridTextColumn Header="Mesa" Width="100" Binding="{Binding Mesa}"/>
-                    <DataGridTextColumn Header="Estado" Width="150" Binding="{Binding EstadoOrden}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </ScrollViewer>
+
     </Grid>
 </Page>

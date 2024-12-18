@@ -23,10 +23,10 @@ namespace Rapid_Plus.Views.Mesero
         #region Instancia de las páginas
 
         //Crear objeto de cada page
-        TomarOrden tomarOrden = new TomarOrden();
-        VerOrden verOrden = new VerOrden();
+        private TomarOrden tomarOrden;
+        private VerOrden verOrden;
         private CrearOrden crearOrden;
-        GestionClientes clientes = new GestionClientes();
+        private GestionClientes clientes;
         #endregion
 
         public DashboardMesero(int usuarioId)
@@ -45,50 +45,41 @@ namespace Rapid_Plus.Views.Mesero
 
         private void btnVerOrden_Click(object sender, RoutedEventArgs e)
         {
-
+            if(verOrden == null)
+            {
+                verOrden = new VerOrden();
+            }
             frContent.NavigationService.Navigate(verOrden);
         }
 
         private void btnGestionar_Click(object sender, RoutedEventArgs e)
         {
+            if(tomarOrden == null)
+            {
+                tomarOrden = new TomarOrden();
+            }
             frContent.NavigationService.Navigate(tomarOrden);
         }
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
+            if (clientes == null)
+            {
+                clientes = new GestionClientes();
+            }
             frContent.NavigationService.Navigate(clientes);
         }
         #endregion
 
-        #region ESTILOS
-
-        //Estilo al pasar sobre los botones
-        private void BotonMesero_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Button boton = sender as Button;
-
-            if (boton != null)
-            {
-                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
-            }
-        }
-
-        private void BotonMesero_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Button boton = sender as Button;
-
-            if (boton != null)
-            {
-                boton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
-            }
-        }
-        #endregion
 
         #region EVENTOS
         //Cerrar Sesión
         private void btnCerrarSesion_Click(object sender, RoutedEventArgs e)
         {
 
-            if (MessageBox.Show("Desea Cerrar Sesión?", "Cerrar sesión", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Desea Cerrar Sesión?", 
+                "Cerrar sesión", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Information) == MessageBoxResult.Yes)
             {
                 MainWindow login = new MainWindow();
                 login.Show();
@@ -98,19 +89,29 @@ namespace Rapid_Plus.Views.Mesero
         }
 
         //Cerrar Ventana
-        private void BtnCerrarVentana_Click(object sender, RoutedEventArgs e)
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-
         //Página inicial por defecto
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (verOrden == null)
+            {
+                verOrden = new VerOrden();
+            }
             frContent.NavigationService.Navigate(verOrden);
         }
+
+        //Minimizar ventana
+        private void btnMinimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
         #endregion
 
-       
+
     }
 }

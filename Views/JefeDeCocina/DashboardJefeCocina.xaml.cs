@@ -21,7 +21,7 @@ namespace Rapid_Plus.Views.JefeDeCocina
     public partial class DashboardJefeCocina : Window
     {
         #region Instancia de las páginas
-        EstadoOrden estadoOrden = new EstadoOrden();
+        private EstadoOrden estadoOrden; 
         #endregion
 
         public DashboardJefeCocina()
@@ -29,15 +29,33 @@ namespace Rapid_Plus.Views.JefeDeCocina
             InitializeComponent();
         }
 
-        #region METODOS FORMULARIO
+        #region EVENTOS
         private void btnOrdenes_Click(object sender, RoutedEventArgs e)
         {
+            if(estadoOrden == null)
+            {
+                estadoOrden = new EstadoOrden();
+            }
             frContent.NavigationService.Navigate(estadoOrden);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (estadoOrden == null)
+            {
+                estadoOrden = new EstadoOrden();
+            }
             frContent.NavigationService.Navigate(estadoOrden);
+        }
+
+        private void btnMinimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
         private void btnCerrarSesion_Click(object sender, RoutedEventArgs e)
@@ -48,33 +66,6 @@ namespace Rapid_Plus.Views.JefeDeCocina
                 login.Show();
                 this.Close();
             }
-        }
-
-        private void btnCerrarVentana_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-        #endregion
-
-        #region METODOS ESTILOS
-        private void btnOrdenes_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnOrdenes.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
-        }
-
-        private void btnOrdenes_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnOrdenes.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
-        }
-
-        private void btnCerrarSesion_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnCerrarSesion.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0B5563"));
-        }
-
-        private void btnCerrarSesion_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnCerrarSesion.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5299D3"));
         }
         #endregion
     }

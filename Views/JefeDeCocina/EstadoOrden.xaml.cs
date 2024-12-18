@@ -41,9 +41,10 @@ namespace Rapid_Plus.Views.JefeDeCocina
         #endregion
 
         #region MÉTODOS PERSONALIZADOS
+        
+        //Obtiene el id de la mesa seleccionada
         private int Mesa()
         {
-
             if (cmbNumMesa.SelectedIndex != -1)
             {
                 idMesa = (int)cmbNumMesa.SelectedValue;
@@ -54,7 +55,6 @@ namespace Rapid_Plus.Views.JefeDeCocina
             }
             return idMesa;
         }
-
         private void MostrarOrdenesPorMesa()
         {
             using (var conDb = new SqlConnection(Properties.Settings.Default.DbRapidPlus))
@@ -77,15 +77,36 @@ namespace Rapid_Plus.Views.JefeDeCocina
             cmbNumMesa.DisplayMemberPath = "Mesa";
             cmbNumMesa.SelectedValuePath = "IdMesa";
         }
+        private void MostrarOrden()
+        {
+            idMesa = Mesa();
+            IdEstadoOrden = 1;
+            var detalle = DetalleOrdenController.ObtenerDetalleOrden(idMesa);
+            var ordenes = OrdenController.MostrarOrdenesPorMesa(idMesa, IdEstadoOrden);
+
+            if (detalle != null)
+            {
+                dgOrdenes.DataContext = ordenes;
+
+                txbOrden.Text = detalle.IdOrden.ToString();
+                txbEstado.Text = detalle.EstadoOrden;
+            }
+            else
+            {
+                txbOrden.Text = string.Empty;
+            }
+        }
         private void EditarEstadoOrden()
         {
             OrdenesModel estado = new OrdenesModel();
             if (!ValidarFomrulario())
             {
-                MessageBox.Show("Por favor completa todos los campos requeridos.", "Validación", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Por favor completa todos los campos requeridos.", 
+                    "Validación", 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Warning);
                 return;
             }
-
             try
             {
                 // Obtener el ID de la orden desde la interfaz de usuario
@@ -150,9 +171,10 @@ namespace Rapid_Plus.Views.JefeDeCocina
         {
             cmbNumMesa.SelectedIndex = -1;
             dgOrdenes.DataContext = null;
-            txbOrden.Text = string.Empty; // Limpia el contenido del TextBlock
-            txbEstado.Text = string.Empty; // Limpia el contenido del TextBox
+            txbOrden.Text = string.Empty; 
+            txbEstado.Text = string.Empty;
         }
+       
         #endregion
 
         #region EVENTOS
@@ -172,6 +194,8 @@ namespace Rapid_Plus.Views.JefeDeCocina
             MostrarOrdenesPorMesa();
             MostrarOrden();
         }
+
+        //Cambia el estado del detalleOrden a 'listo'
         private void btnLista_Click(object sender, RoutedEventArgs e)
         {
             //Validamos si se quiere cambiar el estado
@@ -195,33 +219,16 @@ namespace Rapid_Plus.Views.JefeDeCocina
             }
         }
 
-        private void MostrarOrden() 
-        {
-            idMesa = Mesa();
-            IdEstadoOrden = 1;
-            var detalle = DetalleOrdenController.ObtenerDetalleOrden(idMesa);
-            var ordenes = OrdenController.MostrarOrdenesPorMesa(idMesa,IdEstadoOrden);
-
-            if (detalle != null)
-            {
-                dgOrdenes.DataContext = ordenes;
-
-                txbOrden.Text = detalle.IdOrden.ToString();
-                txbEstado.Text = detalle.EstadoOrden;
-            }
-            else
-            {
-                txbOrden.Text = string.Empty;
-            }
-        }
-
+        //Muestra mensaje si no hay mesas con detalle a cambiar estado
         private void cmbNumMesa_DropDownOpened(object sender, EventArgs e)
         {
             if (cmbNumMesa.Items.Count == 0)
             {
-                MessageBox.Show("No hay mesas con ordenes pendientes", "Mesas", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("No hay mesas con ordenes pendientes", 
+                    "Mesas", 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Exclamation);
             }
-          
         }
 
         private void cmbNumMesa_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -230,14 +237,21 @@ namespace Rapid_Plus.Views.JefeDeCocina
         }
         #endregion
 
+        //Limpia los objetos del formulario
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            LimpiarFormulario();
+        }
+
+        //Obtiene datos según la selección del datagrid
         private void dgOrdenes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            OrdenesModel orden= (OrdenesModel)dgOrdenes.SelectedItem;
-            if (orden== null)
+            OrdenesModel orden = (OrdenesModel)dgOrdenes.SelectedItem;
+            if (orden == null)
             {
                 return;
             }
-            IdDetalleOrden= orden.IdDetalleOrden;
+            IdDetalleOrden = orden.IdDetalleOrden;
         }
     }
 
