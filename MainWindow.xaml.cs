@@ -24,17 +24,25 @@ namespace Rapid_Plus
         public MainWindow()
         {
             InitializeComponent();
+            txtCorreo.Focus();
         }
 
         #region VARIABLES LOCALES
-        // Variable para almacenar el estado de visibilidad de la contraseña
-        private bool isPasswordVisible = false;
         private int idUsuario;
         //private int xClick, yClick;
 
         #endregion
 
-        #region METODOS
+        #region METODOS PERSONALIZABLES
+
+        //Metodo para mover ventana
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
 
         //Validar formulario
         bool ValidarFormulario() 

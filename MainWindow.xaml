@@ -10,7 +10,7 @@
         TextElement.FontSize="16"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" ResizeMode="NoResize">
-    <Grid>
+    <Grid MouseDown="Grid_MouseDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
