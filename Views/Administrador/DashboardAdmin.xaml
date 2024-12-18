@@ -16,8 +16,9 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         AllowsTransparency="True"
         Loaded="Window_Loaded">
-    <materialDesign:Card UniformCornerRadius="15" 
-                         materialDesign:ShadowAssist.ShadowDepth="Depth4">
+    <materialDesign:Card x:Name="cDashboardA" UniformCornerRadius="15" 
+                         materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                         MouseDown="cDashboardA_MouseDown">
         <DockPanel>
             <materialDesign:Card DockPanel.Dock="Left"
                                  materialDesign:ShadowAssist.ShadowDepth="Depth4"
@@ -26,9 +27,10 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
+                    <StackPanel Grid.Row="0"
+                                VerticalAlignment="Top">
                         <Button Name="btnUsuario"
                                 ToolTip="Usuarios"
                                 Margin="0,50,0,0"
@@ -39,7 +41,7 @@
                                                      Height="40"
                                                      Width="40"/>
                         </Button>
-                        
+
                         <Button Name="btnMenu" 
                                 ToolTip="Platillos"
                                 Margin="0,5,0,0"
@@ -156,7 +158,7 @@
                     <Button Name="btnCerrarSesion"
                             ToolTip="Cerrar Sesion"
                             Grid.Row="1"
-                            Margin="0,150,0,0"
+                            VerticalAlignment="Bottom"
                             Style="{StaticResource btn-base}"
                             Height="50" 
                             Click="btnCerrarSesion_Click">
@@ -169,11 +171,12 @@
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.08*"/>
-                    <RowDefinition Height="0.05*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="46*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="761*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Column="0">
+                <Grid Grid.Column="0" Margin="0,0,0,38" Grid.RowSpan="3">
                     <StackPanel VerticalAlignment="Center"
                                 HorizontalAlignment="Left">
                         <Label Content="Dashboard Administrador"
@@ -208,7 +211,7 @@
                         </Button>
                     </StackPanel>
                 </Grid>
-                <Grid Grid.Row="1" HorizontalAlignment="Right">
+                <Grid Grid.Row="2" HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal"
                                 Margin="100 0">
                         <Label Content="Modo oscuro"
@@ -223,10 +226,10 @@
                     </StackPanel>
                 </Grid>
                 <Frame Name="frContent"
-                       Grid.Row="2"
+                       Grid.Row="3"
                        NavigationUIVisibility="Hidden"/>
             </Grid>
-            
+
         </DockPanel>
     </materialDesign:Card>
 </Window>

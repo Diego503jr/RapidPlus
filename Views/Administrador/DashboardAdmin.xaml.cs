@@ -70,6 +70,18 @@ namespace Rapid_Plus.Views.Administrador
 
         #endregion
 
+        #region METODO PARA MOVER VENTANA
+
+        private void cDashboardA_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        #endregion
+
         #region METODOS FORMULARIO
 
         private void btnCerrar_Click(object sender, RoutedEventArgs e)
