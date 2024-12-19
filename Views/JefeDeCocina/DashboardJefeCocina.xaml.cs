@@ -101,5 +101,16 @@ namespace Rapid_Plus.Views.JefeDeCocina
             }
         }
         #endregion
+
+        #region MÉTODO PARA MOVER VENTANA
+        private void cDashboardJC_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+        #endregion
+
     }
 }

@@ -16,8 +16,9 @@
         Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         AllowsTransparency="True">
-    <materialDesign:Card UniformCornerRadius="15" 
-                      materialDesign:ShadowAssist.ShadowDepth="Depth4">
+    <materialDesign:Card Name="cDashboardM" UniformCornerRadius="15" 
+                         materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                         MouseDown="cDashboardM_MouseDown">
         <DockPanel>
             <materialDesign:Card DockPanel.Dock="Left"
                               materialDesign:ShadowAssist.ShadowDepth="Depth4"

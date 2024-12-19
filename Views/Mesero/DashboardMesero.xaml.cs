@@ -143,8 +143,18 @@ namespace Rapid_Plus.Views.Mesero
             this.WindowState = WindowState.Minimized;
         }
 
+
         #endregion
 
+        #region MÉTODO PARA MOVER VENTANA
+        private void cDashboardM_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+        #endregion
 
     }
 }
