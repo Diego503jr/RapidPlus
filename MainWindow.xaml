@@ -10,7 +10,7 @@
         TextElement.FontSize="16"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" ResizeMode="NoResize">
-    <Grid>
+    <Grid MouseDown="Grid_MouseDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -72,6 +72,7 @@
                     Grid.Row="2"
                     Width="130"
                     Height="40"
+                    IsDefault="True"
                     Style="{StaticResource btn-light}"
                     Click="btnIngresar_Click">
                 <StackPanel Orientation="Horizontal"

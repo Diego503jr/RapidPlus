@@ -31,7 +31,6 @@ namespace Rapid_Plus.Views.Cajero
         {
             InitializeComponent();
             IniciarTemporizador();
-            ActualizarEstadoControles(false);
         }
 
         #region METODOS PERSONALIZADOS
@@ -216,7 +215,7 @@ namespace Rapid_Plus.Views.Cajero
         {
             LimpiarFormulario();
             CargarNumeroMesa();
-            
+            ActualizarEstadoControles(false);
         }
 
         private void cmbMesa_SelectionChanged(object sender, SelectionChangedEventArgs e)

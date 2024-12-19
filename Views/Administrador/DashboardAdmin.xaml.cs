@@ -24,7 +24,7 @@ namespace Rapid_Plus.Views.Administrador
     public partial class DashboardAdmin : Window
     {
 
-        #region INSTANCIAS DE LAS PAGINAS
+        #region DECLARACION DE VARIABLES Y CLASES
         private Contactos contacto;
         int idUsuario = -1;
 
@@ -32,9 +32,9 @@ namespace Rapid_Plus.Views.Administrador
 
         public DashboardAdmin(int usuarioId)
         {
-            this.idUsuario = usuarioId;
             InitializeComponent();
             LoadDarkMode();
+            this.idUsuario = usuarioId;
         }
 
         #region METODOS MODO OSCURO
@@ -66,6 +66,18 @@ namespace Rapid_Plus.Views.Administrador
             bool isDarkMode = Properties.Settings.Default.DarkMode;
             ThemeToggleButton.IsChecked = isDarkMode;
             ToggleTheme(isDarkMode);
+        }
+
+        #endregion
+
+        #region METODO PARA MOVER VENTANA
+
+        private void cDashboardA_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
 
         #endregion

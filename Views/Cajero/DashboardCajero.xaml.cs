@@ -21,22 +21,22 @@ namespace Rapid_Plus.Views.Cajero
     /// </summary>
     public partial class DashboardCajero : Window
     {
+
+        #region DECLARACION DE VARIABLES Y CLASES
+        
+        private FacturarOrden factura;
+        private int idUsuario = -1;
+
+        #endregion
+        
         public DashboardCajero(int usuarioId)
         {
             InitializeComponent();
-            crearOrden = new CrearOrden(usuarioId);
             LoadDarkMode();
+            this.idUsuario = usuarioId;
         }
 
 
-        #region Instancias de las paginas
-        FacturarOrden factura = new FacturarOrden();
-        TomarOrden tomarOrden = new TomarOrden();
-        VerOrden verOrden = new VerOrden();
-        private CrearOrden crearOrden;
-        GestionClientes clientes = new GestionClientes();
-
-        #endregion
 
         #region METODOS MODO OSCURO
 
@@ -71,36 +71,48 @@ namespace Rapid_Plus.Views.Cajero
 
         #endregion
 
-        #region Navegación Hacia las Paginas
+        #region METODOS MENU
 
         private void btnFacturar_Click(object sender, RoutedEventArgs e)
         {
+            if (factura == null)
+            {
+                factura = new FacturarOrden();
+            }
             frContent.NavigationService.Navigate(factura);
         }
 
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
+            GestionClientes clientes = new GestionClientes();
             frContent.NavigationService.Navigate(clientes);
         }
 
         private void btnCrearOrden_Click(object sender, RoutedEventArgs e)
         {
+            CrearOrden crearOrden = new CrearOrden(idUsuario);
             frContent.NavigationService.Navigate(crearOrden);
         }
 
         private void btnVerOrden_Click(object sender, RoutedEventArgs e)
         {
+            VerOrden verOrden = new VerOrden();
             frContent.NavigationService.Navigate(verOrden);
         }
 
         private void btnGestionar_Click(object sender, RoutedEventArgs e)
         {
+            TomarOrden tomarOrden = new TomarOrden();
             frContent.NavigationService.Navigate(tomarOrden);
         }
 
         //Colocamos la factura para inicializar al entrar a Cajero
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (factura == null)
+            {
+                factura = new FacturarOrden();
+            }
             frContent.NavigationService.Navigate(factura);
         }
 
