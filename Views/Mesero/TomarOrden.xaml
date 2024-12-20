@@ -196,8 +196,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <DataGrid Name="dgPlatillos"
-                      HorizontalAlignment="Left"
+                      HorizontalAlignment="Right"
                       FontSize="16"
+                      Margin="0,0,50,0"
                       ItemsSource="{Binding}" 
                       AutoGenerateColumns="False" 
                       IsReadOnly="True" 
@@ -215,7 +216,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <DataGrid Name="dgOrdenes"
-                      HorizontalAlignment="Right"
+                      HorizontalAlignment="Left"
                       FontSize="16"
                       Grid.Row="3"
                       ItemsSource="{Binding}" 

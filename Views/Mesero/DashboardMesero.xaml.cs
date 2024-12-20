@@ -35,6 +35,39 @@ namespace Rapid_Plus.Views.Mesero
             //Id de Usuario logueado
             crearOrden = new CrearOrden(usuarioId);
         }
+        #region METODOS MODO OSCURO
+
+        private void ToggleTheme(bool isDarkMode)
+        {
+            var themeUri = new Uri(isDarkMode
+                ? "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml"
+                : "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml");
+
+            // Replace the first merged dictionary with the selected theme
+            var dictionaries = Application.Current.Resources.MergedDictionaries;
+            dictionaries[0] = new ResourceDictionary { Source = themeUri };
+        }
+
+        private void ThemeToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ToggleTheme(true);
+        }
+
+        private void ThemeToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ToggleTheme(false);
+        }
+
+        void LoadDarkMode()
+        {
+            // Cargar el modo oscuro
+            bool isDarkMode = Properties.Settings.Default.DarkMode;
+            ThemeToggleButton.IsChecked = isDarkMode;
+            ToggleTheme(isDarkMode);
+        }
+
+        #endregion
+
 
         #region NAVEGACIÓN HACIA LAS PÁGINAS
         //Abrir páginas con NavigationService
@@ -110,8 +143,18 @@ namespace Rapid_Plus.Views.Mesero
             this.WindowState = WindowState.Minimized;
         }
 
+
         #endregion
 
+        #region MÉTODO PARA MOVER VENTANA
+        private void cDashboardM_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+        #endregion
 
     }
 }

@@ -16,8 +16,9 @@
         Background="{x:Null}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         AllowsTransparency="True">
-    <materialDesign:Card UniformCornerRadius="15" 
-                      materialDesign:ShadowAssist.ShadowDepth="Depth4">
+    <materialDesign:Card Name="cDashboardM" UniformCornerRadius="15" 
+                         materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                         MouseDown="cDashboardM_MouseDown">
         <DockPanel>
             <materialDesign:Card DockPanel.Dock="Left"
                               materialDesign:ShadowAssist.ShadowDepth="Depth4"
@@ -25,15 +26,16 @@
                               MinWidth="40">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0">
                         <Button Name="btnClientes"
                              ToolTip="Clientes"
                              Margin="0,50,0,0"
                              Style="{StaticResource btn-base}"
-                             Height="50" 
+                             Height="50"
+                             VerticalAlignment="Top"   
                              Click="btnClientes_Click" >
                             <materialDesign:PackIcon Kind="AccountGroup"
                                                   Height="40"
@@ -73,7 +75,7 @@
                     <Button Name="btnCerrarSesion"
                          ToolTip="Cerrar Sesion"
                          Grid.Row="1"
-                         Margin="0,150,0,0"
+                        VerticalAlignment="Bottom"
                          Style="{StaticResource btn-base}"
                          Height="50" 
                          Click="btnCerrarSesion_Click">
@@ -87,6 +89,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.08*"/>
+                    <RowDefinition Height="0.05*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Column="0">
@@ -124,8 +127,22 @@
                         </Button>
                     </StackPanel>
                 </Grid>
+                <Grid Grid.Row="1" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="100 0">
+                        <Label Content="Modo oscuro"
+                               FontStyle="Oblique"
+                               FontWeight="Bold"
+                               FontSize="18"/>
+                        <ToggleButton Name="ThemeToggleButton"
+                                      Height="35" Width="50"
+                                      Margin="10 0"
+                                      Checked="ThemeToggleButton_Checked"
+                                      Unchecked="ThemeToggleButton_Unchecked"/>
+                    </StackPanel>
+                </Grid>
                 <Frame Name="frContent"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     NavigationUIVisibility="Hidden"/>
             </Grid>
 

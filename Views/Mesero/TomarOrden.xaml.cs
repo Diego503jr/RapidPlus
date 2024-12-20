@@ -83,15 +83,18 @@ namespace Rapid_Plus.Views.Mesero
         private void IniciarTemporizador()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(3);
+            timer.Interval = TimeSpan.FromSeconds(5);
             timer.Tick += Timer_Tik;
             timer.Start();
         }
         private void Timer_Tik(object sender, EventArgs e)
         {
-            MostrarOrden();
+            if(cmbMesa.SelectedIndex == -1)
+            {
+                CargarNumeroMesa();
+            }
             CargarCategorias();
-            CargarNumeroMesa();
+            MostrarOrden();
         }
 
         //Limpia objetos 
@@ -311,6 +314,9 @@ namespace Rapid_Plus.Views.Mesero
             //Validación para poder ingresar solo números
             e.Handled = !char.IsDigit(e.Text, 0);
         }
+
+        #endregion
+
         //BOTONES
         #region BOTONES
         //Nuevo detalleOrden
@@ -367,11 +373,11 @@ namespace Rapid_Plus.Views.Mesero
                     editando = false;
                     ControlAcciones();
                 }
-               
+
 
             }
         }
-        
+
         //Actualiza los datos de un detalle de orden
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
@@ -415,7 +421,7 @@ namespace Rapid_Plus.Views.Mesero
                 ControlAcciones();
             }
         }
-       
+
         //Cancela la operación
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
@@ -425,12 +431,11 @@ namespace Rapid_Plus.Views.Mesero
                 agregando = false;
                 editando = false;
                 ControlAcciones();
-                
+
             }
         }
         #endregion
 
-        #endregion
 
 
     }
