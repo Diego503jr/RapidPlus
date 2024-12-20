@@ -95,5 +95,13 @@ namespace Rapid_Plus.Reports
         {
             this.Close();
         }
+
+        private void Card_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed) // Verifica que el botón izquierdo está presionado
+            {
+                this.DragMove();
+            }
+        }
     }
 }

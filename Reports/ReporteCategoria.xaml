@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rapid_Plus.Reports"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         WindowStyle="None" 
-        Background="{x:Null}"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="Transparent"
         AllowsTransparency="True"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Title="ReporteCategoria" Height="450" Width="600">
     <materialDesign:Card UniformCornerRadius="15" 
-                         materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                         materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                         MouseDown="Card_MouseDown">
     <Grid>
         <Grid.RowDefinitions>
                 <RowDefinition Height="0.15*"/>
