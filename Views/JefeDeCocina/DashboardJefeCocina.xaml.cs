@@ -20,10 +20,6 @@ namespace Rapid_Plus.Views.JefeDeCocina
     /// </summary>
     public partial class DashboardJefeCocina : Window
     {
-        #region Instancia de las páginas
-        private EstadoOrden estadoOrden; 
-        #endregion
-
         public DashboardJefeCocina()
         {
             InitializeComponent();
@@ -63,21 +59,10 @@ namespace Rapid_Plus.Views.JefeDeCocina
         #endregion
 
         #region EVENTOS
-        private void btnOrdenes_Click(object sender, RoutedEventArgs e)
-        {
-            if(estadoOrden == null)
-            {
-                estadoOrden = new EstadoOrden();
-            }
-            frContent.NavigationService.Navigate(estadoOrden);
-        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (estadoOrden == null)
-            {
-                estadoOrden = new EstadoOrden();
-            }
+           EstadoOrden estadoOrden = new EstadoOrden();
             frContent.NavigationService.Navigate(estadoOrden);
         }
 

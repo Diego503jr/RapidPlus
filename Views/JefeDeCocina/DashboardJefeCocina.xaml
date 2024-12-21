@@ -34,8 +34,7 @@
                                 ToolTip="Ordenes Pendientes"
                                 Margin="0,50,0,0"
                                 Style="{StaticResource btn-base}"
-                                Height="50" 
-                                Click="btnOrdenes_Click">
+                                Height="50" >
                             <materialDesign:PackIcon Kind="PlaylistRemove"
                                                      Height="40"
                                                      Width="40"/>
